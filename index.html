@@ -4,8 +4,270 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wellington Oliveira - Psicólogo Clínico</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* =================================================================== */
+        /* =========== ESTILO - PSICOLOGIA ACOLHEDORA (COM DARK MODE) ======== */
+        /* =================================================================== */
+
+        /* --- VARIÁVEIS DE COR (TEMA CLARO PADRÃO) --- */
+        :root {
+            color-scheme: light dark;
+            --cor-principal: #F5F1EC;
+            --cor-destaque: #C4A788;
+            --cor-texto: #3D3D3D;
+            --cor-branca: #FFFFFF;
+            --cor-botao-texto: #FFFFFF;
+        }
+
+        /* --- VARIÁVEIS DE COR (TEMA ESCURO ACOLHEDOR) --- */
+        body.dark-mode {
+            --cor-principal: #241F1C; /* Fundo principal: Marrom café bem escuro */
+            --cor-destaque: #CDB395;  /* Destaque: Bege um pouco mais claro para dar contraste no escuro */
+            --cor-texto: #EBE6E0;     /* Texto: Bege bem claro, não machuca os olhos como o branco puro */
+            --cor-branca: #332C28;    /* Fundo dos cards/seções: Marrom escuro levemente mais claro que o fundo */
+            --cor-botao-texto: #241F1C; /* Texto do botão escuro no dark mode */
+        }
+
+        /* --- CONFIGURAÇÕES GLOBAIS E FONTES --- */
+        body, h1, h2, h3, h4, p, ul, li, a, span {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Georgia', 'Times New Roman', Times, serif; 
+        }
+        body {
+            line-height: 1.6; color: var(--cor-texto); background-color: var(--cor-principal);
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+        .container { width: 90%; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+
+        /* --- CABEÇALHO --- */
+        .sticky-header {
+            background-color: transparent; padding: 15px 0; position: fixed;
+            top: 0; left: 0; width: 100%; z-index: 1000;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        .sticky-header.scrolled {
+            background-color: var(--cor-branca);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo-area { display: flex; align-items: center; }
+        .logo-area .psicologo-nome { font-size: 1.6em; font-weight: bold; margin-right: 15px; color: var(--cor-destaque); }
+        .psicologo-detalhes p { font-size: 0.85em; color: var(--cor-texto); opacity: 0.8; line-height: 1.2; }
+        
+        .menu-navegacao ul { list-style: none; display: flex; }
+        .menu-navegacao ul li { margin-left: 25px; }
+        .menu-navegacao ul li a { 
+            color: var(--cor-texto); text-decoration: none; font-weight: 500; padding-bottom: 5px; 
+            border-bottom: 2px solid transparent; transition: border-color 0.3s ease, color 0.3s ease;
+        }
+        .menu-navegacao ul li a:hover, .menu-navegacao ul li a.active { border-bottom-color: var(--cor-destaque); color: var(--cor-destaque); }
+        
+        .header-direita { display: flex; align-items: center; }
+        
+        /* BOTÃO DE TEMA (DARK/LIGHT) */
+        .theme-toggle-btn {
+            background: none; border: none; color: var(--cor-destaque);
+            font-size: 1.4em; cursor: pointer; padding: 5px 15px;
+            transition: transform 0.3s ease; display: flex; align-items: center;
+        }
+        .theme-toggle-btn:hover { transform: scale(1.1); }
+        
+        .menu-hamburguer-btn { display: none; background: none; border: none; color: var(--cor-destaque); font-size: 1.6em; cursor: pointer; padding: 5px; z-index: 1002; }
+
+        /* --- SEÇÃO HOME --- */
+        #home {
+            background-color: var(--cor-principal); min-height: 90vh; padding: 140px 0 120px 0;
+            display: flex; align-items: center; position: relative; overflow: hidden;
+            transition: background-color 0.4s ease;
+        }
+        #home::after {
+            content: ''; position: absolute; left: 50%; transform: translateX(-50%);
+            bottom: 0; width: 150%; height: 120px; background-color: var(--cor-branca);
+            border-radius: 50% / 100%; border-bottom-left-radius: 0; border-bottom-right-radius: 0;
+            transition: background-color 0.4s ease;
+        }
+        .home-content-main { display: flex; align-items: center; justify-content: space-between; gap: 40px; position: relative; z-index: 2; }
+        .home-text { flex: 1; max-width: 550px; text-align: left; }
+        .home-text h2 { font-size: 2.9em; font-weight: normal; margin-bottom: 20px; line-height: 1.3; }
+        .home-text .home-subtitulo { font-size: 1.2em; margin-bottom: 35px; color: var(--cor-texto); opacity: 0.8; }
+        .home-image-container {
+            flex: 0.9; max-width: 420px; position: relative; background-color: var(--cor-destaque); padding: 20px;
+            border-radius: 48% 52% 61% 39% / 59% 46% 54% 41%; box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        .home-image-container img { width: 100%; height: auto; object-fit: cover; display: block; border-radius: inherit; }
+
+        /* --- BOTÕES --- */
+        .btn-agendar {
+            background-color: var(--cor-destaque); color: var(--cor-botao-texto); padding: 15px 35px; text-decoration: none;
+            border-radius: 50px; font-weight: bold; font-size: 1em; display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; border: none; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .btn-agendar:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); opacity: 0.9; }
+
+        /* --- FAIXA DE DEMANDAS --- */
+        .faixa-demandas { 
+            padding: 20px 0; overflow: hidden; background-color: var(--cor-principal); 
+            color: var(--cor-destaque); cursor: grab; transition: background-color 0.4s ease;
+        }
+        .faixa-demandas-container-animado { display: flex; gap: 40px; width: fit-content; }
+        .faixa-demandas span { font-size: 1.4em; font-weight: 500; white-space: nowrap; flex-shrink: 0; }
+
+        /* --- SEÇÕES GERAIS --- */
+        section { padding: 80px 0; position: relative; }
+        #abordagem, #sobre, #contato, #sinais-e-apoio { background-color: var(--cor-branca); z-index: 2; transition: background-color 0.4s ease; }
+        #sinais-e-apoio { background-color: var(--cor-principal); }
+        #abordagem { padding-top: 120px; }
+        .section-title { text-align: center; margin-bottom: 50px; font-size: 2.4em; color: var(--cor-texto); font-weight: normal; transition: color 0.4s ease; }
+        .section-subtitle { text-align: center; margin-top: -30px; margin-bottom: 40px; font-size: 1.1em; color: var(--cor-texto); opacity: 0.8; max-width: 700px; margin: -30px auto 40px auto; }
+        .section-text-placeholder { text-align: center; font-size: 1.1em; color: var(--cor-texto); opacity: 0.9; max-width: 700px; margin: 0 auto; line-height: 1.8; }
+        .section-separator { 
+            padding: 15px 0; display: flex; align-items: center; justify-content: center;
+            background-color: var(--cor-destaque); color: var(--cor-botao-texto); position: relative; z-index: 2;
+        }
+        .section-separator span { font-size: 0.9em; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+
+        /* --- INTERLÚDIO COM PARALLAX --- */
+        #interludio-inspirador {
+            padding: 80px 0; min-height: 80vh; position: relative;
+            display: flex; justify-content: center; align-items: center; z-index: 1;
+            /* Máscara semi-transparente para garantir leitura da imagem */
+            background-image: linear-gradient(rgba(36, 31, 28, 0.6), rgba(36, 31, 28, 0.6)), url('https://i.imgur.com/CFXSYLs.jpg');
+            background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;
+        }
+        .interludio-moldura-texto {
+            background-color: var(--cor-principal); padding: 40px; width: 90%; max-width: 450px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3); border-radius: 8px; text-align: center;
+            transition: background-color 0.4s ease;
+        }
+        .moldura-cabecalho-psi {
+            background-color: var(--cor-destaque); color: var(--cor-botao-texto); padding: 15px; 
+            margin: -40px auto 25px auto; width: calc(100% + 80px); 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+        .titulo-principal-interludio { font-size: 1.7em; }
+        .texto-interludio { font-size: 1em; text-align: left; margin-bottom: 25px;}
+
+        /* --- SEÇÃO SOBRE --- */
+        .sobre-mim-container { display: flex; align-items: center; gap: 50px; }
+        .sobre-mim-texto { flex: 1.5; text-align: left; }
+        .sobre-mim-texto h2.section-title { text-align: left; }
+        .sobre-mim-texto p { margin-bottom: 15px; font-size: 1.05em; line-height: 1.7; }
+        .sobre-mim-foto-moldura { flex: 1; height: 400px; background-color: var(--cor-destaque); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: var(--cor-botao-texto); }
+
+        /* --- SEÇÃO DIFERENCIAIS --- */
+        #diferenciais { 
+            background-color: var(--cor-principal);
+            padding-top: 120px;
+            margin-top: -100px;
+            overflow: hidden; 
+        }
+        #diferenciais::before {
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 150%; height: 120px; background-color: var(--cor-branca);
+            border-radius: 50% / 100%; border-top-left-radius: 0; border-top-right-radius: 0;
+            transition: background-color 0.4s ease;
+        }
+        .diferenciais-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .diferencial-item { text-align: center; padding: 10px; }
+        .diferencial-icon { font-size: 2.5em; color: var(--cor-destaque); margin-bottom: 20px; line-height: 1; display: inline-block; }
+        .diferencial-item h4 { font-size: 1.1em; color: var(--cor-texto); margin-bottom: 10px; font-weight: bold; }
+        .diferencial-item p { font-size: 0.9em; color: var(--cor-texto); opacity: 0.8; line-height: 1.6; }
+
+
+        /* --- SEÇÃO SINAIS E APOIO --- */
+        .sinais-container { display: flex; align-items: center; gap: 60px; }
+        .sinais-coluna-esquerda { flex: 1; position: relative; display: flex; justify-content: center; align-items: center; min-height: 400px; }
+        .sinais-imagem-central { width: 150px; height: 150px; border-radius: 50%; background-color: var(--cor-destaque); animation: pulse 2.5s infinite ease-in-out; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(196, 167, 136, 0.5); } 50% { transform: scale(1.05); box-shadow: 0 0 0 25px rgba(196, 167, 136, 0); } }
+        
+        .sinal-item { position: absolute; text-align: center; width: 140px; background-color: var(--cor-branca); padding: 12px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, background-color 0.4s ease; }
+        .sinal-item:hover { transform: translateY(-5px); }
+        .sinal-icon { font-size: 1.8em; color: var(--cor-destaque); margin-bottom: 8px; }
+        .sinal-item p { font-size: 0.9em; color: var(--cor-texto); opacity: 0.9; line-height: 1.3; }
+        .sinal-item-1 { top: 0; left: 50%; transform: translate(-50%, -50%); }
+        .sinal-item-2 { top: 50%; left: 0; transform: translate(-50%, -50%); }
+        .sinal-item-3 { top: 50%; right: 0; transform: translate(50%, -50%); }
+        .sinal-item-4 { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
+        .sinal-item-5 { top: 20%; left: 15%; transform: translate(-50%, -50%) rotate(-10deg); }
+        .sinal-item-6 { top: 80%; right: 15%; transform: translate(50%, -50%) rotate(10deg); }
+        
+        .sinais-coluna-direita { flex: 1.5; text-align: left; }
+        .sinais-coluna-direita h3 { font-size: 1.8em; color: var(--cor-texto); font-weight: bold; margin-bottom: 20px; }
+        .sinais-coluna-direita p { font-size: 1.1em; color: var(--cor-texto); opacity: 0.85; margin-bottom: 25px; line-height: 1.7; }
+
+        /* --- SEÇÃO DE FAQ --- */
+        #faq { background-color: var(--cor-principal); transition: background-color 0.4s ease;} 
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid rgba(196, 167, 136, 0.3); }
+        .faq-question {
+            background-color: transparent; border: none; width: 100%; text-align: left; padding: 20px;
+            font-size: 1.1em; font-family: inherit; color: var(--cor-texto); cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease;
+        }
+        .faq-question:hover { background-color: rgba(196, 167, 136, 0.1); }
+        .faq-question .fa-plus, .faq-question .fa-minus { color: var(--cor-destaque); transition: transform 0.3s ease-in-out; }
+        .faq-question.active .fa-plus { display: none; }
+        .faq-question:not(.active) .fa-minus { display: none; }
+        
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease-out; background-color: var(--cor-branca); }
+        .faq-answer p { padding: 0 20px 20px 20px; line-height: 1.7; color: var(--cor-texto); opacity: 0.85; }
+        .faq-answer.open { padding-top: 20px; }
+
+        /* --- RODAPÉ --- */
+        footer { text-align: center; padding: 40px 20px; background-color: var(--cor-destaque); color: var(--cor-botao-texto); z-index: 2; position: relative;}
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 992px) {
+            .home-content-main, .sobre-mim-container, .sinais-container, .diferenciais-grid { flex-direction: column; text-align: center; }
+            .diferenciais-grid { grid-template-columns: repeat(2, 1fr); } 
+            .home-text { max-width: 90%; margin-bottom: 50px; }
+            .home-image-container { order: -1; }
+            .sobre-mim-texto h2.section-title, .sinais-coluna-direita { text-align: center; }
+            .sobre-mim-texto p { text-align: left; }
+            .sinais-coluna-esquerda { margin-bottom: 60px; transform: scale(0.9); }
+            .interludio-moldura-texto { margin-left: auto; margin-right: auto; }
+        }
+
+        @media (max-width: 768px) {
+            .sticky-header { padding: 10px 0; background-color: var(--cor-branca); }
+            .logo-area .psicologo-nome { font-size: 1.3em; }
+            .psicologo-detalhes { display: none; }
+            
+            .header-direita { gap: 10px; }
+            .theme-toggle-btn { font-size: 1.3em; padding: 5px; margin-right: 0;}
+            .menu-hamburguer-btn { display: block; }
+            
+            .menu-navegacao.menu-aberto { display: flex; transform: translateY(0); }
+            .menu-navegacao { 
+                display: none; position: absolute; top: 100%; left: 0; width: 100%; 
+                background-color: var(--cor-branca); flex-direction: column; padding: 10px 0; 
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1); transform: translateY(-150%); transition: transform 0.3s ease-in-out; 
+            }
+            .menu-navegacao ul { flex-direction: column; width: 100%; align-items: center; margin:0;}
+            .menu-navegacao ul li { margin: 10px 0; width: 100%; text-align: center; }
+            .menu-navegacao ul li a { display: block; padding: 12px 0; }
+            
+            #home { min-height: auto; padding: 100px 0 80px 0; }
+            #home::after { height: 80px; }
+            .home-image-container { order: 0; width: 85%; max-width: 320px; padding: 15px; }
+            .home-text h2 { font-size: 2em; }
+            .faixa-demandas span { font-size: 1.1em; }
+            
+            section { padding: 60px 0; }
+            #abordagem { padding-top: 100px; }
+            #diferenciais { padding-top: 100px; margin-top: -80px; }
+            .section-title { font-size: 1.9em; }
+            
+            #interludio-inspirador { min-height: 70vh; }
+            .interludio-moldura-texto { padding: 25px 15px; max-width: 90%; }
+            .diferenciais-grid { grid-template-columns: 1fr; } 
+            .diferencial-item { padding: 20px 0; }
+            .sinais-coluna-esquerda { min-height: 350px; width: 100%; transform: scale(0.8); margin-bottom: 20px; }
+        }
+    </style>
 </head>
 <body>
     <header class="sticky-header" id="mainHeader">
@@ -27,6 +289,11 @@
                 </ul>
             </nav>
             <div class="header-direita">
+                <!-- Botão de Modo Escuro / Claro -->
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar tema escuro/claro">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <!-- Botão Menu Mobile -->
                 <button class="menu-hamburguer-btn" id="menu-hamburguer" aria-label="Abrir menu" aria-expanded="false">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -40,11 +307,12 @@
             <div class="container home-content-main">
                 <div class="home-text">
                     <h2>A vida recomeça no instante em que você escolhe se cuidar.</h2>
-                    <p class="home-subtitulo">Atendimento online para adultos.</p>
+                    <p class="home-subtitulo">Atendimento online para adultos em todo o Brasil.</p>
                     <a href="#contato" class="btn-agendar">Agendar Consulta</a>
                 </div>
                 <div class="home-image-container">
-                    <img src="https://imgur.com/rmKhP7I.png" alt="Psicólogo Wellington Oliveira" />
+                    <!-- Substitua o link abaixo pela sua foto real -->
+                    <img src="https://i.imgur.com/rmKhP7I.png" alt="Psicólogo Wellington Oliveira" />
                 </div>
             </div>
         </section>
@@ -206,7 +474,11 @@
             <div class="container">
                 <h2 class="section-title">Contato</h2>
                 <p class="section-subtitle">Vamos conversar? Entre em contato para agendar sua consulta ou tirar dúvidas.</p>
-                <p class="section-text-placeholder">(Informações de contato...)</p>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="https://wa.me/SEUNUMERODEWHATSAPP" target="_blank" class="btn-agendar" style="display: inline-flex; align-items: center; gap: 10px; background-color: #25D366; color: white;">
+                        <i class="fab fa-whatsapp" style="font-size: 1.4em;"></i> Falar no WhatsApp
+                    </a>
+                </div>
             </div>
         </section>
     </main>
@@ -218,6 +490,184 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // ==========================================
+            // LÓGICA DO TEMA (DARK / LIGHT MODE)
+            // ==========================================
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeIcon = themeToggleBtn.querySelector('i');
+            
+            // Verifica se há preferência salva no LocalStorage
+            const savedTheme = localStorage.getItem('psicologia-theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                
+                if (document.body.classList.contains('dark-mode')) {
+                    localStorage.setItem('psicologia-theme', 'dark');
+                    themeIcon.classList.replace('fa-moon', 'fa-sun');
+                } else {
+                    localStorage.setItem('psicologia-theme', 'light');
+                    themeIcon.classList.replace('fa-sun', 'fa-moon');
+                }
+            });
+
+            // ==========================================
+            // OUTROS SCRIPTS (MENU, SCROLL, FAQ, ETC)
+            // ==========================================
+            const menuBtn = document.getElementById('menu-hamburguer');
+            const menuNav = document.getElementById('menu-principal');
+            const mainHeader = document.getElementById('mainHeader');
+
+            if (menuBtn && menuNav) {
+                menuBtn.addEventListener('click', () => {
+                    menuNav.classList.toggle('menu-aberto');
+                    const icon = menuBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.toggle('fa-times', menuNav.classList.contains('menu-aberto'));
+                        icon.classList.toggle('fa-bars', !menuNav.classList.contains('menu-aberto'));
+                    }
+                });
+            }
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    if (menuNav && menuNav.classList.contains('menu-aberto')) {
+                        menuNav.classList.remove('menu-aberto');
+                        const icon = menuBtn.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                    
+                    const targetElement = document.querySelector(this.getAttribute('href'));
+                    if (targetElement) {
+                        let headerOffset = mainHeader ? mainHeader.offsetHeight : 0;
+                        window.scrollTo({
+                            top: targetElement.offsetTop - headerOffset,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            if (mainHeader) {
+                window.addEventListener('scroll', () => {
+                    mainHeader.classList.toggle('scrolled', window.scrollY > 50);
+                });
+            }
+
+            const currentYearEl = document.getElementById('currentYear');
+            if (currentYearEl) {
+                currentYearEl.textContent = new Date().getFullYear();
+            }
+            
+            const sections = document.querySelectorAll('main section[id]');
+            const navLinks = document.querySelectorAll('nav.menu-navegacao ul li a');
+            if (sections.length > 0 && navLinks.length > 0) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            navLinks.forEach(link => {
+                                link.classList.remove('active');
+                                if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                    link.classList.add('active');
+                                }
+                            });
+                        }
+                    });
+                }, { rootMargin: '-40% 0px -60% 0px' });
+                sections.forEach(section => { if(section.id) observer.observe(section); });
+            }
+
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            if (faqQuestions.length > 0) {
+                faqQuestions.forEach(question => {
+                    const minusIcon = document.createElement('i');
+                    minusIcon.className = 'fas fa-minus';
+                    question.appendChild(minusIcon);
+
+                    question.addEventListener('click', () => {
+                        const answer = question.nextElementSibling;
+                        const isActive = question.classList.contains('active');
+
+                        if (!isActive) {
+                            question.classList.add('active');
+                            answer.style.maxHeight = answer.scrollHeight + 40 + "px"; 
+                            answer.classList.add('open');
+                        } else {
+                            question.classList.remove('active');
+                            answer.style.maxHeight = null;
+                            answer.classList.remove('open');
+                        }
+                    });
+                });
+            }
+
+            // Faixa de Demandas Interativa (Simplificada para o arquivo único)
+            const faixaViewport = document.getElementById('faixaDemandasViewport');
+            const faixaContainer = document.getElementById('faixaDemandasContainer');
+            if (faixaViewport && faixaContainer) {
+                let isDragging = false, startX, currentTranslateX = 0, rafId = null, interactionTimeoutId = null;
+                const autoScrollSpeed = 0.5;
+                const resumeDelay = 400; 
+                
+                const applyTransform = () => { if(faixaContainer) faixaContainer.style.transform = `translateX(${currentTranslateX}px)`; };
+                const stopAutoScroll = () => { if(rafId) cancelAnimationFrame(rafId); };
+                const scrollStep = () => {
+                    if (isDragging) return;
+                    currentTranslateX -= autoScrollSpeed;
+                    const singleContentWidth = faixaContainer.scrollWidth / 2;
+                    if (Math.abs(currentTranslateX) >= singleContentWidth) {
+                        currentTranslateX += singleContentWidth;
+                    }
+                    applyTransform();
+                    rafId = requestAnimationFrame(scrollStep);
+                };
+                const startAutoScroll = () => {
+                    stopAutoScroll();
+                    rafId = requestAnimationFrame(scrollStep);
+                };
+                
+                const onDragStart = (clientX) => {
+                    isDragging = true; stopAutoScroll(); clearTimeout(interactionTimeoutId);
+                    startX = clientX - currentTranslateX;
+                    if(faixaContainer) faixaContainer.style.transition = 'none';
+                    if(faixaViewport) faixaViewport.style.cursor = 'grabbing';
+                };
+                const onDragMove = (clientX) => {
+                    if (!isDragging) return;
+                    currentTranslateX = clientX - startX; applyTransform();
+                };
+                const onDragEnd = () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    if(faixaViewport) faixaViewport.style.cursor = 'grab';
+                    interactionTimeoutId = setTimeout(startAutoScroll, resumeDelay);
+                };
+
+                faixaViewport.addEventListener('mousedown', (e) => onDragStart(e.pageX));
+                document.addEventListener('mousemove', (e) => onDragMove(e.pageX));
+                document.addEventListener('mouseup', onDragEnd);
+                document.addEventListener('mouseleave', onDragEnd);
+
+                faixaViewport.addEventListener('touchstart', (e) => onDragStart(e.touches[0].pageX), { passive: true });
+                faixaViewport.addEventListener('touchmove', (e) => onDragMove(e.touches[0].pageX), { passive: true });
+                faixaViewport.addEventListener('touchend', onDragEnd);
+                faixaViewport.addEventListener('touchcancel', onDragEnd);
+                
+                startAutoScroll();
+            }
+        });
+    </script>
 </body>
 </html>
