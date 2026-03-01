@@ -1,0 +1,296 @@
+/* =================================================================== */
+/* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v12 =========== */
+/* =================================================================== */
+
+/* --- VARIÁVEIS DE COR --- */
+:root {
+    --cor-principal: #F5F1EC;
+    --cor-destaque: #C4A788;
+    --cor-texto: #3D3D3D;
+    --cor-branca: #FFFFFF;
+}
+
+/* --- CONFIGURAÇÕES GLOBAIS E FONTES --- */
+body, h1, h2, h3, h4, p, ul, li, a, span {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Georgia', 'Times New Roman', Times, serif; 
+}
+body {
+    line-height: 1.6; color: var(--cor-texto); background-color: var(--cor-principal);
+}
+.container { width: 90%; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+
+/* --- CABEÇALHO --- */
+.sticky-header {
+    background-color: transparent; padding: 15px 0; position: fixed;
+    top: 0; left: 0; width: 100%; z-index: 1000;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+.sticky-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px); box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+.header-content { display: flex; justify-content: space-between; align-items: center; }
+.logo-area .psicologo-nome { font-size: 1.6em; font-weight: bold; margin-right: 15px; color: var(--cor-destaque); }
+.psicologo-detalhes p { font-size: 0.85em; color: #555; line-height: 1.2; }
+.menu-navegacao ul { list-style: none; display: flex; }
+.menu-navegacao ul li { margin-left: 25px; }
+.menu-navegacao ul li a { color: var(--cor-texto); text-decoration: none; font-weight: 500; padding-bottom: 5px; border-bottom: 2px solid transparent; transition: border-color 0.3s ease, color 0.3s ease; }
+.menu-navegacao ul li a:hover, .menu-navegacao ul li a.active { border-bottom-color: var(--cor-destaque); color: var(--cor-destaque); }
+.menu-hamburguer-btn { display: none; background: none; border: none; color: var(--cor-destaque); font-size: 1.6em; cursor: pointer; padding: 5px; z-index: 1002; }
+
+/* --- SEÇÃO HOME --- */
+#home { background-color: var(--cor-principal); min-height: 90vh; padding: 140px 0 120px 0; display: flex; align-items: center; position: relative; overflow: hidden; }
+#home::after { 
+    content: ''; 
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    bottom: 0; 
+    width: 150%; 
+    height: 120px; 
+    background-color: var(--cor-branca); 
+    border-radius: 50% / 100%; 
+    border-bottom-left-radius: 0; 
+    border-bottom-right-radius: 0; 
+}
+.home-content-main { display: flex; align-items: center; justify-content: space-between; gap: 40px; position: relative; z-index: 2; }
+.home-text { flex: 1; max-width: 550px; text-align: left; }
+.home-text h2 { font-size: 2.9em; font-weight: normal; margin-bottom: 20px; line-height: 1.3; }
+.home-text .home-subtitulo { font-size: 1.2em; margin-bottom: 35px; color: #555; }
+.home-image-container { flex: 0.9; max-width: 420px; position: relative; background-color: var(--cor-destaque); padding: 20px; border-radius: 48% 52% 61% 39% / 59% 46% 54% 41%; box-shadow: 0 15px 40px rgba(196, 167, 136, 0.3); }
+.home-image-container img { width: 100%; height: auto; object-fit: cover; display: block; border-radius: inherit; }
+
+/* --- BOTÕES --- */
+.btn-agendar { background-color: var(--cor-destaque); color: var(--cor-branca); padding: 15px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1em; display: inline-block; transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(196, 167, 136, 0.3); }
+.btn-agendar:hover { background-color: #b89a7a; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(196, 167, 136, 0.35); }
+
+/* --- FAIXA DE DEMANDAS --- */
+.faixa-demandas { overflow: hidden; background-color: transparent; color: var(--cor-destaque); cursor: grab; padding: 0; margin: 40px 0; }
+.faixa-demandas-container-animado { display: flex; gap: 40px; width: fit-content; }
+.faixa-demandas span { font-size: 1.4em; font-weight: 500; white-space: nowrap; flex-shrink: 0; }
+
+/* --- SEÇÕES GERAIS --- */
+section { padding: 80px 0; position: relative; }
+#abordagem, #sobre, #contato, #faq { background-color: var(--cor-branca); z-index: 2; }
+#sinais-e-apoio, #diferenciais { background-color: var(--cor-principal); }
+#abordagem { padding-top: 120px; } /* Ajuste para a curva da Home */
+.section-title { text-align: center; margin-bottom: 50px; font-size: 2.4em; color: var(--cor-texto); font-weight: normal; }
+.section-subtitle { text-align: center; margin-top: -30px; margin-bottom: 40px; font-size: 1.1em; color: #666; max-width: 700px; margin: -30px auto 40px auto; }
+.section-text-placeholder { text-align: center; font-size: 1.1em; color: #555; max-width: 700px; margin: 0 auto; line-height: 1.8; }
+.section-separator { padding: 15px 0; display: flex; align-items: center; justify-content: center; background-color: var(--cor-destaque); color: var(--cor-branca); position: relative; z-index: 2; }
+.section-separator span { font-size: 0.9em; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+
+/* --- INTERLÚDIO COM PARALLAX (VERSÃO IDEAL) --- */
+#interludio-inspirador {
+    padding: 0; 
+    min-height: 70vh;
+    position: relative;
+    display: flex;
+    align-items: center; 
+    z-index: 1;
+    background-image: url('https://imgur.com/yZjNoYr.png'); 
+    background-attachment: fixed;
+    background-position: 65% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.interludio-moldura-texto {
+    background-color: var(--cor-principal);
+    padding: 30px; 
+    max-width: 420px; 
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    margin-left: 12%; 
+    margin-right: auto;
+    overflow: hidden; 
+}
+
+.moldura-cabecalho-psi {
+    background-color: var(--cor-destaque);
+    color: var(--cor-branca);
+    padding: 12px; 
+    margin: -30px auto 25px auto;
+    width: 95%; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    border-radius: 4px;
+}
+.titulo-principal-interludio { 
+    font-size: 1.7em;
+    margin-bottom: 15px;
+}
+.texto-interludio {
+    font-size: 1em;
+    text-align: left;
+    margin-bottom: 25px; 
+}
+
+
+/* --- SEÇÃO SOBRE --- */
+.sobre-mim-container { display: flex; align-items: center; gap: 50px; }
+.sobre-mim-texto { flex: 1.5; text-align: left; }
+.sobre-mim-texto h2.section-title { text-align: left; margin-bottom: 25px;}
+.sobre-mim-texto p { margin-bottom: 15px; font-size: 1.05em; line-height: 1.7; }
+.sobre-mim-foto-moldura { flex: 1; height: 400px; background-color: var(--cor-destaque); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: white; }
+
+/* --- SEÇÃO DIFERENCIAIS (COM CURVA) --- */
+#diferenciais { 
+    padding-top: 120px;
+    margin-top: -100px;
+    overflow: hidden; 
+}
+#diferenciais::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150%;
+    height: 120px; 
+    background-color: var(--cor-branca);
+    border-radius: 50% / 100%; 
+    border-top-left-radius: 0; 
+    border-top-right-radius: 0;
+}
+.diferenciais-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+.diferencial-item { text-align: center; padding: 10px; }
+.diferencial-icon { font-size: 2.5em; color: var(--cor-destaque); margin-bottom: 20px; line-height: 1; display: inline-block; }
+.diferencial-item h4 { font-size: 1.1em; color: var(--cor-texto); margin-bottom: 10px; font-weight: bold; }
+.diferencial-item p { font-size: 0.9em; color: #555; line-height: 1.6; }
+
+/* --- SEÇÃO SINAIS E APOIO --- */
+.sinais-container { display: flex; align-items: center; gap: 60px; }
+.sinais-coluna-esquerda { flex: 1; position: relative; display: flex; justify-content: center; align-items: center; min-height: 400px; }
+.sinais-imagem-central { width: 150px; height: 150px; border-radius: 50%; background-color: var(--cor-destaque); animation: pulse 2.5s infinite ease-in-out; }
+
+.sinal-item { position: absolute; text-align: center; width: 140px; background-color: var(--cor-branca); padding: 12px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease; }
+.sinal-item:hover { transform: translateY(-5px); }
+.sinal-icon { font-size: 1.8em; color: var(--cor-destaque); margin-bottom: 8px; }
+.sinal-item p { font-size: 0.9em; color: #555; line-height: 1.3; }
+.sinal-item-1 { top: 0; left: 50%; transform: translate(-50%, -50%); }
+.sinal-item-2 { top: 50%; left: 0; transform: translate(-50%, -50%); }
+.sinal-item-3 { top: 50%; right: 0; transform: translate(50%, -50%); }
+.sinal-item-4 { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
+.sinal-item-5 { top: 20%; left: 15%; transform: translate(-50%, -50%) rotate(-10deg); }
+.sinal-item-6 { top: 80%; right: 15%; transform: translate(50%, -50%) rotate(10deg); }
+.sinais-coluna-direita { flex: 1.5; text-align: left; }
+.sinais-coluna-direita h3 { font-size: 1.8em; color: #333; font-weight: bold; margin-bottom: 20px; }
+.sinais-coluna-direita p { font-size: 1.1em; color: #555; margin-bottom: 25px; line-height: 1.7; }
+
+/* --- NOVA SEÇÃO DE FAQ --- */
+#faq { background-color: var(--cor-principal); } 
+.faq-container { max-width: 800px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid #ddd; }
+.faq-question {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+    font-size: 1.1em;
+    font-family: inherit;
+    color: var(--cor-texto);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+.faq-question:hover { background-color: rgba(196, 167, 136, 0.1); }
+.faq-question .fa-plus, .faq-question .fa-minus {
+    color: var(--cor-destaque);
+    transition: transform 0.3s ease-in-out;
+}
+.faq-question.active .fa-plus { display: none; }
+.faq-question:not(.active) .fa-minus { display: none; }
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+    background-color: var(--cor-branca);
+}
+.faq-answer p {
+    padding: 0 20px 20px 20px;
+    line-height: 1.7;
+    color: #555;
+}
+.faq-answer.open {
+    padding-top: 20px;
+}
+
+/* --- RODAPÉ --- */
+footer { text-align: center; padding: 40px 20px; background-color: var(--cor-destaque); color: var(--cor-branca); z-index: 2; position: relative;}
+
+/* KEYFRAMES DA ANIMAÇÃO */
+.interludio-moldura-texto::before,
+.interludio-moldura-texto::after {
+    content: '';
+    position: absolute;
+    background-color: var(--cor-destaque); 
+    animation-duration: 7.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    width: 3px;
+    height: 120px; 
+}
+.interludio-moldura-texto::before {
+    top: 0;
+    left: 0;
+    animation-name: percorrerHorario;
+}
+.interludio-moldura-texto::after {
+    bottom: 0;
+    right: 0;
+    animation-name: percorrerAntiHorario;
+}
+@keyframes percorrerHorario {
+    0% { top: 0; left: 0; width: 3px; height: 120px; } 24.99% { top: calc(100% - 120px); left: 0; width: 3px; height: 120px; } 25% { top: calc(100% - 3px); left: 0; width: 120px; height: 3px; } 49.99% { top: calc(100% - 3px); left: calc(100% - 120px); width: 120px; height: 3px; } 50% { top: calc(100% - 120px); left: calc(100% - 3px); width: 3px; height: 120px; } 74.99% { top: 0; left: calc(100% - 3px); width: 3px; height: 120px; } 75% { top: 0; left: calc(100% - 120px); width: 100px; height: 3px; } 100% { top: 0; left: 0; width: 120px; height: 3px; } 
+}
+
+@keyframes percorrerAntiHorario {
+    0% { bottom: 0; right: 0; width: 3px; height: 120px; } 24.99% { bottom: calc(100% - 120px); right: 0; width: 3px; height: 120px; } 25% { bottom: calc(100% - 3px); right: 0; width: 120px; height: 3px; } 49.99% { bottom: calc(100% - 3px); right: calc(100% - 120px); width: 120px; height: 3px; } 50% { bottom: calc(100% - 120px); right: calc(100% - 3px); width: 3px; height: 120px; } 74.99% { bottom: 0; right: calc(100% - 3px); width: 3px; height: 120px; } 75% { bottom: 0; right: calc(100% - 120px); width: 100px; height: 3px; } 100% { bottom: 0; right: 0; width: 120px; height: 3px; } 
+}
+
+@keyframes pulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(196, 167, 136, 0.5); } 50% { transform: scale(1.05); box-shadow: 0 0 0 25px rgba(196, 167, 136, 0); } }
+
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 992px) {
+    .home-content-main, .sobre-mim-container, .sinais-container, .diferenciais-grid { flex-direction: column; text-align: center; }
+    .diferenciais-grid { grid-template-columns: repeat(2, 1fr); } 
+    .home-text { max-width: 90%; margin-bottom: 50px; }
+    .home-image-container { order: -1; }
+    .sobre-mim-texto h2.section-title, .sinais-coluna-direita { text-align: center; }
+    .sobre-mim-texto p { text-align: left; }
+    .sinais-coluna-esquerda { margin-bottom: 60px; transform: scale(0.9); }
+    .interludio-moldura-texto { margin-left: auto; } /* Centralizar em telas menores */
+}
+@media (max-width: 768px) {
+    .sticky-header { padding: 10px 0; }
+    .logo-area .psicologo-nome { font-size: 1.3em; }
+    .psicologo-detalhes { display: none; }
+    .menu-hamburguer-btn { display: block; }
+    .menu-navegacao.menu-aberto { display: flex; transform: translateY(0); }
+    .menu-navegacao { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--cor-branca); flex-direction: column; padding: 10px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transform: translateY(-150%); transition: transform 0.3s ease-in-out; }
+    .menu-navegacao ul { flex-direction: column; width: 100%; align-items: center; }
+    .menu-navegacao ul li { margin: 10px 0; width: 100%; text-align: center; }
+    .menu-navegacao ul li a { display: block; padding: 12px 0; }
+    #home { min-height: auto; padding: 100px 0 80px 0; }
+    #home::after { height: 80px; }
+    .home-image-container { order: 0; width: 85%; max-width: 320px; padding: 15px; }
+    .home-text h2 { font-size: 2em; }
+    .faixa-demandas span { font-size: 1.1em; }
+    section { padding: 60px 0; }
+    #abordagem { padding-top: 100px; }
+    #diferenciais { padding-top: 100px; margin-top: -80px; }
+    .section-title { font-size: 1.9em; }
+    #interludio-inspirador { background-attachment: scroll; }
+    .interludio-moldura-texto { padding: 25px 15px; max-width: 90%; }
+    .diferenciais-grid { grid-template-columns: 1fr; } 
+    .diferencial-item { padding: 20px 0; }
+    .sinais-coluna-esquerda { min-height: 350px; width: 100%; transform: scale(0.8); margin-bottom: 20px; }
+}
