@@ -151,13 +151,14 @@
         .diferencial-item p { font-size: 0.9em; color: var(--cor-texto); opacity: 0.8; line-height: 1.6; transition: color 0.4s ease; }
 
         /* --- SEÇÃO SINAIS E APOIO (ATUALIZADA) --- */
-        .sinais-container { display: flex; align-items: center; gap: 60px; }
-        .sinais-coluna-esquerda { flex: 1; display: flex; justify-content: center; align-items: center; width: 100%; }
-        .sinais-imagem-canva { width: 100%; max-width: 550px; height: auto; display: block; }
+        .sinais-container { display: flex; align-items: center; gap: 50px; }
+        .sinais-coluna-esquerda { flex: 1.1; display: flex; justify-content: center; align-items: center; width: 100%; }
+        .sinais-imagem-canva { width: 100%; max-width: 650px; height: auto; display: block; } /* Aumentamos o max-width para ela preencher bem o balão vermelho */
         
-        .sinais-coluna-direita { flex: 1.5; text-align: left; }
-        .sinais-coluna-direita h3 { font-size: 1.8em; color: var(--cor-texto); font-weight: bold; margin-bottom: 20px; transition: color 0.4s ease; }
-        .sinais-coluna-direita p { font-size: 1.1em; color: var(--cor-texto); opacity: 0.85; margin-bottom: 25px; line-height: 1.7; transition: color 0.4s ease; }
+        .sinais-coluna-direita { flex: 1; text-align: left; }
+        .sinais-titulo-lateral { font-size: 2.6em; color: var(--cor-texto); font-weight: normal; margin-bottom: 20px; line-height: 1.2; transition: color 0.4s ease; }
+        .sinais-coluna-direita h3 { font-size: 1.3em; color: var(--cor-destaque); font-weight: bold; margin-bottom: 20px; transition: color 0.4s ease; }
+        .sinais-coluna-direita p { font-size: 1.1em; color: var(--cor-texto); opacity: 0.85; margin-bottom: 30px; line-height: 1.7; transition: color 0.4s ease; }
 
         /* --- NOVA SEÇÃO DE FAQ --- */
         #faq { background-color: var(--cor-principal); transition: background-color 0.4s ease; } 
@@ -239,7 +240,9 @@
             
             /* Ajuste da imagem do Canva no celular */
             .sinais-coluna-esquerda { margin-bottom: 30px; width: 100%; display: flex; justify-content: center; }
-            .sinais-imagem-canva { max-width: 100%; padding: 0 10px; }
+            .sinais-imagem-canva { max-width: 100%; padding: 0; }
+            .sinais-titulo-lateral { font-size: 2em; text-align: center; }
+            .sinais-coluna-direita { display: flex; flex-direction: column; align-items: center; text-align: center; }
         }
     </style>
 </head>
@@ -328,14 +331,16 @@
             </div>
         </div>
 
+        <!-- 5. Seção Sinais e Apoio (ATUALIZADA COM O LINK DO IMGUR) -->
         <section id="sinais-e-apoio">
             <div class="container">
-                <h2 class="section-title">Se você percebe alguns desses sinais, é hora de buscar ajuda.</h2>
                 <div class="sinais-container">
                     <div class="sinais-coluna-esquerda">
+                        <!-- IMAGEM DO CANVA INSERIDA AQUI -->
                         <img src="https://i.imgur.com/JGMQlMj.png" alt="Sintomas e sinais para buscar terapia" class="sinais-imagem-canva">
                     </div>
                     <div class="sinais-coluna-direita">
+                        <h2 class="sinais-titulo-lateral">Se você percebe alguns desses sinais, é hora de buscar ajuda.</h2>
                         <h3>Uma jornada de autoconhecimento e transformação</h3>
                         <p>Esses sinais podem impactar várias áreas da sua vida. Um psicólogo oferece um ambiente seguro e de confiança para trabalhar essas questões, trazendo novas perspectivas transformadoras para uma vida mais equilibrada.</p>
                         <a href="#contato" class="btn-agendar">Entre em Contato</a>
@@ -344,6 +349,7 @@
             </div>
         </section>
 
+        <!-- 6. Seção Sobre Mim -->
         <section id="sobre">
             <div class="container sobre-mim-container">
                 <div class="sobre-mim-texto">
