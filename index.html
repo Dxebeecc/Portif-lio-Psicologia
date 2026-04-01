@@ -13,26 +13,24 @@
 
         /* --- VARIÁVEIS DE COR (TEMA CLARO ORIGINAL INTACTO) --- */
         :root {
-            color-scheme: light; /* Força o navegador a respeitar o tema claro por padrão */
+            color-scheme: light; 
             --cor-principal: #F5F1EC;
             --cor-destaque: #C4A788;
             --cor-texto: #3D3D3D;
             --cor-branca: #FFFFFF;
-            
-            /* Variáveis auxiliares para o modo escuro funcionarem sem afetar o claro */
             --cor-botao-texto: #FFFFFF;
             --cor-overlay: rgba(255, 255, 255, 0.95);
         }
 
         /* --- VARIÁVEIS DE COR (TEMA ESCURO - MARROM/CAFÉ ACOLHEDOR) --- */
         body.dark-mode {
-            color-scheme: dark; /* Avisa o navegador que agora está escuro (muda scrollbars, etc) */
-            --cor-principal: #1A1614; /* Fundo principal: Marrom 'Espresso' profundo */
-            --cor-destaque: #D4B698;  /* Destaque: Bege levemente mais claro */
-            --cor-texto: #E6DFD8;     /* Texto: Areia claro (off-white) */
-            --cor-branca: #26211E;    /* Fundos de seção (que eram brancos): Madeira escura */
-            --cor-botao-texto: #1A1614; /* Texto do botão: Escuro para contraste */
-            --cor-overlay: rgba(38, 33, 30, 0.95); /* Header escuro com blur */
+            color-scheme: dark; 
+            --cor-principal: #1A1614; 
+            --cor-destaque: #D4B698;  
+            --cor-texto: #E6DFD8;     
+            --cor-branca: #26211E;    
+            --cor-botao-texto: #1A1614; 
+            --cor-overlay: rgba(38, 33, 30, 0.95); 
         }
 
         /* --- CONFIGURAÇÕES GLOBAIS E FONTES --- */
@@ -152,21 +150,11 @@
         .diferencial-item h4 { font-size: 1.1em; color: var(--cor-texto); margin-bottom: 10px; font-weight: bold; transition: color 0.4s ease; }
         .diferencial-item p { font-size: 0.9em; color: var(--cor-texto); opacity: 0.8; line-height: 1.6; transition: color 0.4s ease; }
 
-        /* --- SEÇÃO SINAIS E APOIO --- */
+        /* --- SEÇÃO SINAIS E APOIO (ATUALIZADA) --- */
         .sinais-container { display: flex; align-items: center; gap: 60px; }
-        .sinais-coluna-esquerda { flex: 1; position: relative; display: flex; justify-content: center; align-items: center; min-height: 400px; }
-        .sinais-imagem-central { width: 150px; height: 150px; border-radius: 50%; background-color: var(--cor-destaque); animation: pulse 2.5s infinite ease-in-out; transition: background-color 0.4s ease;}
-
-        .sinal-item { position: absolute; text-align: center; width: 140px; background-color: var(--cor-branca); padding: 12px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, background-color 0.4s ease; }
-        .sinal-item:hover { transform: translateY(-5px); }
-        .sinal-icon { font-size: 1.8em; color: var(--cor-destaque); margin-bottom: 8px; transition: color 0.4s ease; }
-        .sinal-item p { font-size: 0.9em; color: var(--cor-texto); opacity: 0.9; line-height: 1.3; transition: color 0.4s ease; }
-        .sinal-item-1 { top: 0; left: 50%; transform: translate(-50%, -50%); }
-        .sinal-item-2 { top: 50%; left: 0; transform: translate(-50%, -50%); }
-        .sinal-item-3 { top: 50%; right: 0; transform: translate(50%, -50%); }
-        .sinal-item-4 { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
-        .sinal-item-5 { top: 20%; left: 15%; transform: translate(-50%, -50%) rotate(-10deg); }
-        .sinal-item-6 { top: 80%; right: 15%; transform: translate(50%, -50%) rotate(10deg); }
+        .sinais-coluna-esquerda { flex: 1; display: flex; justify-content: center; align-items: center; width: 100%; }
+        .sinais-imagem-canva { width: 100%; max-width: 550px; height: auto; display: block; }
+        
         .sinais-coluna-direita { flex: 1.5; text-align: left; }
         .sinais-coluna-direita h3 { font-size: 1.8em; color: var(--cor-texto); font-weight: bold; margin-bottom: 20px; transition: color 0.4s ease; }
         .sinais-coluna-direita p { font-size: 1.1em; color: var(--cor-texto); opacity: 0.85; margin-bottom: 25px; line-height: 1.7; transition: color 0.4s ease; }
@@ -214,8 +202,6 @@
             0% { bottom: 0; right: 0; width: 3px; height: 120px; } 24.99% { bottom: calc(100% - 120px); right: 0; width: 3px; height: 120px; } 25% { bottom: calc(100% - 3px); right: 0; width: 120px; height: 3px; } 49.99% { bottom: calc(100% - 3px); right: calc(100% - 120px); width: 120px; height: 3px; } 50% { bottom: calc(100% - 120px); right: calc(100% - 3px); width: 3px; height: 120px; } 74.99% { bottom: 0; right: calc(100% - 3px); width: 3px; height: 120px; } 75% { bottom: 0; right: calc(100% - 120px); width: 100px; height: 3px; } 100% { bottom: 0; right: 0; width: 120px; height: 3px; } 
         }
 
-        @keyframes pulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(196, 167, 136, 0.5); } 50% { transform: scale(1.05); box-shadow: 0 0 0 25px rgba(196, 167, 136, 0); } }
-
         /* --- RESPONSIVIDADE --- */
         @media (max-width: 992px) {
             .home-content-main, .sobre-mim-container, .sinais-container, .diferenciais-grid { flex-direction: column; text-align: center; }
@@ -224,7 +210,7 @@
             .home-image-container { order: -1; }
             .sobre-mim-texto h2.section-title, .sinais-coluna-direita { text-align: center; }
             .sobre-mim-texto p { text-align: left; }
-            .sinais-coluna-esquerda { margin-bottom: 60px; transform: scale(0.9); }
+            .sinais-coluna-esquerda { margin-bottom: 60px; max-width: 600px; margin: 0 auto 50px auto; width: 100%; }
             .interludio-moldura-texto { margin-left: auto; margin-right: auto; }
         }
         @media (max-width: 768px) {
@@ -250,7 +236,10 @@
             .interludio-moldura-texto { padding: 25px 15px; max-width: 90%; }
             .diferenciais-grid { grid-template-columns: 1fr; } 
             .diferencial-item { padding: 20px 0; }
-            .sinais-coluna-esquerda { min-height: 350px; width: 100%; transform: scale(0.8); margin-bottom: 20px; }
+            
+            /* Ajuste da imagem do Canva no celular */
+            .sinais-coluna-esquerda { margin-bottom: 30px; width: 100%; display: flex; justify-content: center; }
+            .sinais-imagem-canva { max-width: 100%; padding: 0 10px; }
         }
     </style>
 </head>
@@ -274,11 +263,9 @@
                 </ul>
             </nav>
             <div class="header-direita">
-                <!-- Botão de Modo Escuro / Claro -->
                 <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar tema escuro/claro">
                     <i class="fas fa-moon"></i>
                 </button>
-                <!-- Botão Menu Mobile -->
                 <button class="menu-hamburguer-btn" id="menu-hamburguer" aria-label="Abrir menu" aria-expanded="false">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -287,7 +274,6 @@
     </header>
 
     <main>
-        <!-- 1. Seção Home -->
         <section id="home" class="home-nova">
             <div class="container home-content-main">
                 <div class="home-text">
@@ -296,13 +282,11 @@
                     <a href="#contato" class="btn-agendar">Agendar Consulta</a>
                 </div>
                 <div class="home-image-container">
-                    <!-- Substitua o link abaixo pela sua foto real -->
                     <img src="https://i.imgur.com/rmKhP7I.png" alt="Psicólogo Wellington Oliveira" />
                 </div>
             </div>
         </section>
         
-        <!-- 2. Seção Abordagem -->
         <section id="abordagem">
             <div class="container">
                 <h2 class="section-title">Minha Abordagem Terapêutica</h2>
@@ -310,7 +294,6 @@
             </div>
         </section>
         
-        <!-- 3. Seção Diferenciais -->
         <section id="diferenciais">
             <div class="container">
                 <div class="diferenciais-grid">
@@ -338,7 +321,6 @@
             </div>
         </section>
 
-        <!-- 4. Faixa de Demandas -->
         <div class="faixa-demandas" id="faixaDemandasViewport">
              <div class="faixa-demandas-container-animado" id="faixaDemandasContainer">
                 <span>Ansiedade</span><span>Depressão</span><span>Relacionamentos</span><span>Autoconhecimento</span><span>Luto</span><span>Estresse</span><span>Autoestima</span><span>Traumas</span><span>Compulsões</span><span>Fobias</span><span>Carreira</span><span>TDAH</span>
@@ -346,19 +328,12 @@
             </div>
         </div>
 
-        <!-- 5. Seção Sinais e Apoio -->
         <section id="sinais-e-apoio">
             <div class="container">
                 <h2 class="section-title">Se você percebe alguns desses sinais, é hora de buscar ajuda.</h2>
                 <div class="sinais-container">
                     <div class="sinais-coluna-esquerda">
-                        <div class="sinais-imagem-central"></div>
-                        <div class="sinal-item sinal-item-1"><div class="sinal-icon"><i class="fas fa-cloud"></i></div><p>Sofrimento emocional</p></div>
-                        <div class="sinal-item sinal-item-2"><div class="sinal-icon"><i class="fas fa-brain"></i></div><p>Pensamentos acelerados</p></div>
-                        <div class="sinal-item sinal-item-3"><div class="sinal-icon"><i class="fas fa-battery-empty"></i></div><p>Falta de energia</p></div>
-                        <div class="sinal-item sinal-item-4"><div class="sinal-icon"><i class="fas fa-link"></i></div><p>Dificuldade em mudar</p></div>
-                        <div class="sinal-item sinal-item-5"><div class="sinal-icon"><i class="fas fa-comment-slash"></i></div><p>Problemas de comunicação</p></div>
-                        <div class="sinal-item sinal-item-6"><div class="sinal-icon"><i class="fas fa-user-shield"></i></div><p>Baixa autoestima</p></div>
+                        <img src="https://i.imgur.com/JGMQlMj.png" alt="Sintomas e sinais para buscar terapia" class="sinais-imagem-canva">
                     </div>
                     <div class="sinais-coluna-direita">
                         <h3>Uma jornada de autoconhecimento e transformação</h3>
@@ -369,7 +344,6 @@
             </div>
         </section>
 
-        <!-- 6. Seção Sobre Mim -->
         <section id="sobre">
             <div class="container sobre-mim-container">
                 <div class="sobre-mim-texto">
@@ -385,12 +359,10 @@
             </div>
         </section>
 
-        <!-- 7. Separador -->
         <div class="section-separator"> 
             <span>Psicologia & Bem-estar</span> 
         </div> 
         
-        <!-- 8. Seção Interlúdio com animação -->
         <section id="interludio-inspirador">
             <div class="interludio-moldura-texto">
                 <div class="moldura-cabecalho-psi">
@@ -404,12 +376,10 @@
             </div>
         </section>
 
-        <!-- 9. Separador -->
         <div class="section-separator">
              <span>Conectando com Você</span>
         </div>
         
-        <!-- 10. Seção de FAQ -->
         <section id="faq">
             <div class="container">
                 <h2 class="section-title">Perguntas Frequentes</h2>
@@ -454,7 +424,6 @@
             </div>
         </section>
 
-        <!-- 11. Seção Contato -->
         <section id="contato">
             <div class="container">
                 <h2 class="section-title">Contato</h2>
@@ -468,7 +437,6 @@
         </section>
     </main>
 
-    <!-- 12. Rodapé -->
     <footer>
         <div class="container">
             <p>&copy; <span id="currentYear"></span> Wellington Oliveira - Todos os direitos reservados.</p>
@@ -484,7 +452,6 @@
             const themeToggleBtn = document.getElementById('theme-toggle');
             const themeIcon = themeToggleBtn.querySelector('i');
             
-            // Verifica se há preferência salva no LocalStorage
             const savedTheme = localStorage.getItem('psicologia-theme');
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-mode');
