@@ -5,32 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wellington Oliveira - Psicólogo Clínico</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     
     <style>
         /* =================================================================== */
-        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v12 =========== */
+        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v13 =========== */
         /* =================================================================== */
 
-        /* --- VARIÁVEIS DE COR (TEMA CLARO ORIGINAL INTACTO) --- */
+        /* --- VARIÁVEIS DE COR (NOVO TEMA CINZA ARDÓSIA) --- */
         :root {
             color-scheme: light; 
-            --cor-principal: #F5F1EC;
-            --cor-destaque: #C4A788;
-            --cor-texto: #3D3D3D;
+            --cor-principal: #F7F8F9; /* Cinza bem claro (gelo) para o fundo */
+            --cor-destaque: #565D64;  /* Cinza Chumbo/Ardósia elegante */
+            --cor-texto: #33393F;     /* Cinza escuro para o texto (suaviza a leitura) */
             --cor-branca: #FFFFFF;
             --cor-botao-texto: #FFFFFF;
-            --cor-overlay: rgba(255, 255, 255, 0.95);
+            --cor-overlay: rgba(247, 248, 249, 0.95);
         }
 
-        /* --- VARIÁVEIS DE COR (TEMA ESCURO - MARROM/CAFÉ ACOLHEDOR) --- */
+        /* --- VARIÁVEIS DE COR (TEMA ESCURO ATUALIZADO) --- */
         body.dark-mode {
             color-scheme: dark; 
-            --cor-principal: #1A1614; 
-            --cor-destaque: #D4B698;  
-            --cor-texto: #E6DFD8;     
-            --cor-branca: #26211E;    
-            --cor-botao-texto: #1A1614; 
-            --cor-overlay: rgba(38, 33, 30, 0.95); 
+            --cor-principal: #1E2124; 
+            --cor-destaque: #7A848D;  
+            --cor-texto: #E1E5E9;     
+            --cor-branca: #282C30;    
+            --cor-botao-texto: #1E2124; 
+            --cor-overlay: rgba(30, 33, 36, 0.95); 
         }
 
         /* --- CONFIGURAÇÕES GLOBAIS E FONTES --- */
@@ -48,50 +49,71 @@
         .sticky-header {
             background-color: transparent; padding: 15px 0; position: fixed;
             top: 0; left: 0; width: 100%; z-index: 1000;
-            transition: background-color 0.4s ease, box-shadow 0.4s ease;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
         }
+        
+        /* NOVO COMPORTAMENTO DO SCROLL: Cinza Chumbo Escuro Elegante */
         .sticky-header.scrolled {
-            background-color: var(--cor-overlay);
-            backdrop-filter: blur(8px); box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            background-color: rgba(51, 57, 63, 0.98); /* Tom charcoal premium (mesma base da cor do texto) */
+            backdrop-filter: blur(8px); 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25); /* Sombra um pouco mais forte para dar profundidade */
+            padding: 10px 0;
         }
+        
         .header-content { display: flex; justify-content: space-between; align-items: center; }
         .logo-area { display: flex; align-items: center; }
-        .logo-area .psicologo-nome { font-size: 1.6em; font-weight: bold; margin-right: 15px; color: var(--cor-destaque); transition: color 0.4s ease; }
-        .psicologo-detalhes p { font-size: 0.85em; color: var(--cor-texto); opacity: 0.8; line-height: 1.2; transition: color 0.4s ease; }
+        
+        /* RETIRADO O NEGRITO DA FONTE PARA MAIS ELEGÂNCIA */
+        .logo-area .psicologo-nome { font-size: 1.6em; font-weight: normal; margin-right: 15px; transition: color 0.4s ease; }
+        
+        .psicologo-detalhes p { font-size: 0.85em; opacity: 0.8; line-height: 1.2; transition: color 0.4s ease; }
         .menu-navegacao ul { list-style: none; display: flex; }
         .menu-navegacao ul li { margin-left: 25px; }
-        .menu-navegacao ul li a { color: var(--cor-texto); text-decoration: none; font-weight: 500; padding-bottom: 5px; border-bottom: 2px solid transparent; transition: border-color 0.3s ease, color 0.3s ease; }
-        .menu-navegacao ul li a:hover, .menu-navegacao ul li a.active { border-bottom-color: var(--cor-destaque); color: var(--cor-destaque); }
+        .menu-navegacao ul li a { text-decoration: none; font-weight: 500; padding-bottom: 5px; border-bottom: 2px solid transparent; transition: border-color 0.3s ease, color 0.3s ease; }
         
         .header-direita { display: flex; align-items: center; gap: 15px; }
         
         .theme-toggle-btn {
-            background: none; border: none; color: var(--cor-destaque);
-            font-size: 1.4em; cursor: pointer; padding: 5px;
+            background: none; border: none; font-size: 1.4em; cursor: pointer; padding: 5px;
             transition: transform 0.3s ease, color 0.4s ease; display: flex; align-items: center;
         }
         .theme-toggle-btn:hover { transform: scale(1.1); }
+        .menu-hamburguer-btn { display: none; background: none; border: none; font-size: 1.6em; cursor: pointer; padding: 5px; z-index: 1002; transition: color 0.4s ease; }
 
-        .menu-hamburguer-btn { display: none; background: none; border: none; color: var(--cor-destaque); font-size: 1.6em; cursor: pointer; padding: 5px; z-index: 1002; transition: color 0.4s ease; }
-
-        /* --- SEÇÃO HOME --- */
-        #home { background-color: var(--cor-principal); min-height: 90vh; padding: 140px 0 120px 0; display: flex; align-items: center; position: relative; overflow: hidden; transition: background-color 0.4s ease; }
-        #home::after { 
-            content: ''; position: absolute; left: 50%; transform: translateX(-50%); 
-            bottom: 0; width: 150%; height: 120px; background-color: var(--cor-branca); 
-            border-radius: 50% / 100%; border-bottom-left-radius: 0; border-bottom-right-radius: 0; 
-            transition: background-color 0.4s ease;
+        /* MAGIA DO CABEÇALHO: Letras brancas no topo e no scroll (para combinar com o cinza) */
+        .sticky-header .psicologo-nome,
+        .sticky-header .psicologo-detalhes p,
+        .sticky-header .theme-toggle-btn,
+        .sticky-header .menu-hamburguer-btn {
+            color: #FFFFFF !important;
         }
-        .home-content-main { display: flex; align-items: center; justify-content: space-between; gap: 40px; position: relative; z-index: 2; }
-        .home-text { flex: 1; max-width: 550px; text-align: left; }
-        .home-text h2 { font-size: 2.9em; font-weight: normal; margin-bottom: 20px; line-height: 1.3; }
-        .home-text .home-subtitulo { font-size: 1.2em; margin-bottom: 35px; color: var(--cor-texto); opacity: 0.8; transition: color 0.4s ease; }
-        .home-image-container { flex: 0.9; max-width: 420px; position: relative; background-color: var(--cor-destaque); padding: 20px; border-radius: 48% 52% 61% 39% / 59% 46% 54% 41%; box-shadow: 0 15px 40px rgba(196, 167, 136, 0.3); transition: background-color 0.4s ease; }
-        .home-image-container img { width: 100%; height: auto; object-fit: cover; display: block; border-radius: inherit; }
+        @media (min-width: 769px) {
+            .menu-navegacao ul li a { color: #FFFFFF !important; opacity: 0.9; }
+            .menu-navegacao ul li a:hover,
+            .menu-navegacao ul li a.active { border-bottom-color: #FFFFFF !important; opacity: 1; }
+        }
+
+        /* --- SEÇÃO HOME (MODELO MINIMALISTA) --- */
+        #home { 
+            background-image: linear-gradient(rgba(58, 65, 70, 0.75), rgba(58, 65, 70, 0.75)), url('https://i.imgur.com/dCEEWHX.jpg'); 
+            background-size: cover; background-position: center; background-attachment: fixed;
+            min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; margin: 0; padding: 0;
+        }
+        .home-content-main { 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; z-index: 2; width: 100%;
+        }
+        .hero-title { 
+            font-family: 'Montserrat', sans-serif; font-size: 3.5em; font-weight: 400; 
+            color: #FFFFFF; letter-spacing: 8px; margin-bottom: 15px; text-transform: uppercase;
+        }
+        .hero-subtitle { 
+            font-family: 'Montserrat', sans-serif; font-size: 1.1em; 
+            color: rgba(255, 255, 255, 0.75); letter-spacing: 7px; text-transform: uppercase; font-weight: 300;
+        }
 
         /* --- BOTÕES --- */
-        .btn-agendar { background-color: var(--cor-destaque); color: var(--cor-botao-texto); padding: 15px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1em; display: inline-block; transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(196, 167, 136, 0.3); }
-        .btn-agendar:hover { background-color: #b89a7a; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(196, 167, 136, 0.35); }
+        .btn-agendar { background-color: var(--cor-destaque); color: var(--cor-botao-texto); padding: 15px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1em; display: inline-block; transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(86, 93, 100, 0.3); }
+        .btn-agendar:hover { background-color: #42484d; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(86, 93, 100, 0.4); }
         body.dark-mode .btn-agendar { box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
 
         /* --- FAIXA DE DEMANDAS --- */
@@ -103,7 +125,6 @@
         section { padding: 80px 0; position: relative; }
         #abordagem, #sobre, #contato, #faq { background-color: var(--cor-branca); z-index: 2; transition: background-color 0.4s ease; }
         #sinais-e-apoio, #diferenciais { background-color: var(--cor-principal); transition: background-color 0.4s ease; }
-        #abordagem { padding-top: 120px; } 
         .section-title { text-align: center; margin-bottom: 50px; font-size: 2.4em; color: var(--cor-texto); font-weight: normal; transition: color 0.4s ease; }
         .section-subtitle { text-align: center; margin-top: -30px; margin-bottom: 40px; font-size: 1.1em; color: var(--cor-texto); opacity: 0.8; max-width: 700px; margin: -30px auto 40px auto; transition: color 0.4s ease; }
         .section-text-placeholder { text-align: center; font-size: 1.1em; color: var(--cor-texto); opacity: 0.9; max-width: 700px; margin: 0 auto; line-height: 1.8; transition: color 0.4s ease; }
@@ -138,52 +159,21 @@
         .sobre-mim-foto-moldura { flex: 1; height: 400px; background-color: var(--cor-destaque); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: var(--cor-botao-texto); transition: background-color 0.4s ease, color 0.4s ease; }
 
         /* --- SEÇÃO DIFERENCIAIS --- */
-        #diferenciais { padding-top: 120px; margin-top: -100px; overflow: hidden; }
-        #diferenciais::before {
-            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            width: 150%; height: 120px; background-color: var(--cor-branca);
-            border-radius: 50% / 100%; border-top-left-radius: 0; border-top-right-radius: 0; transition: background-color 0.4s ease;
-        }
         .diferenciais-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
         .diferencial-item { text-align: center; padding: 10px; }
         .diferencial-icon { font-size: 2.5em; color: var(--cor-destaque); margin-bottom: 20px; line-height: 1; display: inline-block; transition: color 0.4s ease; }
         .diferencial-item h4 { font-size: 1.1em; color: var(--cor-texto); margin-bottom: 10px; font-weight: bold; transition: color 0.4s ease; }
         .diferencial-item p { font-size: 0.9em; color: var(--cor-texto); opacity: 0.8; line-height: 1.6; transition: color 0.4s ease; }
 
-        /* --- SEÇÃO SINAIS E APOIO (ATUALIZADA PARA MAIS IMPACTO) --- */
-        #sinais-e-apoio .container { max-width: 1250px; } /* Contentor mais largo para esta secção */
+        /* --- SEÇÃO SINAIS E APOIO --- */
+        #sinais-e-apoio .container { max-width: 1250px; }
         .sinais-container { display: flex; align-items: center; gap: 80px; justify-content: space-between; }
         
-        .sinais-coluna-esquerda { 
-            flex: 1.6; /* Dá muito mais espaço para a imagem crescer */
-            display: flex; 
-            justify-content: flex-start; /* Alinha à esquerda */
-            align-items: center; 
-            width: 100%; 
-        }
-        .sinais-imagem-canva { 
-            width: 110%; /* Faz a imagem transbordar ligeiramente o flex para parecer maior */
-            max-width: 850px; /* Aumentado de 650px para 850px */
-            height: auto; 
-            display: block; 
-            margin-left: -50px; /* Move a imagem para a esquerda */
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05));
-        }
+        .sinais-coluna-esquerda { flex: 1.6; display: flex; justify-content: flex-start; align-items: center; width: 100%; }
+        .sinais-imagem-canva { width: 110%; max-width: 850px; height: auto; display: block; margin-left: -50px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05)); }
         
-        .sinais-coluna-direita { 
-            flex: 1; 
-            text-align: left; 
-            padding-right: 20px; /* Garante que o texto fica bem encostado à direita */
-        }
-        .sinais-titulo-lateral { 
-            font-size: 2.4em; 
-            color: #5A4D41; 
-            font-weight: 300; 
-            margin-bottom: 20px; 
-            line-height: 1.2; 
-            transition: color 0.4s ease; 
-        }
-        body.dark-mode .sinais-titulo-lateral { color: #E6DFD8; }
+        .sinais-coluna-direita { flex: 1; text-align: left; padding-right: 20px; }
+        .sinais-titulo-lateral { font-size: 2.4em; color: var(--cor-texto); font-weight: 300; margin-bottom: 20px; line-height: 1.2; transition: color 0.4s ease; }
         
         .sinais-coluna-direita h3 { font-size: 1.3em; color: var(--cor-destaque); font-weight: bold; margin-bottom: 20px; transition: color 0.4s ease; }
         .sinais-coluna-direita p { font-size: 1.1em; color: var(--cor-texto); opacity: 0.85; margin-bottom: 30px; line-height: 1.7; transition: color 0.4s ease; }
@@ -192,14 +182,14 @@
         #faq { background-color: var(--cor-principal); transition: background-color 0.4s ease; } 
         .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item { border-bottom: 1px solid #ddd; }
-        body.dark-mode .faq-item { border-bottom: 1px solid rgba(196, 167, 136, 0.3); }
+        body.dark-mode .faq-item { border-bottom: 1px solid rgba(122, 132, 141, 0.3); }
         
         .faq-question {
             background-color: transparent; border: none; width: 100%; text-align: left; padding: 20px;
             font-size: 1.1em; font-family: inherit; color: var(--cor-texto); cursor: pointer;
             display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease, color 0.4s ease;
         }
-        .faq-question:hover { background-color: rgba(196, 167, 136, 0.1); }
+        .faq-question:hover { background-color: rgba(86, 93, 100, 0.1); }
         .faq-question .fa-plus, .faq-question .fa-minus { color: var(--cor-destaque); transition: transform 0.3s ease-in-out, color 0.4s ease; }
         .faq-question.active .fa-plus { display: none; }
         .faq-question:not(.active) .fa-minus { display: none; }
@@ -233,14 +223,14 @@
 
         /* --- RESPONSIVIDADE --- */
         @media (max-width: 992px) {
-            .home-content-main, .sobre-mim-container, .sinais-container, .diferenciais-grid { flex-direction: column; text-align: center; }
+            .sobre-mim-container, .sinais-container, .diferenciais-grid { flex-direction: column; text-align: center; }
             .diferenciais-grid { grid-template-columns: repeat(2, 1fr); } 
-            .home-text { max-width: 90%; margin-bottom: 50px; }
-            .home-image-container { order: -1; }
             .sobre-mim-texto h2.section-title, .sinais-coluna-direita { text-align: center; }
             .sobre-mim-texto p { text-align: left; }
             .sinais-coluna-esquerda { margin-bottom: 60px; max-width: 600px; margin: 0 auto 50px auto; width: 100%; }
             .interludio-moldura-texto { margin-left: auto; margin-right: auto; }
+            .hero-title { font-size: 2.5em; letter-spacing: 5px; }
+            .hero-subtitle { font-size: 0.9em; letter-spacing: 3px; }
         }
         @media (max-width: 768px) {
             .sticky-header { padding: 10px 0; }
@@ -251,25 +241,22 @@
             .menu-navegacao { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--cor-branca); flex-direction: column; padding: 10px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transform: translateY(-150%); transition: transform 0.3s ease-in-out, background-color 0.4s ease; }
             .menu-navegacao ul { flex-direction: column; width: 100%; align-items: center; }
             .menu-navegacao ul li { margin: 10px 0; width: 100%; text-align: center; }
-            .menu-navegacao ul li a { display: block; padding: 12px 0; }
-            #home { min-height: auto; padding: 100px 0 80px 0; }
-            #home::after { height: 80px; }
-            .home-image-container { order: 0; width: 85%; max-width: 320px; padding: 15px; }
-            .home-text h2 { font-size: 2em; }
+            
+            /* Ajuste crítico: letras escuras no menu de telemóvel para não sumirem no fundo branco */
+            .menu-navegacao ul li a { color: var(--cor-texto) !important; } 
+            
             .faixa-demandas span { font-size: 1.1em; }
             section { padding: 60px 0; }
-            #abordagem { padding-top: 100px; }
-            #diferenciais { padding-top: 100px; margin-top: -80px; }
             .section-title { font-size: 1.9em; }
             #interludio-inspirador { background-attachment: scroll; }
             .interludio-moldura-texto { padding: 25px 15px; max-width: 90%; }
             .diferenciais-grid { grid-template-columns: 1fr; } 
             .diferencial-item { padding: 20px 0; }
-            
             .sinais-coluna-esquerda { margin-bottom: 30px; width: 100%; display: flex; justify-content: center; }
             .sinais-imagem-canva { width: 100%; max-width: 100%; padding: 0; margin-left: 0; }
             .sinais-titulo-lateral { font-size: 2em; text-align: center; }
             .sinais-coluna-direita { display: flex; flex-direction: column; align-items: center; text-align: center; padding-right: 0; }
+            .hero-title { font-size: 2em; letter-spacing: 4px; }
         }
     </style>
 </head>
@@ -306,14 +293,8 @@
     <main>
         <section id="home" class="home-nova">
             <div class="container home-content-main">
-                <div class="home-text">
-                    <h2>A vida recomeça no instante em que você escolhe se cuidar.</h2>
-                    <p class="home-subtitulo">Atendimento online para adultos em todo o Brasil.</p>
-                    <a href="#contato" class="btn-agendar">Agendar Consulta</a>
-                </div>
-                <div class="home-image-container">
-                    <img src="https://i.imgur.com/rmKhP7I.png" alt="Psicólogo Wellington Oliveira" />
-                </div>
+                <h2 class="hero-title">Wellington Oliveira</h2>
+                <p class="hero-subtitle">Psicólogo Clínico | Psicanalista</p>
             </div>
         </section>
         
@@ -358,13 +339,11 @@
             </div>
         </div>
 
-        <!-- 5. Seção Sinais e Apoio (RECALIBRADA) -->
         <section id="sinais-e-apoio">
             <div class="container">
                 <div class="sinais-container">
                     <div class="sinais-coluna-esquerda">
-                        <!-- Imagem do Canva agora maior e deslocada para a esquerda -->
-                        <img src="https://i.imgur.com/mJzqwch.png" alt="Sintomas e sinais para buscar terapia" class="sinais-imagem-canva">
+                        <img src="https://i.imgur.com/jC3XgeM.png" alt="Sintomas e sinais para buscar terapia" class="sinais-imagem-canva">
                     </div>
                     <div class="sinais-coluna-direita">
                         <h2 class="sinais-titulo-lateral">Se você percebe alguns desses sinais, é hora de buscar ajuda.</h2>
