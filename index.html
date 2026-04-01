@@ -150,13 +150,41 @@
         .diferencial-item h4 { font-size: 1.1em; color: var(--cor-texto); margin-bottom: 10px; font-weight: bold; transition: color 0.4s ease; }
         .diferencial-item p { font-size: 0.9em; color: var(--cor-texto); opacity: 0.8; line-height: 1.6; transition: color 0.4s ease; }
 
-        /* --- SEÇÃO SINAIS E APOIO (ATUALIZADA) --- */
-        .sinais-container { display: flex; align-items: center; gap: 50px; }
-        .sinais-coluna-esquerda { flex: 1.1; display: flex; justify-content: center; align-items: center; width: 100%; }
-        .sinais-imagem-canva { width: 100%; max-width: 650px; height: auto; display: block; } /* Aumentamos o max-width para ela preencher bem o balão vermelho */
+        /* --- SEÇÃO SINAIS E APOIO (ATUALIZADA PARA MAIS IMPACTO) --- */
+        #sinais-e-apoio .container { max-width: 1250px; } /* Contentor mais largo para esta secção */
+        .sinais-container { display: flex; align-items: center; gap: 80px; justify-content: space-between; }
         
-        .sinais-coluna-direita { flex: 1; text-align: left; }
-        .sinais-titulo-lateral { font-size: 2.6em; color: var(--cor-texto); font-weight: normal; margin-bottom: 20px; line-height: 1.2; transition: color 0.4s ease; }
+        .sinais-coluna-esquerda { 
+            flex: 1.6; /* Dá muito mais espaço para a imagem crescer */
+            display: flex; 
+            justify-content: flex-start; /* Alinha à esquerda */
+            align-items: center; 
+            width: 100%; 
+        }
+        .sinais-imagem-canva { 
+            width: 110%; /* Faz a imagem transbordar ligeiramente o flex para parecer maior */
+            max-width: 850px; /* Aumentado de 650px para 850px */
+            height: auto; 
+            display: block; 
+            margin-left: -50px; /* Move a imagem para a esquerda */
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05));
+        }
+        
+        .sinais-coluna-direita { 
+            flex: 1; 
+            text-align: left; 
+            padding-right: 20px; /* Garante que o texto fica bem encostado à direita */
+        }
+        .sinais-titulo-lateral { 
+            font-size: 2.4em; 
+            color: #5A4D41; 
+            font-weight: 300; 
+            margin-bottom: 20px; 
+            line-height: 1.2; 
+            transition: color 0.4s ease; 
+        }
+        body.dark-mode .sinais-titulo-lateral { color: #E6DFD8; }
+        
         .sinais-coluna-direita h3 { font-size: 1.3em; color: var(--cor-destaque); font-weight: bold; margin-bottom: 20px; transition: color 0.4s ease; }
         .sinais-coluna-direita p { font-size: 1.1em; color: var(--cor-texto); opacity: 0.85; margin-bottom: 30px; line-height: 1.7; transition: color 0.4s ease; }
 
@@ -238,11 +266,10 @@
             .diferenciais-grid { grid-template-columns: 1fr; } 
             .diferencial-item { padding: 20px 0; }
             
-            /* Ajuste da imagem do Canva no celular */
             .sinais-coluna-esquerda { margin-bottom: 30px; width: 100%; display: flex; justify-content: center; }
-            .sinais-imagem-canva { max-width: 100%; padding: 0; }
+            .sinais-imagem-canva { width: 100%; max-width: 100%; padding: 0; margin-left: 0; }
             .sinais-titulo-lateral { font-size: 2em; text-align: center; }
-            .sinais-coluna-direita { display: flex; flex-direction: column; align-items: center; text-align: center; }
+            .sinais-coluna-direita { display: flex; flex-direction: column; align-items: center; text-align: center; padding-right: 0; }
         }
     </style>
 </head>
@@ -331,12 +358,12 @@
             </div>
         </div>
 
-        <!-- 5. Seção Sinais e Apoio (ATUALIZADA COM O LINK DO IMGUR) -->
+        <!-- 5. Seção Sinais e Apoio (RECALIBRADA) -->
         <section id="sinais-e-apoio">
             <div class="container">
                 <div class="sinais-container">
                     <div class="sinais-coluna-esquerda">
-                        <!-- IMAGEM DO CANVA INSERIDA AQUI -->
+                        <!-- Imagem do Canva agora maior e deslocada para a esquerda -->
                         <img src="https://i.imgur.com/mJzqwch.png" alt="Sintomas e sinais para buscar terapia" class="sinais-imagem-canva">
                     </div>
                     <div class="sinais-coluna-direita">
@@ -349,7 +376,6 @@
             </div>
         </section>
 
-        <!-- 6. Seção Sobre Mim -->
         <section id="sobre">
             <div class="container sobre-mim-container">
                 <div class="sobre-mim-texto">
