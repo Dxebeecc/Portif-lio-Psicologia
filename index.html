@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Esta linha impede que o iPhone deixe os números azuis -->
+    <meta name="format-detection" content="telephone=no">
+    
     <title>Wellington Oliveira - Psicólogo Clínico</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
         /* =================================================================== */
-        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v15 =========== */
+        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v16 =========== */
         /* =================================================================== */
 
         /* --- VARIÁVEIS DE COR (NOVO TEMA CINZA ARDÓSIA) --- */
@@ -44,6 +47,12 @@
             transition: background-color 0.4s ease, color 0.4s ease;
         }
         .container { width: 90%; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+
+        /* Proteção extra para links auto-gerados (ex: iOS) */
+        a[href^="tel"] {
+            color: inherit;
+            text-decoration: none;
+        }
 
         /* --- CABEÇALHO --- */
         .sticky-header {
@@ -81,6 +90,7 @@
 
         .sticky-header .psicologo-nome,
         .sticky-header .psicologo-detalhes p,
+        .sticky-header .psicologo-detalhes span,
         .sticky-header .theme-toggle-btn,
         .sticky-header .menu-hamburguer-btn {
             color: #FFFFFF !important;
@@ -119,7 +129,7 @@
 
         /* --- BOTÕES (NOVO DESIGN CONVIDATIVO) --- */
         .btn-agendar { 
-            background-color: #B59B82; /* Tom terroso/latte elegante, quebra a frieza do cinza */
+            background-color: #B59B82; 
             color: #FFFFFF; 
             padding: 16px 40px; 
             text-decoration: none; 
