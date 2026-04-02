@@ -9,7 +9,7 @@
     
     <style>
         /* =================================================================== */
-        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v13 =========== */
+        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v14 =========== */
         /* =================================================================== */
 
         /* --- VARIÁVEIS DE COR (NOVO TEMA CINZA ARDÓSIA) --- */
@@ -54,16 +54,15 @@
         
         /* NOVO COMPORTAMENTO DO SCROLL: Cinza Chumbo Escuro Elegante */
         .sticky-header.scrolled {
-            background-color: rgba(51, 57, 63, 0.98); /* Tom charcoal premium (mesma base da cor do texto) */
+            background-color: rgba(51, 57, 63, 0.98); 
             backdrop-filter: blur(8px); 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.25); /* Sombra um pouco mais forte para dar profundidade */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25); 
             padding: 10px 0;
         }
         
         .header-content { display: flex; justify-content: space-between; align-items: center; }
         .logo-area { display: flex; align-items: center; }
         
-        /* RETIRADO O NEGRITO DA FONTE PARA MAIS ELEGÂNCIA */
         .logo-area .psicologo-nome { font-size: 1.6em; font-weight: normal; margin-right: 15px; transition: color 0.4s ease; }
         
         .psicologo-detalhes p { font-size: 0.85em; opacity: 0.8; line-height: 1.2; transition: color 0.4s ease; }
@@ -80,7 +79,6 @@
         .theme-toggle-btn:hover { transform: scale(1.1); }
         .menu-hamburguer-btn { display: none; background: none; border: none; font-size: 1.6em; cursor: pointer; padding: 5px; z-index: 1002; transition: color 0.4s ease; }
 
-        /* MAGIA DO CABEÇALHO: Letras brancas no topo e no scroll (para combinar com o cinza) */
         .sticky-header .psicologo-nome,
         .sticky-header .psicologo-detalhes p,
         .sticky-header .theme-toggle-btn,
@@ -98,7 +96,7 @@
             background-image: linear-gradient(rgba(58, 65, 70, 0.75), rgba(58, 65, 70, 0.75)), url('https://i.imgur.com/s69jHPz.jpg'); 
             background-size: cover; 
             background-position: center; 
-            background-attachment: fixed; /* O parallax funciona bem no desktop */
+            background-attachment: fixed; 
             min-height: 100vh; 
             display: flex; 
             align-items: center; 
@@ -131,33 +129,26 @@
 
         /* --- SEÇÕES GERAIS --- */
         section { padding: 80px 0; position: relative; }
-        #abordagem, #sobre, #contato, #faq { background-color: var(--cor-branca); z-index: 2; transition: background-color 0.4s ease; }
-        #sinais-e-apoio, #diferenciais { background-color: var(--cor-principal); transition: background-color 0.4s ease; }
+        /* Alternância de cores de fundo atualizada para a nova ordem */
+        #sobre, #diferenciais, #faq { background-color: var(--cor-branca); z-index: 2; transition: background-color 0.4s ease; }
+        #sinais-e-apoio, #abordagem, #contato { background-color: var(--cor-principal); transition: background-color 0.4s ease; }
+        
         .section-title { text-align: center; margin-bottom: 50px; font-size: 2.4em; color: var(--cor-texto); font-weight: normal; transition: color 0.4s ease; }
         .section-subtitle { text-align: center; margin-top: -30px; margin-bottom: 40px; font-size: 1.1em; color: var(--cor-texto); opacity: 0.8; max-width: 700px; margin: -30px auto 40px auto; transition: color 0.4s ease; }
         .section-text-placeholder { text-align: center; font-size: 1.1em; color: var(--cor-texto); opacity: 0.9; max-width: 700px; margin: 0 auto; line-height: 1.8; transition: color 0.4s ease; }
-        .section-separator { padding: 15px 0; display: flex; align-items: center; justify-content: center; background-color: var(--cor-destaque); color: var(--cor-botao-texto); position: relative; z-index: 2; transition: background-color 0.4s ease, color 0.4s ease;}
-        .section-separator span { font-size: 0.9em; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
-
-        /* --- INTERLÚDIO COM PARALLAX --- */
-        #interludio-inspirador {
-            padding: 0; min-height: 70vh; position: relative; display: flex; align-items: center; z-index: 1;
-            background-image: url('https://imgur.com/yZjNoYr.png'); background-attachment: fixed; background-position: 65% 50%; background-repeat: no-repeat; background-size: cover;
+        
+        /* --- NOVOS SEPARADORES ELEGANTES (LINHAS FINAS) --- */
+        .section-separator { 
+            display: flex; align-items: center; justify-content: center; text-align: center; color: var(--cor-destaque); 
+            padding: 10px 10%; background-color: transparent; margin: 20px 0;
         }
-        body.dark-mode #interludio-inspirador::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.5); z-index: -1;
+        .section-separator::before, .section-separator::after {
+            content: ''; flex: 1; border-bottom: 1px solid var(--cor-destaque); opacity: 0.2; 
         }
-        .interludio-moldura-texto {
-            background-color: var(--cor-principal); padding: 30px; max-width: 420px; box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-            border-radius: 8px; text-align: center; position: relative; margin-left: 12%; margin-right: auto; overflow: hidden; transition: background-color 0.4s ease;
+        .section-separator span { 
+            padding: 0 25px; font-size: 0.85em; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; font-family: 'Montserrat', sans-serif;
+            color: var(--cor-destaque); opacity: 0.8;
         }
-        .moldura-cabecalho-psi {
-            background-color: var(--cor-destaque); color: var(--cor-botao-texto); padding: 12px; margin: -30px auto 25px auto;
-            width: 95%; box-shadow: 0 2px 5px rgba(0,0,0,0.15); border-radius: 4px; transition: background-color 0.4s ease, color 0.4s ease;
-        }
-        .titulo-principal-interludio { font-size: 1.7em; margin-bottom: 15px; }
-        .texto-interludio { font-size: 1em; text-align: left; margin-bottom: 25px; }
 
         /* --- SEÇÃO SOBRE --- */
         .sobre-mim-container { display: flex; align-items: center; gap: 50px; }
@@ -186,8 +177,33 @@
         .sinais-coluna-direita h3 { font-size: 1.3em; color: var(--cor-destaque); font-weight: bold; margin-bottom: 20px; transition: color 0.4s ease; }
         .sinais-coluna-direita p { font-size: 1.1em; color: var(--cor-texto); opacity: 0.85; margin-bottom: 30px; line-height: 1.7; transition: color 0.4s ease; }
 
+        /* --- NOVO INTERLÚDIO MINIMALISTA E DISCRETO --- */
+        #interludio-inspirador {
+            padding: 40px 0 80px 0; 
+            background-color: var(--cor-principal); 
+            transition: background-color 0.4s ease;
+        }
+        .interludio-conteudo-minimalista {
+            max-width: 800px; margin: 0 auto; text-align: center;
+        }
+        .assinatura-discreta {
+            display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 40px;
+        }
+        .assinatura-discreta .nome {
+            font-family: 'Montserrat', sans-serif; font-size: 1.1em; font-weight: 400; color: var(--cor-texto); letter-spacing: 4px; text-transform: uppercase;
+        }
+        .assinatura-discreta .detalhe {
+            font-family: 'Montserrat', sans-serif; font-size: 0.75em; color: var(--cor-destaque); letter-spacing: 3px; text-transform: uppercase; opacity: 0.8;
+        }
+        .titulo-principal-interludio {
+            font-size: 2.4em; color: var(--cor-texto); font-weight: normal; margin-bottom: 30px; line-height: 1.3; transition: color 0.4s ease;
+        }
+        .texto-interludio {
+            font-size: 1.15em; color: var(--cor-texto); opacity: 0.85; line-height: 1.8; margin-bottom: 45px; transition: color 0.4s ease;
+        }
+
         /* --- NOVA SEÇÃO DE FAQ --- */
-        #faq { background-color: var(--cor-principal); transition: background-color 0.4s ease; } 
+        #faq { background-color: var(--cor-branca); transition: background-color 0.4s ease; } 
         .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item { border-bottom: 1px solid #ddd; }
         body.dark-mode .faq-item { border-bottom: 1px solid rgba(122, 132, 141, 0.3); }
@@ -211,24 +227,6 @@
         /* --- RODAPÉ --- */
         footer { text-align: center; padding: 40px 20px; background-color: var(--cor-destaque); color: var(--cor-botao-texto); z-index: 2; position: relative; transition: background-color 0.4s ease, color 0.4s ease;}
 
-        /* KEYFRAMES DA ANIMAÇÃO DO INTERLÚDIO */
-        .interludio-moldura-texto::before,
-        .interludio-moldura-texto::after {
-            content: ''; position: absolute; background-color: var(--cor-destaque); 
-            animation-duration: 7.2s; animation-timing-function: linear; animation-iteration-count: infinite;
-            width: 3px; height: 120px; transition: background-color 0.4s ease;
-        }
-        .interludio-moldura-texto::before { top: 0; left: 0; animation-name: percorrerHorario; }
-        .interludio-moldura-texto::after { bottom: 0; right: 0; animation-name: percorrerAntiHorario; }
-        
-        @keyframes percorrerHorario {
-            0% { top: 0; left: 0; width: 3px; height: 120px; } 24.99% { top: calc(100% - 120px); left: 0; width: 3px; height: 120px; } 25% { top: calc(100% - 3px); left: 0; width: 120px; height: 3px; } 49.99% { top: calc(100% - 3px); left: calc(100% - 120px); width: 120px; height: 3px; } 50% { top: calc(100% - 120px); left: calc(100% - 3px); width: 3px; height: 120px; } 74.99% { top: 0; left: calc(100% - 3px); width: 3px; height: 120px; } 75% { top: 0; left: calc(100% - 120px); width: 100px; height: 3px; } 100% { top: 0; left: 0; width: 120px; height: 3px; } 
-        }
-
-        @keyframes percorrerAntiHorario {
-            0% { bottom: 0; right: 0; width: 3px; height: 120px; } 24.99% { bottom: calc(100% - 120px); right: 0; width: 3px; height: 120px; } 25% { bottom: calc(100% - 3px); right: 0; width: 120px; height: 3px; } 49.99% { bottom: calc(100% - 3px); right: calc(100% - 120px); width: 120px; height: 3px; } 50% { bottom: calc(100% - 120px); right: calc(100% - 3px); width: 3px; height: 120px; } 74.99% { bottom: 0; right: calc(100% - 3px); width: 3px; height: 120px; } 75% { bottom: 0; right: calc(100% - 120px); width: 100px; height: 3px; } 100% { bottom: 0; right: 0; width: 120px; height: 3px; } 
-        }
-
         /* --- RESPONSIVIDADE --- */
         @media (max-width: 992px) {
             .sobre-mim-container, .sinais-container, .diferenciais-grid { flex-direction: column; text-align: center; }
@@ -236,7 +234,6 @@
             .sobre-mim-texto h2.section-title, .sinais-coluna-direita { text-align: center; }
             .sobre-mim-texto p { text-align: left; }
             .sinais-coluna-esquerda { margin-bottom: 60px; max-width: 600px; margin: 0 auto 50px auto; width: 100%; }
-            .interludio-moldura-texto { margin-left: auto; margin-right: auto; }
             .hero-title { font-size: 2.5em; letter-spacing: 5px; }
             .hero-subtitle { font-size: 0.9em; letter-spacing: 3px; }
         }
@@ -250,17 +247,21 @@
             .menu-navegacao ul { flex-direction: column; width: 100%; align-items: center; }
             .menu-navegacao ul li { margin: 10px 0; width: 100%; text-align: center; }
             
-            /* Ajuste crítico: letras escuras no menu de telemóvel para não sumirem no fundo branco */
             .menu-navegacao ul li a { color: var(--cor-texto) !important; } 
             
-            /* Correção do fundo parallax no celular */
             #home { background-attachment: scroll; } 
 
             .faixa-demandas span { font-size: 1.1em; }
             section { padding: 60px 0; }
             .section-title { font-size: 1.9em; }
-            #interludio-inspirador { background-attachment: scroll; }
-            .interludio-moldura-texto { padding: 25px 15px; max-width: 90%; }
+            
+            /* Ajustes Mobile dos Novos Separadores e Interlúdio */
+            .section-separator { padding: 10px 5%; }
+            .section-separator span { font-size: 0.7em; letter-spacing: 2px; padding: 0 10px; }
+            .titulo-principal-interludio { font-size: 1.9em; }
+            .assinatura-discreta .nome { font-size: 0.9em; letter-spacing: 3px; }
+            .assinatura-discreta .detalhe { font-size: 0.65em; letter-spacing: 2px; }
+
             .diferenciais-grid { grid-template-columns: 1fr; } 
             .diferencial-item { padding: 20px 0; }
             .sinais-coluna-esquerda { margin-bottom: 30px; width: 100%; display: flex; justify-content: center; }
@@ -278,15 +279,15 @@
                 <h1 class="psicologo-nome">Wellington Oliveira</h1>
                 <div class="psicologo-detalhes">
                     <p class="psicologo-titulo">Psicólogo Clínico</p>
-                    <p class="psicologo-crp">CRP XX/YYYYY</p>
+                    <p class="psicologo-crp">CRP 06/233869</p>
                 </div>
             </div>
             <nav class="menu-navegacao" id="menu-principal">
                 <ul>
                     <li><a href="#home" class="active">Início</a></li>
-                    <li><a href="#abordagem">Abordagem</a></li>
+                    <li><a href="#sinais-e-apoio">Sintomas</a></li>
                     <li><a href="#sobre">Sobre Mim</a></li>
-                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#abordagem">Abordagem</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
@@ -302,47 +303,15 @@
     </header>
 
     <main>
+        <!-- 1. SEÇÃO HOME -->
         <section id="home" class="home-nova">
             <div class="container home-content-main">
                 <h2 class="hero-title">Wellington Oliveira</h2>
                 <p class="hero-subtitle">Psicólogo Clínico | Psicanalista</p>
             </div>
         </section>
-        
-        <section id="abordagem">
-            <div class="container">
-                <h2 class="section-title">Minha Abordagem Terapêutica</h2>
-                <p class="section-text-placeholder">A minha abordagem terapêutica é centrada na compreensão profunda das experiências e emoções do paciente, utilizando a psicanálise como ferramenta principal para explorar o inconsciente e promover o autoconhecimento, sempre levando em consideração a história de cada um. A direção do tratamento é pensada de forma singular e não existe uma regra ou protocolo estabelecido para que a análise aconteça. Deste modo, os caminhos a serem percorridos possam ser re-construídos conforme o processo de análise ocorre.</p>
-            </div>
-        </section>
-        
-        <section id="diferenciais">
-            <div class="container">
-                <div class="diferenciais-grid">
-                    <div class="diferencial-item">
-                        <div class="diferencial-icon"><i class="fas fa-shield-alt"></i></div>
-                        <h4>Sigilo e Confiança</h4>
-                        <p>Um espaço seguro e 100% confidencial para você se abrir sem preocupações, amparado pelo código de ética profissional.</p>
-                    </div>
-                    <div class="diferencial-item">
-                        <div class="diferencial-icon"><i class="fas fa-ribbon"></i></div>
-                        <h4>Profissional Certificado</h4>
-                        <p>Conte com um especialista registrado sob o CRP XX/YYYYY e certificado para atendimento online pelo conselho profissional.</p>
-                    </div>
-                    <div class="diferencial-item">
-                        <div class="diferencial-icon"><i class="fas fa-sitemap"></i></div>
-                        <h4>Prática Integrativa</h4>
-                        <p>Combino diferentes técnicas para adaptar a jornada terapêutica às suas necessidades específicas e individuais.</p>
-                    </div>
-                    <div class="diferencial-item">
-                        <div class="diferencial-icon"><i class="far fa-clock"></i></div>
-                        <h4>Horário Flexível</h4>
-                        <p>Agenda adaptada ao seu estilo de vida e fuso horário, com atendimentos online que cabem na sua rotina.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
+        <!-- 2. FAIXA DE DEMANDAS (Identificação imediata) -->
         <div class="faixa-demandas" id="faixaDemandasViewport">
              <div class="faixa-demandas-container-animado" id="faixaDemandasContainer">
                 <span>Ansiedade</span><span>Depressão</span><span>Relacionamentos</span><span>Autoconhecimento</span><span>Luto</span><span>Estresse</span><span>Autoestima</span><span>Traumas</span><span>Compulsões</span><span>Fobias</span><span>Carreira</span><span>TDAH</span>
@@ -350,6 +319,7 @@
             </div>
         </div>
 
+        <!-- 3. SEÇÃO SINAIS (Aprofundamento da dor) -->
         <section id="sinais-e-apoio">
             <div class="container">
                 <div class="sinais-container">
@@ -366,6 +336,7 @@
             </div>
         </section>
 
+        <!-- 4. SEÇÃO SOBRE MIM (Quem vai me ajudar?) -->
         <section id="sobre">
             <div class="container sobre-mim-container">
                 <div class="sobre-mim-texto">
@@ -380,28 +351,70 @@
                 </div>
             </div>
         </section>
-
-        <div class="section-separator"> 
-            <span>Psicologia & Bem-estar</span> 
-        </div> 
         
-        <section id="interludio-inspirador">
-            <div class="interludio-moldura-texto">
-                <div class="moldura-cabecalho-psi">
-                    <h4 class="nome-psi-interludio">Wellington Oliveira</h4>
-                    <p class="titulo-psi-interludio">Psicólogo Clínico</p>
-                    <p class="crp-psi-interludio">CRP XX/00000</p>
+        <!-- 5. SEÇÃO ABORDAGEM (Como vai me ajudar?) -->
+        <section id="abordagem">
+            <div class="container">
+                <h2 class="section-title">Minha Abordagem Terapêutica</h2>
+                <p class="section-text-placeholder">A minha abordagem terapêutica é centrada na compreensão profunda das experiências e emoções do paciente, utilizando a psicanálise como ferramenta principal para explorar o inconsciente e promover o autoconhecimento, sempre levando em consideração a história de cada um. A direção do tratamento é pensada de forma singular e não existe uma regra ou protocolo estabelecido para que a análise aconteça. Deste modo, os caminhos a serem percorridos possam ser re-construídos conforme o processo de análise ocorre.</p>
+            </div>
+        </section>
+        
+        <!-- 6. SEÇÃO DIFERENCIAIS (Porquê confiar?) -->
+        <section id="diferenciais">
+            <div class="container">
+                <h2 class="section-title" style="margin-bottom: 60px;">Por que iniciar a sua jornada aqui?</h2> <!-- Título adicionado para não ficar solto -->
+                <div class="diferenciais-grid">
+                    <div class="diferencial-item">
+                        <div class="diferencial-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h4>Sigilo e Confiança</h4>
+                        <p>Um espaço seguro e 100% confidencial para você se abrir sem preocupações, amparado pelo código de ética profissional.</p>
+                    </div>
+                    <div class="diferencial-item">
+                        <div class="diferencial-icon"><i class="fas fa-ribbon"></i></div>
+                        <h4>Profissional Certificado</h4>
+                        <p>Conte com um especialista registrado sob o CRP 06/233869 e certificado para atendimento online pelo conselho profissional.</p>
+                    </div>
+                    <div class="diferencial-item">
+                        <div class="diferencial-icon"><i class="fas fa-sitemap"></i></div>
+                        <h4>Prática Integrativa</h4>
+                        <p>Combino diferentes técnicas para adaptar a jornada terapêutica às suas necessidades específicas e individuais.</p>
+                    </div>
+                    <div class="diferencial-item">
+                        <div class="diferencial-icon"><i class="far fa-clock"></i></div>
+                        <h4>Horário Flexível</h4>
+                        <p>Agenda adaptada ao seu estilo de vida e fuso horário, com atendimentos online que cabem na sua rotina.</p>
+                    </div>
                 </div>
-                <h3 class="titulo-principal-interludio">Cuide da Sua Saúde Mental</h3>
-                <p class="texto-interludio">Ignorar ou adiar a busca por ajuda pode fazer com que os problemas emocionais se tornem ainda mais intensos e difíceis de lidar. A ansiedade pode evoluir para crises de pânico, a tristeza pode se aprofundar, e os conflitos de relacionamento podem causar rupturas significativas e duradouras. Buscar apoio psicológico é um passo fundamental para interromper esse ciclo e promover uma vida mais equilibrada e saudável.</p>
-                <a href="#contato" class="btn-agendar">Agendar Consulta</a>
             </div>
         </section>
 
+        <!-- 7. Separador Elegante -->
+        <div class="section-separator"> 
+            <span>Psicologia & Saúde Mental</span> 
+        </div> 
+        
+        <!-- 8. INTERLÚDIO (A virada de chave) -->
+        <section id="interludio-inspirador">
+            <div class="container">
+                <div class="interludio-conteudo-minimalista">
+                    <div class="assinatura-discreta">
+                        <span class="nome">Wellington Oliveira</span>
+                        <span class="detalhe">Psicólogo Clínico | CRP 06/233869</span>
+                    </div>
+                    <h3 class="titulo-principal-interludio">Cuidar da sua saúde mental é o primeiro passo.</h3>
+                    <p class="texto-interludio">Ignorar ou adiar a busca por ajuda pode fazer com que os conflitos e angústias se tornem ainda mais difíceis de lidar. A ansiedade pode evoluir, a tristeza pode se aprofundar, e as relações podem sofrer desgastes profundos. Buscar apoio psicológico é fundamental para interromper esse ciclo e construir uma vida com mais sentido e equilíbrio.</p>
+                    <a href="#contato" class="btn-agendar">Agendar Consulta</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Separador Elegante -->
         <div class="section-separator">
-             <span>Conectando com Você</span>
+             <span>Um espaço de escuta</span>
         </div>
         
+        <!-- 10. SEÇÃO FAQ -->
         <section id="faq">
             <div class="container">
                 <h2 class="section-title">Perguntas Frequentes</h2>
