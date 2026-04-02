@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Esta linha impede que o iPhone deixe os números azuis -->
+    
+    <meta name="theme-color" content="#33393F">
     <meta name="format-detection" content="telephone=no">
     
     <title>Wellington de Jesus - Psicólogo Clínico</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     
     <style>
         /* =================================================================== */
-        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v18 =========== */
+        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v19 =========== */
         /* =================================================================== */
 
         /* --- VARIÁVEIS DE COR (NOVO TEMA CINZA ARDÓSIA) --- */
         :root {
             color-scheme: light; 
-            --cor-principal: #F7F8F9; /* Cinza bem claro (gelo) para o fundo */
-            --cor-destaque: #565D64;  /* Cinza Chumbo/Ardósia elegante */
-            --cor-texto: #33393F;     /* Cinza escuro para o texto (suaviza a leitura) */
+            --cor-principal: #F7F8F9; 
+            --cor-destaque: #565D64;  
+            --cor-texto: #33393F;     
             --cor-branca: #FFFFFF;
             --cor-botao-texto: #FFFFFF;
             --cor-overlay: rgba(247, 248, 249, 0.95);
@@ -48,33 +50,28 @@
         }
         .container { width: 90%; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
 
-        /* Proteção extra para links auto-gerados (ex: iOS) */
-        a[href^="tel"] {
-            color: inherit;
-            text-decoration: none;
-        }
+        a[href^="tel"] { color: inherit; text-decoration: none; }
 
         /* --- CABEÇALHO --- */
         .sticky-header {
             background-color: transparent; padding: 15px 0; position: fixed;
             top: 0; left: 0; width: 100%; z-index: 1000;
-            transition: background-color 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease, height 0.4s ease;
         }
         
-        /* NOVO COMPORTAMENTO DO SCROLL: Cinza Chumbo Escuro Elegante e Maior */
         .sticky-header.scrolled {
             background-color: rgba(51, 57, 63, 0.98); 
             backdrop-filter: blur(8px); 
             box-shadow: 0 2px 8px rgba(0,0,0,0.25); 
-            padding: 18px 0; /* Aumentado de 10px para 18px para dar mais altura */
+            padding: 18px 0; 
         }
         
         .header-content { display: flex; justify-content: space-between; align-items: center; position: relative; }
         .logo-area { display: flex; align-items: center; }
         
         .logo-area .psicologo-nome { font-size: 1.6em; font-weight: normal; margin-right: 15px; transition: color 0.4s ease; }
-        
         .psicologo-detalhes p { font-size: 0.85em; opacity: 0.8; line-height: 1.2; transition: color 0.4s ease; }
+        
         .menu-navegacao ul { list-style: none; display: flex; }
         .menu-navegacao ul li { margin-left: 25px; }
         .menu-navegacao ul li a { text-decoration: none; font-weight: 500; padding-bottom: 5px; border-bottom: 2px solid transparent; transition: border-color 0.3s ease, color 0.3s ease; }
@@ -260,42 +257,47 @@
         }
         
         @media (max-width: 768px) {
-            /* LÓGICA DO NOVO CABEÇALHO MOBILE */
-            .sticky-header { padding: 15px 0; }
-            .sticky-header.scrolled { padding: 22px 0; } /* Barra cinza maior no scroll */
+            /* LÓGICA DO NOVO CABEÇALHO MOBILE (Elegante e Espaçoso) */
+            .sticky-header { padding: 20px 0; height: 85px; } 
+            .sticky-header.scrolled { padding: 20px 0; height: 85px; } 
             
-            .header-content { justify-content: center; } /* Centraliza o conteúdo no mobile */
+            .header-content { display: flex; justify-content: center; align-items: center; height: 100%; position: static; }
             
-            /* Logo Area (Nome e Detalhes) no Topo */
-            .logo-area { flex-direction: column; align-items: center; text-align: center; width: 100%; transition: opacity 0.3s ease; }
-            .logo-area .psicologo-nome { font-size: 1.35em; margin: 0; margin-bottom: 2px; }
+            /* Logo Area Centralizada */
+            .logo-area { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; width: 70%; transition: opacity 0.3s ease; }
+            
+            /* Nome e Detalhes no Topo */
+            .logo-area .psicologo-nome { font-size: 1.35em; margin: 0; margin-bottom: 4px; text-align: center; margin-right: 0; }
             .psicologo-detalhes { justify-content: center; } 
-            .psicologo-detalhes p { font-size: 0.7em; letter-spacing: 0.5px; margin: 0; }
-            .psicologo-detalhes .psicologo-crp { position: relative; margin-left: 5px; }
+            .psicologo-detalhes p { font-size: 0.75em; letter-spacing: 1px; margin: 0; }
+            .psicologo-detalhes .psicologo-crp { margin-left: 5px; }
             .psicologo-detalhes .psicologo-crp::before { content: '|'; margin-right: 5px; opacity: 0.6; }
 
-            /* Menu Hambúrguer fixo à DIREITA */
-            .menu-hamburguer-btn { display: block; position: absolute; right: 15px; left: auto; top: 50%; transform: translateY(-50%); margin: 0; }
-            
-            /* Theme Toggle / Logo WJ fixos à ESQUERDA */
-            .header-direita { position: absolute; left: 15px; right: auto; top: 50%; transform: translateY(-50%); }
+            /* Ícone de Tema (Lua) Fixo à ESQUERDA */
+            .header-direita { position: static; }
+            #theme-toggle { display: block; position: absolute; left: 15px; top: 50%; transform: translateY(-50%); margin: 0; }
 
-            /* Logo WJ (Oculto no topo) */
-            .mobile-logo-wj { display: none; height: 32px; color: #FFF; }
+            /* Menu Hambúrguer Fixo à DIREITA */
+            .menu-hamburguer-btn { display: block; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); margin: 0; }
+            
+            /* Logo WJ Oculto Inicialmente */
+            .mobile-logo-wj { display: none; }
             
             /* --- ESTADO SCROLLED (BARRA CINZA) NO MOBILE --- */
-            .sticky-header.scrolled .psicologo-nome { display: none; } /* Oculta Nome */
-            .sticky-header.scrolled .psicologo-crp { display: none; } /* Oculta CRP */
-            .sticky-header.scrolled .psicologo-detalhes .psicologo-crp::before { display: none; } 
+            .sticky-header.scrolled .psicologo-nome,
+            .sticky-header.scrolled .psicologo-detalhes { display: none; } /* Remove tudo e deixa apenas o WJ */
             
-            /* O Título "Psicólogo Clínico" fica centralizado e elegante */
-            .sticky-header.scrolled .psicologo-titulo { 
-                font-size: 1.1em; letter-spacing: 3px; font-weight: 400; text-transform: uppercase; color: #FFFFFF;
+            .sticky-header.scrolled .mobile-logo-wj { display: block; }
+            
+            /* A Mágica do Logo WJ Finíssimo */
+            .mobile-logo-wj span {
+                font-family: 'Playfair Display', serif; /* Fonte de Alta Costura/Editorial */
+                font-size: 2.2em; 
+                font-style: italic; 
+                font-weight: 400; /* Letra super fina */
+                letter-spacing: 2px;
+                color: #FFFFFF;
             }
-            
-            /* Oculta botão de tema e mostra Logo WJ na ESQUERDA */
-            .sticky-header.scrolled #theme-toggle { display: none; }
-            .sticky-header.scrolled .mobile-logo-wj { display: flex; align-items: center; justify-content: center; }
 
             /* Outros ajustes Mobile */
             .menu-navegacao.menu-aberto { display: flex; transform: translateY(0); }
@@ -321,7 +323,10 @@
             .sintoma-conteudo.open { padding: 0 18px 20px 48px; }
             .sinais-titulo-lateral { font-size: 2em; text-align: center; }
             .sinais-coluna-direita { display: flex; flex-direction: column; align-items: center; text-align: center; padding-right: 0; }
-            .hero-title { font-size: 2em; letter-spacing: 4px; }
+            
+            /* Ajuste Primeira Página */
+            .hero-title { font-size: 2.2em; letter-spacing: 4px; }
+            .hero-subtitle { font-size: 0.85em; letter-spacing: 3px; }
         }
     </style>
 </head>
@@ -329,16 +334,24 @@
     <header class="sticky-header" id="mainHeader">
         <div class="container header-content">
 
-            <!-- Área Central do Logo / Nome -->
+            <div class="header-direita">
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar tema escuro/claro">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+
             <div class="logo-area">
                 <h1 class="psicologo-nome">Wellington de Jesus</h1>
                 <div class="psicologo-detalhes">
                     <p class="psicologo-titulo">Psicólogo Clínico</p>
                     <p class="psicologo-crp">CRP 06/233869</p>
                 </div>
+                
+                <div class="mobile-logo-wj">
+                    <span>WJ</span>
+                </div>
             </div>
 
-            <!-- Navegação Desktop -->
             <nav class="menu-navegacao" id="menu-principal">
                 <ul>
                     <li><a href="#home" class="active">Início</a></li>
@@ -349,23 +362,6 @@
                 </ul>
             </nav>
 
-            <!-- Área Direita no Topo (Tema e WJ no scroll vão para a esquerda no CSS via absolute) -->
-            <div class="header-direita">
-                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar tema escuro/claro">
-                    <i class="fas fa-moon"></i>
-                </button>
-                
-                <!-- Logo WJ que aparece ao deslizar a tela no celular (agora à esquerda) -->
-                <div class="mobile-logo-wj">
-                    <!-- TEXTO PROVISÓRIO (Simula a sua arte): -->
-                    <span style="font-family: 'Georgia', serif; font-size: 1.6em; font-style: italic; font-weight: normal;">WJ</span>
-                    
-                    <!-- QUANDO QUISER USAR A IMAGEM, APAGUE O SPAN ACIMA E TIRE OS COMENTÁRIOS DA LINHA ABAIXO -->
-                    <!-- <img src="COLE_O_LINK_DO_LOGO_AQUI.png" alt="WJ Logo" style="height: 100%; filter: invert(1) brightness(100); object-fit: contain;"> -->
-                </div>
-            </div>
-
-            <!-- Botão Menu Hamburguer (Fixo à Direita no Mobile) -->
             <button class="menu-hamburguer-btn" id="menu-hamburguer" aria-label="Abrir menu" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
@@ -376,7 +372,7 @@
         <section id="home" class="home-nova">
             <div class="container home-content-main">
                 <h2 class="hero-title">Wellington de Jesus</h2>
-                <p class="hero-subtitle">Psicólogo Clínico | Psicanalista</p>
+                <p class="hero-subtitle">Psicólogo Clínico | Online</p>
             </div>
         </section>
 
