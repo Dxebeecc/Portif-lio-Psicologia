@@ -12,7 +12,7 @@
     
     <style>
         /* =================================================================== */
-        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v16 =========== */
+        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v17 =========== */
         /* =================================================================== */
 
         /* --- VARIÁVEIS DE COR (NOVO TEMA CINZA ARDÓSIA) --- */
@@ -193,18 +193,48 @@
         .diferencial-item h4 { font-size: 1.1em; color: var(--cor-texto); margin-bottom: 10px; font-weight: bold; transition: color 0.4s ease; }
         .diferencial-item p { font-size: 0.9em; color: var(--cor-texto); opacity: 0.8; line-height: 1.6; transition: color 0.4s ease; }
 
-        /* --- SEÇÃO SINAIS E APOIO --- */
-        #sinais-e-apoio .container { max-width: 1250px; }
+        /* --- SEÇÃO SINAIS E APOIO (NOVO ACORDEÃO) --- */
         .sinais-container { display: flex; align-items: center; gap: 80px; justify-content: space-between; }
-        
-        .sinais-coluna-esquerda { flex: 1.6; display: flex; justify-content: flex-start; align-items: center; width: 100%; }
-        .sinais-imagem-canva { width: 110%; max-width: 850px; height: auto; display: block; margin-left: -50px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05)); }
-        
+        .sinais-coluna-esquerda { flex: 1.2; display: flex; flex-direction: column; width: 100%; }
         .sinais-coluna-direita { flex: 1; text-align: left; padding-right: 20px; }
         .sinais-titulo-lateral { font-size: 2.4em; color: var(--cor-texto); font-weight: 300; margin-bottom: 20px; line-height: 1.2; transition: color 0.4s ease; }
-        
         .sinais-coluna-direita h3 { font-size: 1.3em; color: var(--cor-destaque); font-weight: bold; margin-bottom: 20px; transition: color 0.4s ease; }
         .sinais-coluna-direita p { font-size: 1.1em; color: var(--cor-texto); opacity: 0.85; margin-bottom: 30px; line-height: 1.7; transition: color 0.4s ease; }
+
+        /* --- ESTILOS DO ACORDEÃO DOS SINAIS --- */
+        .sintomas-accordion { width: 100%; display: flex; flex-direction: column; gap: 15px; }
+        .sintoma-item { 
+            background-color: var(--cor-branca); 
+            border-radius: 8px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.02);
+            transition: box-shadow 0.3s ease, background-color 0.4s ease;
+        }
+        .sintoma-item:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+        body.dark-mode .sintoma-item { 
+            background-color: var(--cor-principal); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+            border: 1px solid rgba(255,255,255,0.03); 
+        }
+        .sintoma-btn {
+            width: 100%; text-align: left; padding: 22px 25px; background: none; border: none; cursor: pointer;
+            display: flex; align-items: center; gap: 18px;
+            font-family: 'Montserrat', sans-serif; font-size: 1.05em; font-weight: 500; color: var(--cor-texto);
+            transition: color 0.3s ease;
+        }
+        .sintoma-btn i { 
+            color: var(--cor-destaque); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); font-size: 1.1em; 
+        }
+        /* Quando ativo, o + vira um X suave e a cor muda para o tom terroso */
+        .sintoma-btn.active i { transform: rotate(45deg); color: #B59B82; } 
+        .sintoma-conteudo {
+            max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
+        }
+        .sintoma-conteudo.open {
+            padding: 0 25px 25px 58px; /* Alinhado perfeitamente com o texto do botão */
+        }
+        .sintoma-conteudo p { font-size: 0.95em; color: var(--cor-texto); opacity: 0.85; line-height: 1.7; margin: 0; transition: color 0.4s ease; }
 
         /* --- NOVO INTERLÚDIO MINIMALISTA E DISCRETO --- */
         #interludio-inspirador {
@@ -233,13 +263,13 @@
             font-size: 1.1em; font-family: inherit; color: var(--cor-texto); cursor: pointer;
             display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease, color 0.4s ease;
         }
-        .faq-question:hover { background-color: rgba(86, 93, 100, 0.1); }
+        .faq-question:hover { background-color: rgba(86, 93, 100, 0.05); }
         .faq-question .fa-plus, .faq-question .fa-minus { color: var(--cor-destaque); transition: transform 0.3s ease-in-out, color 0.4s ease; }
         .faq-question.active .fa-plus { display: none; }
         .faq-question:not(.active) .fa-minus { display: none; }
 
         .faq-answer {
-            max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease-out; background-color: var(--cor-branca);
+            max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease-out; background-color: transparent;
         }
         .faq-answer p { padding: 0 20px 20px 20px; line-height: 1.7; color: var(--cor-texto); opacity: 0.85; transition: color 0.4s ease; }
         .faq-answer.open { padding-top: 20px; }
@@ -253,7 +283,7 @@
             .diferenciais-grid { grid-template-columns: repeat(2, 1fr); } 
             .sobre-mim-texto h2.section-title, .sinais-coluna-direita { text-align: center; }
             .sobre-mim-texto p { text-align: left; }
-            .sinais-coluna-esquerda { margin-bottom: 60px; max-width: 600px; margin: 0 auto 50px auto; width: 100%; }
+            .sinais-coluna-esquerda { margin-bottom: 60px; max-width: 800px; margin: 0 auto 50px auto; width: 100%; }
             .hero-title { font-size: 2.5em; letter-spacing: 5px; }
             .hero-subtitle { font-size: 0.9em; letter-spacing: 3px; }
         }
@@ -290,8 +320,12 @@
 
             .diferenciais-grid { grid-template-columns: 1fr; } 
             .diferencial-item { padding: 20px 0; }
-            .sinais-coluna-esquerda { margin-bottom: 30px; width: 100%; display: flex; justify-content: center; }
-            .sinais-imagem-canva { width: 100%; max-width: 100%; padding: 0; margin-left: 0; }
+            
+            /* Ajuste Mobile para o Acordeão de Sintomas */
+            .sinais-coluna-esquerda { margin-bottom: 40px; width: 100%; display: flex; justify-content: center; }
+            .sintoma-btn { padding: 18px; font-size: 1em; gap: 15px; }
+            .sintoma-conteudo.open { padding: 0 18px 20px 48px; }
+            
             .sinais-titulo-lateral { font-size: 2em; text-align: center; }
             .sinais-coluna-direita { display: flex; flex-direction: column; align-items: center; text-align: center; padding-right: 0; }
             .hero-title { font-size: 2em; letter-spacing: 4px; }
@@ -345,12 +379,59 @@
             </div>
         </div>
 
-        <!-- 3. SEÇÃO SINAIS (Aprofundamento da dor) -->
+        <!-- 3. SEÇÃO SINAIS (Aprofundamento da dor com Acordeão Interativo) -->
         <section id="sinais-e-apoio">
             <div class="container">
                 <div class="sinais-container">
                     <div class="sinais-coluna-esquerda">
-                        <img src="https://i.imgur.com/jC3XgeM.png" alt="Sintomas e sinais para buscar terapia" class="sinais-imagem-canva">
+                        <!-- NOVO COMPONENTE: ACORDEÃO DE SINTOMAS -->
+                        <div class="sintomas-accordion">
+                            <div class="sintoma-item">
+                                <button class="sintoma-btn">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Angústia e ansiedade constante</span>
+                                </button>
+                                <div class="sintoma-conteudo">
+                                    <p>Sensação persistente de aperto no peito, aceleração dos pensamentos e um estado de alerta contínuo que drena a sua energia diária.</p>
+                                </div>
+                            </div>
+                            <div class="sintoma-item">
+                                <button class="sintoma-btn">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Dificuldades nos relacionamentos</span>
+                                </button>
+                                <div class="sintoma-conteudo">
+                                    <p>Conflitos repetitivos, sensação de incompreensão, dependência emocional ou dificuldades para estabelecer limites saudáveis com quem está à sua volta.</p>
+                                </div>
+                            </div>
+                            <div class="sintoma-item">
+                                <button class="sintoma-btn">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Sensação de vazio e falta de sentido</span>
+                                </button>
+                                <div class="sintoma-conteudo">
+                                    <p>Um desânimo profundo, onde as conquistas e a rotina perdem o brilho, gerando um questionamento constante sobre o propósito da vida.</p>
+                                </div>
+                            </div>
+                            <div class="sintoma-item">
+                                <button class="sintoma-btn">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Excesso de culpa e autocrítica</span>
+                                </button>
+                                <div class="sintoma-conteudo">
+                                    <p>Um tribunal interno rigoroso que não perdoa falhas, exigindo uma perfeição inatingível e gerando sofrimento contínuo.</p>
+                                </div>
+                            </div>
+                            <div class="sintoma-item">
+                                <button class="sintoma-btn">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Sensação de bloqueio</span>
+                                </button>
+                                <div class="sintoma-conteudo">
+                                    <p>A frustração de saber o que precisa ser feito, mas sentir-se paralisado, como se uma barreira invisível impedisse o seu avanço pessoal ou profissional.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="sinais-coluna-direita">
                         <h2 class="sinais-titulo-lateral">Se você percebe alguns desses sinais, é hora de buscar ajuda.</h2>
@@ -617,6 +698,32 @@
                             question.classList.remove('active');
                             answer.style.maxHeight = null;
                             answer.classList.remove('open');
+                        }
+                    });
+                });
+            }
+
+            // Acordeão dos Sinais/Sintomas (Novo Script)
+            const sintomaBtns = document.querySelectorAll('.sintoma-btn');
+            if (sintomaBtns.length > 0) {
+                sintomaBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const content = btn.nextElementSibling;
+                        const isActive = btn.classList.contains('active');
+                        
+                        // Fecha os outros (opcional, deixa mais limpo)
+                        sintomaBtns.forEach(otherBtn => {
+                            otherBtn.classList.remove('active');
+                            if(otherBtn.nextElementSibling) {
+                                otherBtn.nextElementSibling.style.maxHeight = null;
+                                otherBtn.nextElementSibling.classList.remove('open');
+                            }
+                        });
+
+                        if (!isActive) {
+                            btn.classList.add('active');
+                            content.style.maxHeight = content.scrollHeight + 40 + "px";
+                            content.classList.add('open');
                         }
                     });
                 });
