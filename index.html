@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wellington Oliveira - Psicólogo Clínico</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
         /* =================================================================== */
-        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v14 =========== */
+        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v15 =========== */
         /* =================================================================== */
 
         /* --- VARIÁVEIS DE COR (NOVO TEMA CINZA ARDÓSIA) --- */
@@ -117,10 +117,29 @@
             color: rgba(255, 255, 255, 0.75); letter-spacing: 7px; text-transform: uppercase; font-weight: 300;
         }
 
-        /* --- BOTÕES --- */
-        .btn-agendar { background-color: var(--cor-destaque); color: var(--cor-botao-texto); padding: 15px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1em; display: inline-block; transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(86, 93, 100, 0.3); }
-        .btn-agendar:hover { background-color: #42484d; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(86, 93, 100, 0.4); }
-        body.dark-mode .btn-agendar { box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        /* --- BOTÕES (NOVO DESIGN CONVIDATIVO) --- */
+        .btn-agendar { 
+            background-color: #B59B82; /* Tom terroso/latte elegante, quebra a frieza do cinza */
+            color: #FFFFFF; 
+            padding: 16px 40px; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500; 
+            font-size: 1.05em; 
+            letter-spacing: 1px;
+            display: inline-block; 
+            transition: all 0.4s ease; 
+            border: none; 
+            cursor: pointer; 
+            box-shadow: 0 4px 15px rgba(181, 155, 130, 0.4); 
+        }
+        .btn-agendar:hover { 
+            background-color: #9C836A; 
+            transform: translateY(-3px); 
+            box-shadow: 0 6px 20px rgba(156, 131, 106, 0.5); 
+        }
+        body.dark-mode .btn-agendar { box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
 
         /* --- FAIXA DE DEMANDAS --- */
         .faixa-demandas { overflow: hidden; background-color: transparent; color: var(--cor-destaque); cursor: grab; padding: 0; margin: 40px 0; transition: color 0.4s ease;}
@@ -186,15 +205,6 @@
         .interludio-conteudo-minimalista {
             max-width: 800px; margin: 0 auto; text-align: center;
         }
-        .assinatura-discreta {
-            display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 40px;
-        }
-        .assinatura-discreta .nome {
-            font-family: 'Montserrat', sans-serif; font-size: 1.1em; font-weight: 400; color: var(--cor-texto); letter-spacing: 4px; text-transform: uppercase;
-        }
-        .assinatura-discreta .detalhe {
-            font-family: 'Montserrat', sans-serif; font-size: 0.75em; color: var(--cor-destaque); letter-spacing: 3px; text-transform: uppercase; opacity: 0.8;
-        }
         .titulo-principal-interludio {
             font-size: 2.4em; color: var(--cor-texto); font-weight: normal; margin-bottom: 30px; line-height: 1.3; transition: color 0.4s ease;
         }
@@ -239,8 +249,16 @@
         }
         @media (max-width: 768px) {
             .sticky-header { padding: 10px 0; }
-            .logo-area .psicologo-nome { font-size: 1.3em; }
-            .psicologo-detalhes { display: none; }
+            
+            /* Ajuste mobile do Cabeçalho: Exibe todos os itens, ocultando o CRP no scroll */
+            .logo-area { display: flex; flex-direction: column; align-items: flex-start; }
+            .logo-area .psicologo-nome { font-size: 1.25em; line-height: 1.1; margin-bottom: 2px; margin-right: 10px; }
+            .psicologo-detalhes { display: flex; align-items: center; } 
+            .psicologo-detalhes p { font-size: 0.7em; letter-spacing: 0.5px; margin: 0; }
+            .psicologo-detalhes .psicologo-crp { position: relative; margin-left: 5px; }
+            .psicologo-detalhes .psicologo-crp::before { content: '|'; margin-right: 5px; opacity: 0.6; }
+            .sticky-header.scrolled .psicologo-crp { display: none; } /* Oculta o CRP apenas ao descer a página */
+
             .menu-hamburguer-btn { display: block; }
             .menu-navegacao.menu-aberto { display: flex; transform: translateY(0); }
             .menu-navegacao { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--cor-branca); flex-direction: column; padding: 10px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transform: translateY(-150%); transition: transform 0.3s ease-in-out, background-color 0.4s ease; }
@@ -259,8 +277,6 @@
             .section-separator { padding: 10px 5%; }
             .section-separator span { font-size: 0.7em; letter-spacing: 2px; padding: 0 10px; }
             .titulo-principal-interludio { font-size: 1.9em; }
-            .assinatura-discreta .nome { font-size: 0.9em; letter-spacing: 3px; }
-            .assinatura-discreta .detalhe { font-size: 0.65em; letter-spacing: 2px; }
 
             .diferenciais-grid { grid-template-columns: 1fr; } 
             .diferencial-item { padding: 20px 0; }
@@ -363,7 +379,7 @@
         <!-- 6. SEÇÃO DIFERENCIAIS (Porquê confiar?) -->
         <section id="diferenciais">
             <div class="container">
-                <h2 class="section-title" style="margin-bottom: 60px;">Por que iniciar a sua jornada aqui?</h2> <!-- Título adicionado para não ficar solto -->
+                <h2 class="section-title" style="margin-bottom: 60px;">Por que iniciar a sua jornada aqui?</h2>
                 <div class="diferenciais-grid">
                     <div class="diferencial-item">
                         <div class="diferencial-icon"><i class="fas fa-shield-alt"></i></div>
@@ -398,10 +414,6 @@
         <section id="interludio-inspirador">
             <div class="container">
                 <div class="interludio-conteudo-minimalista">
-                    <div class="assinatura-discreta">
-                        <span class="nome">Wellington Oliveira</span>
-                        <span class="detalhe">Psicólogo Clínico | CRP 06/233869</span>
-                    </div>
                     <h3 class="titulo-principal-interludio">Cuidar da sua saúde mental é o primeiro passo.</h3>
                     <p class="texto-interludio">Ignorar ou adiar a busca por ajuda pode fazer com que os conflitos e angústias se tornem ainda mais difíceis de lidar. A ansiedade pode evoluir, a tristeza pode se aprofundar, e as relações podem sofrer desgastes profundos. Buscar apoio psicológico é fundamental para interromper esse ciclo e construir uma vida com mais sentido e equilíbrio.</p>
                     <a href="#contato" class="btn-agendar">Agendar Consulta</a>
@@ -600,13 +612,19 @@
                 });
             }
 
-            // Faixa de Demandas Interativa
+            // Faixa de Demandas Interativa (Velocidade adaptada no mobile)
             const faixaViewport = document.getElementById('faixaDemandasViewport');
             const faixaContainer = document.getElementById('faixaDemandasContainer');
             if (faixaViewport && faixaContainer) {
                 let isDragging = false, startX, currentTranslateX = 0, rafId = null, interactionTimeoutId = null;
-                const autoScrollSpeed = 0.5;
+                
+                // Velocidade mais rápida em telas de telemóvel (<= 768px)
+                let autoScrollSpeed = window.innerWidth <= 768 ? 0.8 : 0.5; 
                 const resumeDelay = 400; 
+
+                window.addEventListener('resize', () => {
+                    autoScrollSpeed = window.innerWidth <= 768 ? 0.8 : 0.5;
+                });
                 
                 const applyTransform = () => { if(faixaContainer) faixaContainer.style.transform = `translateX(${currentTranslateX}px)`; };
                 const stopAutoScroll = () => { if(rafId) cancelAnimationFrame(rafId); };
