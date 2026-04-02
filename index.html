@@ -6,13 +6,13 @@
     <!-- Esta linha impede que o iPhone deixe os números azuis -->
     <meta name="format-detection" content="telephone=no">
     
-    <title>Wellington Oliveira - Psicólogo Clínico</title>
+    <title>Wellington de Jesus - Psicólogo Clínico</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
         /* =================================================================== */
-        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v17 =========== */
+        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v18 =========== */
         /* =================================================================== */
 
         /* --- VARIÁVEIS DE COR (NOVO TEMA CINZA ARDÓSIA) --- */
@@ -61,15 +61,15 @@
             transition: background-color 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
         }
         
-        /* NOVO COMPORTAMENTO DO SCROLL: Cinza Chumbo Escuro Elegante */
+        /* NOVO COMPORTAMENTO DO SCROLL: Cinza Chumbo Escuro Elegante e Maior */
         .sticky-header.scrolled {
             background-color: rgba(51, 57, 63, 0.98); 
             backdrop-filter: blur(8px); 
             box-shadow: 0 2px 8px rgba(0,0,0,0.25); 
-            padding: 10px 0;
+            padding: 18px 0; /* Aumentado de 10px para 18px para dar mais altura */
         }
         
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; position: relative; }
         .logo-area { display: flex; align-items: center; }
         
         .logo-area .psicologo-nome { font-size: 1.6em; font-weight: normal; margin-right: 15px; transition: color 0.4s ease; }
@@ -87,6 +87,9 @@
         }
         .theme-toggle-btn:hover { transform: scale(1.1); }
         .menu-hamburguer-btn { display: none; background: none; border: none; font-size: 1.6em; cursor: pointer; padding: 5px; z-index: 1002; transition: color 0.4s ease; }
+        
+        /* Ocultar o Logo WJ no Desktop */
+        .mobile-logo-wj { display: none; }
 
         .sticky-header .psicologo-nome,
         .sticky-header .psicologo-detalhes p,
@@ -158,7 +161,6 @@
 
         /* --- SEÇÕES GERAIS --- */
         section { padding: 80px 0; position: relative; }
-        /* Alternância de cores de fundo atualizada para a nova ordem */
         #sobre, #diferenciais, #faq { background-color: var(--cor-branca); z-index: 2; transition: background-color 0.4s ease; }
         #sinais-e-apoio, #abordagem, #contato { background-color: var(--cor-principal); transition: background-color 0.4s ease; }
         
@@ -166,7 +168,7 @@
         .section-subtitle { text-align: center; margin-top: -30px; margin-bottom: 40px; font-size: 1.1em; color: var(--cor-texto); opacity: 0.8; max-width: 700px; margin: -30px auto 40px auto; transition: color 0.4s ease; }
         .section-text-placeholder { text-align: center; font-size: 1.1em; color: var(--cor-texto); opacity: 0.9; max-width: 700px; margin: 0 auto; line-height: 1.8; transition: color 0.4s ease; }
         
-        /* --- NOVOS SEPARADORES ELEGANTES (LINHAS FINAS) --- */
+        /* --- NOVOS SEPARADORES ELEGANTES --- */
         .section-separator { 
             display: flex; align-items: center; justify-content: center; text-align: center; color: var(--cor-destaque); 
             padding: 10px 10%; background-color: transparent; margin: 20px 0;
@@ -193,7 +195,7 @@
         .diferencial-item h4 { font-size: 1.1em; color: var(--cor-texto); margin-bottom: 10px; font-weight: bold; transition: color 0.4s ease; }
         .diferencial-item p { font-size: 0.9em; color: var(--cor-texto); opacity: 0.8; line-height: 1.6; transition: color 0.4s ease; }
 
-        /* --- SEÇÃO SINAIS E APOIO (NOVO ACORDEÃO) --- */
+        /* --- SEÇÃO SINAIS E APOIO (ACORDEÃO) --- */
         .sinais-container { display: flex; align-items: center; gap: 80px; justify-content: space-between; }
         .sinais-coluna-esquerda { flex: 1.2; display: flex; flex-direction: column; width: 100%; }
         .sinais-coluna-direita { flex: 1; text-align: left; padding-right: 20px; }
@@ -201,63 +203,35 @@
         .sinais-coluna-direita h3 { font-size: 1.3em; color: var(--cor-destaque); font-weight: bold; margin-bottom: 20px; transition: color 0.4s ease; }
         .sinais-coluna-direita p { font-size: 1.1em; color: var(--cor-texto); opacity: 0.85; margin-bottom: 30px; line-height: 1.7; transition: color 0.4s ease; }
 
-        /* --- ESTILOS DO ACORDEÃO DOS SINAIS --- */
         .sintomas-accordion { width: 100%; display: flex; flex-direction: column; gap: 15px; }
         .sintoma-item { 
-            background-color: var(--cor-branca); 
-            border-radius: 8px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
-            overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.02);
-            transition: box-shadow 0.3s ease, background-color 0.4s ease;
+            background-color: var(--cor-branca); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+            overflow: hidden; border: 1px solid rgba(0,0,0,0.02); transition: box-shadow 0.3s ease, background-color 0.4s ease;
         }
         .sintoma-item:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
-        body.dark-mode .sintoma-item { 
-            background-color: var(--cor-principal); 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
-            border: 1px solid rgba(255,255,255,0.03); 
-        }
+        body.dark-mode .sintoma-item { background-color: var(--cor-principal); box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.03); }
         .sintoma-btn {
             width: 100%; text-align: left; padding: 22px 25px; background: none; border: none; cursor: pointer;
-            display: flex; align-items: center; gap: 18px;
-            font-family: 'Montserrat', sans-serif; font-size: 1.05em; font-weight: 500; color: var(--cor-texto);
+            display: flex; align-items: center; gap: 18px; font-family: 'Montserrat', sans-serif; font-size: 1.05em; font-weight: 500; color: var(--cor-texto);
             transition: color 0.3s ease;
         }
-        .sintoma-btn i { 
-            color: var(--cor-destaque); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); font-size: 1.1em; 
-        }
-        /* Quando ativo, o + vira um X suave e a cor muda para o tom terroso */
+        .sintoma-btn i { color: var(--cor-destaque); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); font-size: 1.1em; }
         .sintoma-btn.active i { transform: rotate(45deg); color: #B59B82; } 
-        .sintoma-conteudo {
-            max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
-        }
-        .sintoma-conteudo.open {
-            padding: 0 25px 25px 58px; /* Alinhado perfeitamente com o texto do botão */
-        }
+        .sintoma-conteudo { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease; }
+        .sintoma-conteudo.open { padding: 0 25px 25px 58px; }
         .sintoma-conteudo p { font-size: 0.95em; color: var(--cor-texto); opacity: 0.85; line-height: 1.7; margin: 0; transition: color 0.4s ease; }
 
-        /* --- NOVO INTERLÚDIO MINIMALISTA E DISCRETO --- */
-        #interludio-inspirador {
-            padding: 40px 0 80px 0; 
-            background-color: var(--cor-principal); 
-            transition: background-color 0.4s ease;
-        }
-        .interludio-conteudo-minimalista {
-            max-width: 800px; margin: 0 auto; text-align: center;
-        }
-        .titulo-principal-interludio {
-            font-size: 2.4em; color: var(--cor-texto); font-weight: normal; margin-bottom: 30px; line-height: 1.3; transition: color 0.4s ease;
-        }
-        .texto-interludio {
-            font-size: 1.15em; color: var(--cor-texto); opacity: 0.85; line-height: 1.8; margin-bottom: 45px; transition: color 0.4s ease;
-        }
+        /* --- INTERLÚDIO MINIMALISTA --- */
+        #interludio-inspirador { padding: 40px 0 80px 0; background-color: var(--cor-principal); transition: background-color 0.4s ease; }
+        .interludio-conteudo-minimalista { max-width: 800px; margin: 0 auto; text-align: center; }
+        .titulo-principal-interludio { font-size: 2.4em; color: var(--cor-texto); font-weight: normal; margin-bottom: 30px; line-height: 1.3; transition: color 0.4s ease; }
+        .texto-interludio { font-size: 1.15em; color: var(--cor-texto); opacity: 0.85; line-height: 1.8; margin-bottom: 45px; transition: color 0.4s ease; }
 
-        /* --- NOVA SEÇÃO DE FAQ --- */
+        /* --- SEÇÃO DE FAQ --- */
         #faq { background-color: var(--cor-branca); transition: background-color 0.4s ease; } 
         .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item { border-bottom: 1px solid #ddd; }
         body.dark-mode .faq-item { border-bottom: 1px solid rgba(122, 132, 141, 0.3); }
-        
         .faq-question {
             background-color: transparent; border: none; width: 100%; text-align: left; padding: 20px;
             font-size: 1.1em; font-family: inherit; color: var(--cor-texto); cursor: pointer;
@@ -267,10 +241,7 @@
         .faq-question .fa-plus, .faq-question .fa-minus { color: var(--cor-destaque); transition: transform 0.3s ease-in-out, color 0.4s ease; }
         .faq-question.active .fa-plus { display: none; }
         .faq-question:not(.active) .fa-minus { display: none; }
-
-        .faq-answer {
-            max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease-out; background-color: transparent;
-        }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease-out; background-color: transparent; }
         .faq-answer p { padding: 0 20px 20px 20px; line-height: 1.7; color: var(--cor-texto); opacity: 0.85; transition: color 0.4s ease; }
         .faq-answer.open { padding-top: 20px; }
 
@@ -287,33 +258,57 @@
             .hero-title { font-size: 2.5em; letter-spacing: 5px; }
             .hero-subtitle { font-size: 0.9em; letter-spacing: 3px; }
         }
+        
         @media (max-width: 768px) {
-            .sticky-header { padding: 10px 0; }
+            /* LÓGICA DO NOVO CABEÇALHO MOBILE */
+            .sticky-header { padding: 15px 0; }
+            .sticky-header.scrolled { padding: 22px 0; } /* Barra cinza maior no scroll */
             
-            /* Ajuste mobile do Cabeçalho: Exibe todos os itens, ocultando o CRP no scroll */
-            .logo-area { display: flex; flex-direction: column; align-items: flex-start; }
-            .logo-area .psicologo-nome { font-size: 1.25em; line-height: 1.1; margin-bottom: 2px; margin-right: 10px; }
-            .psicologo-detalhes { display: flex; align-items: center; } 
+            .header-content { justify-content: center; } /* Centraliza o conteúdo no mobile */
+            
+            /* Logo Area (Nome e Detalhes) no Topo */
+            .logo-area { flex-direction: column; align-items: center; text-align: center; width: 100%; transition: opacity 0.3s ease; }
+            .logo-area .psicologo-nome { font-size: 1.35em; margin: 0; margin-bottom: 2px; }
+            .psicologo-detalhes { justify-content: center; } 
             .psicologo-detalhes p { font-size: 0.7em; letter-spacing: 0.5px; margin: 0; }
             .psicologo-detalhes .psicologo-crp { position: relative; margin-left: 5px; }
             .psicologo-detalhes .psicologo-crp::before { content: '|'; margin-right: 5px; opacity: 0.6; }
-            .sticky-header.scrolled .psicologo-crp { display: none; } /* Oculta o CRP apenas ao descer a página */
 
-            .menu-hamburguer-btn { display: block; }
+            /* Menu Hambúrguer fixo à DIREITA */
+            .menu-hamburguer-btn { display: block; position: absolute; right: 15px; left: auto; top: 50%; transform: translateY(-50%); margin: 0; }
+            
+            /* Theme Toggle / Logo WJ fixos à ESQUERDA */
+            .header-direita { position: absolute; left: 15px; right: auto; top: 50%; transform: translateY(-50%); }
+
+            /* Logo WJ (Oculto no topo) */
+            .mobile-logo-wj { display: none; height: 32px; color: #FFF; }
+            
+            /* --- ESTADO SCROLLED (BARRA CINZA) NO MOBILE --- */
+            .sticky-header.scrolled .psicologo-nome { display: none; } /* Oculta Nome */
+            .sticky-header.scrolled .psicologo-crp { display: none; } /* Oculta CRP */
+            .sticky-header.scrolled .psicologo-detalhes .psicologo-crp::before { display: none; } 
+            
+            /* O Título "Psicólogo Clínico" fica centralizado e elegante */
+            .sticky-header.scrolled .psicologo-titulo { 
+                font-size: 1.1em; letter-spacing: 3px; font-weight: 400; text-transform: uppercase; color: #FFFFFF;
+            }
+            
+            /* Oculta botão de tema e mostra Logo WJ na ESQUERDA */
+            .sticky-header.scrolled #theme-toggle { display: none; }
+            .sticky-header.scrolled .mobile-logo-wj { display: flex; align-items: center; justify-content: center; }
+
+            /* Outros ajustes Mobile */
             .menu-navegacao.menu-aberto { display: flex; transform: translateY(0); }
             .menu-navegacao { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--cor-branca); flex-direction: column; padding: 10px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transform: translateY(-150%); transition: transform 0.3s ease-in-out, background-color 0.4s ease; }
             .menu-navegacao ul { flex-direction: column; width: 100%; align-items: center; }
             .menu-navegacao ul li { margin: 10px 0; width: 100%; text-align: center; }
-            
             .menu-navegacao ul li a { color: var(--cor-texto) !important; } 
             
             #home { background-attachment: scroll; } 
-
             .faixa-demandas span { font-size: 1.1em; }
             section { padding: 60px 0; }
             .section-title { font-size: 1.9em; }
             
-            /* Ajustes Mobile dos Novos Separadores e Interlúdio */
             .section-separator { padding: 10px 5%; }
             .section-separator span { font-size: 0.7em; letter-spacing: 2px; padding: 0 10px; }
             .titulo-principal-interludio { font-size: 1.9em; }
@@ -321,11 +316,9 @@
             .diferenciais-grid { grid-template-columns: 1fr; } 
             .diferencial-item { padding: 20px 0; }
             
-            /* Ajuste Mobile para o Acordeão de Sintomas */
             .sinais-coluna-esquerda { margin-bottom: 40px; width: 100%; display: flex; justify-content: center; }
             .sintoma-btn { padding: 18px; font-size: 1em; gap: 15px; }
             .sintoma-conteudo.open { padding: 0 18px 20px 48px; }
-            
             .sinais-titulo-lateral { font-size: 2em; text-align: center; }
             .sinais-coluna-direita { display: flex; flex-direction: column; align-items: center; text-align: center; padding-right: 0; }
             .hero-title { font-size: 2em; letter-spacing: 4px; }
@@ -335,13 +328,17 @@
 <body>
     <header class="sticky-header" id="mainHeader">
         <div class="container header-content">
+
+            <!-- Área Central do Logo / Nome -->
             <div class="logo-area">
-                <h1 class="psicologo-nome">Wellington Oliveira</h1>
+                <h1 class="psicologo-nome">Wellington de Jesus</h1>
                 <div class="psicologo-detalhes">
                     <p class="psicologo-titulo">Psicólogo Clínico</p>
                     <p class="psicologo-crp">CRP 06/233869</p>
                 </div>
             </div>
+
+            <!-- Navegação Desktop -->
             <nav class="menu-navegacao" id="menu-principal">
                 <ul>
                     <li><a href="#home" class="active">Início</a></li>
@@ -351,27 +348,38 @@
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
+
+            <!-- Área Direita no Topo (Tema e WJ no scroll vão para a esquerda no CSS via absolute) -->
             <div class="header-direita">
                 <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar tema escuro/claro">
                     <i class="fas fa-moon"></i>
                 </button>
-                <button class="menu-hamburguer-btn" id="menu-hamburguer" aria-label="Abrir menu" aria-expanded="false">
-                    <i class="fas fa-bars"></i>
-                </button>
+                
+                <!-- Logo WJ que aparece ao deslizar a tela no celular (agora à esquerda) -->
+                <div class="mobile-logo-wj">
+                    <!-- TEXTO PROVISÓRIO (Simula a sua arte): -->
+                    <span style="font-family: 'Georgia', serif; font-size: 1.6em; font-style: italic; font-weight: normal;">WJ</span>
+                    
+                    <!-- QUANDO QUISER USAR A IMAGEM, APAGUE O SPAN ACIMA E TIRE OS COMENTÁRIOS DA LINHA ABAIXO -->
+                    <!-- <img src="COLE_O_LINK_DO_LOGO_AQUI.png" alt="WJ Logo" style="height: 100%; filter: invert(1) brightness(100); object-fit: contain;"> -->
+                </div>
             </div>
+
+            <!-- Botão Menu Hamburguer (Fixo à Direita no Mobile) -->
+            <button class="menu-hamburguer-btn" id="menu-hamburguer" aria-label="Abrir menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
     <main>
-        <!-- 1. SEÇÃO HOME -->
         <section id="home" class="home-nova">
             <div class="container home-content-main">
-                <h2 class="hero-title">Wellington Oliveira</h2>
+                <h2 class="hero-title">Wellington de Jesus</h2>
                 <p class="hero-subtitle">Psicólogo Clínico | Psicanalista</p>
             </div>
         </section>
 
-        <!-- 2. FAIXA DE DEMANDAS (Identificação imediata) -->
         <div class="faixa-demandas" id="faixaDemandasViewport">
              <div class="faixa-demandas-container-animado" id="faixaDemandasContainer">
                 <span>Ansiedade</span><span>Depressão</span><span>Relacionamentos</span><span>Autoconhecimento</span><span>Luto</span><span>Estresse</span><span>Autoestima</span><span>Traumas</span><span>Compulsões</span><span>Fobias</span><span>Carreira</span><span>TDAH</span>
@@ -379,12 +387,10 @@
             </div>
         </div>
 
-        <!-- 3. SEÇÃO SINAIS (Aprofundamento da dor com Acordeão Interativo) -->
         <section id="sinais-e-apoio">
             <div class="container">
                 <div class="sinais-container">
                     <div class="sinais-coluna-esquerda">
-                        <!-- NOVO COMPONENTE: ACORDEÃO DE SINTOMAS -->
                         <div class="sintomas-accordion">
                             <div class="sintoma-item">
                                 <button class="sintoma-btn">
@@ -443,7 +449,6 @@
             </div>
         </section>
 
-        <!-- 4. SEÇÃO SOBRE MIM (Quem vai me ajudar?) -->
         <section id="sobre">
             <div class="container sobre-mim-container">
                 <div class="sobre-mim-texto">
@@ -459,7 +464,6 @@
             </div>
         </section>
         
-        <!-- 5. SEÇÃO ABORDAGEM (Como vai me ajudar?) -->
         <section id="abordagem">
             <div class="container">
                 <h2 class="section-title">Minha Abordagem Terapêutica</h2>
@@ -467,7 +471,6 @@
             </div>
         </section>
         
-        <!-- 6. SEÇÃO DIFERENCIAIS (Porquê confiar?) -->
         <section id="diferenciais">
             <div class="container">
                 <h2 class="section-title" style="margin-bottom: 60px;">Por que iniciar a sua jornada aqui?</h2>
@@ -496,12 +499,10 @@
             </div>
         </section>
 
-        <!-- 7. Separador Elegante -->
         <div class="section-separator"> 
             <span>Psicologia & Saúde Mental</span> 
         </div> 
         
-        <!-- 8. INTERLÚDIO (A virada de chave) -->
         <section id="interludio-inspirador">
             <div class="container">
                 <div class="interludio-conteudo-minimalista">
@@ -512,12 +513,10 @@
             </div>
         </section>
 
-        <!-- 9. Separador Elegante -->
         <div class="section-separator">
              <span>Um espaço de escuta</span>
         </div>
         
-        <!-- 10. SEÇÃO FAQ -->
         <section id="faq">
             <div class="container">
                 <h2 class="section-title">Perguntas Frequentes</h2>
@@ -577,7 +576,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; <span id="currentYear"></span> Wellington Oliveira - Todos os direitos reservados.</p>
+            <p>&copy; <span id="currentYear"></span> Wellington de Jesus - Todos os direitos reservados.</p>
         </div>
     </footer>
 
@@ -703,7 +702,7 @@
                 });
             }
 
-            // Acordeão dos Sinais/Sintomas (Novo Script)
+            // Acordeão dos Sinais/Sintomas
             const sintomaBtns = document.querySelectorAll('.sintoma-btn');
             if (sintomaBtns.length > 0) {
                 sintomaBtns.forEach(btn => {
@@ -711,7 +710,6 @@
                         const content = btn.nextElementSibling;
                         const isActive = btn.classList.contains('active');
                         
-                        // Fecha os outros (opcional, deixa mais limpo)
                         sintomaBtns.forEach(otherBtn => {
                             otherBtn.classList.remove('active');
                             if(otherBtn.nextElementSibling) {
@@ -729,13 +727,12 @@
                 });
             }
 
-            // Faixa de Demandas Interativa (Velocidade adaptada no mobile)
+            // Faixa de Demandas Interativa
             const faixaViewport = document.getElementById('faixaDemandasViewport');
             const faixaContainer = document.getElementById('faixaDemandasContainer');
             if (faixaViewport && faixaContainer) {
                 let isDragging = false, startX, currentTranslateX = 0, rafId = null, interactionTimeoutId = null;
                 
-                // Velocidade mais rápida em telas de telemóvel (<= 768px)
                 let autoScrollSpeed = window.innerWidth <= 768 ? 0.8 : 0.5; 
                 const resumeDelay = 400; 
 
