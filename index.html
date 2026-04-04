@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- Pinta a barra de status do iPhone (bateria/hora) com o nosso Cinza Chumbo -->
     <meta name="theme-color" content="#33393F">
+    <!-- Impede que o iPhone deixe os números de CRP azuis -->
     <meta name="format-detection" content="telephone=no">
     
     <title>Wellington de Jesus - Psicólogo Clínico</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <!-- Importamos a Montserrat (textos) e a Playfair Display (Logos e toques editoriais) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     
     <style>
         /* =================================================================== */
-        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v19 =========== */
+        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v23 =========== */
         /* =================================================================== */
 
         /* --- VARIÁVEIS DE COR (NOVO TEMA CINZA ARDÓSIA) --- */
@@ -26,6 +29,7 @@
             --cor-branca: #FFFFFF;
             --cor-botao-texto: #FFFFFF;
             --cor-overlay: rgba(247, 248, 249, 0.95);
+            --cor-terrosa: #B59B82; /* A cor elegante do botão */
         }
 
         /* --- VARIÁVEIS DE COR (TEMA ESCURO ATUALIZADO) --- */
@@ -37,6 +41,7 @@
             --cor-branca: #282C30;    
             --cor-botao-texto: #1E2124; 
             --cor-overlay: rgba(30, 33, 36, 0.95); 
+            --cor-terrosa: #B59B82;
         }
 
         /* --- CONFIGURAÇÕES GLOBAIS E FONTES --- */
@@ -85,7 +90,7 @@
         .theme-toggle-btn:hover { transform: scale(1.1); }
         .menu-hamburguer-btn { display: none; background: none; border: none; font-size: 1.6em; cursor: pointer; padding: 5px; z-index: 1002; transition: color 0.4s ease; }
         
-        /* Ocultar o Logo WJ no Desktop */
+        /* Ocultar o Logo WJ no Desktop por defeito */
         .mobile-logo-wj { display: none; }
 
         .sticky-header .psicologo-nome,
@@ -129,7 +134,7 @@
 
         /* --- BOTÕES (NOVO DESIGN CONVIDATIVO) --- */
         .btn-agendar { 
-            background-color: #B59B82; 
+            background-color: var(--cor-terrosa); 
             color: #FFFFFF; 
             padding: 16px 40px; 
             text-decoration: none; 
@@ -192,55 +197,103 @@
         .diferencial-item h4 { font-size: 1.1em; color: var(--cor-texto); margin-bottom: 10px; font-weight: bold; transition: color 0.4s ease; }
         .diferencial-item p { font-size: 0.9em; color: var(--cor-texto); opacity: 0.8; line-height: 1.6; transition: color 0.4s ease; }
 
-        /* --- SEÇÃO SINAIS E APOIO (ACORDEÃO) --- */
+        /* --- SEÇÃO SINAIS E APOIO (ACORDEÃO MINIMALISTA E LINEAR) --- */
         .sinais-container { display: flex; align-items: center; gap: 80px; justify-content: space-between; }
         .sinais-coluna-esquerda { flex: 1.2; display: flex; flex-direction: column; width: 100%; }
+        
         .sinais-coluna-direita { flex: 1; text-align: left; padding-right: 20px; }
         .sinais-titulo-lateral { font-size: 2.4em; color: var(--cor-texto); font-weight: 300; margin-bottom: 20px; line-height: 1.2; transition: color 0.4s ease; }
-        .sinais-coluna-direita h3 { font-size: 1.3em; color: var(--cor-destaque); font-weight: bold; margin-bottom: 20px; transition: color 0.4s ease; }
+        
+        /* O toque de mestre: Subtítulo em fonte editorial, itálico e cor terrosa */
+        .sinais-coluna-direita h3 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.5em; 
+            font-style: italic; 
+            font-weight: normal; 
+            color: var(--cor-terrosa); 
+            margin-bottom: 20px; 
+            transition: color 0.4s ease; 
+        }
+        
         .sinais-coluna-direita p { font-size: 1.1em; color: var(--cor-texto); opacity: 0.85; margin-bottom: 30px; line-height: 1.7; transition: color 0.4s ease; }
 
-        .sintomas-accordion { width: 100%; display: flex; flex-direction: column; gap: 15px; }
+        .sintomas-accordion { width: 100%; display: flex; flex-direction: column; }
         .sintoma-item { 
-            background-color: var(--cor-branca); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
-            overflow: hidden; border: 1px solid rgba(0,0,0,0.02); transition: box-shadow 0.3s ease, background-color 0.4s ease;
+            background-color: transparent; 
+            border-bottom: 1px solid rgba(86, 93, 100, 0.2); 
+            transition: border-color 0.3s ease;
         }
-        .sintoma-item:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
-        body.dark-mode .sintoma-item { background-color: var(--cor-principal); box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.03); }
+        body.dark-mode .sintoma-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
         .sintoma-btn {
-            width: 100%; text-align: left; padding: 22px 25px; background: none; border: none; cursor: pointer;
-            display: flex; align-items: center; gap: 18px; font-family: 'Montserrat', sans-serif; font-size: 1.05em; font-weight: 500; color: var(--cor-texto);
+            width: 100%; text-align: left; padding: 22px 0; background: none; border: none; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center; 
+            font-family: 'Montserrat', sans-serif; font-size: 1.1em; font-weight: 400; color: var(--cor-texto);
             transition: color 0.3s ease;
         }
+        .sintoma-btn:hover { color: var(--cor-terrosa); }
         .sintoma-btn i { color: var(--cor-destaque); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); font-size: 1.1em; }
-        .sintoma-btn.active i { transform: rotate(45deg); color: #B59B82; } 
+        .sintoma-btn.active i { transform: rotate(45deg); color: var(--cor-terrosa); } 
+        
         .sintoma-conteudo { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease; }
-        .sintoma-conteudo.open { padding: 0 25px 25px 58px; }
+        .sintoma-conteudo.open { padding: 0 0 25px 0; }
         .sintoma-conteudo p { font-size: 0.95em; color: var(--cor-texto); opacity: 0.85; line-height: 1.7; margin: 0; transition: color 0.4s ease; }
 
-        /* --- INTERLÚDIO MINIMALISTA --- */
-        #interludio-inspirador { padding: 40px 0 80px 0; background-color: var(--cor-principal); transition: background-color 0.4s ease; }
-        .interludio-conteudo-minimalista { max-width: 800px; margin: 0 auto; text-align: center; }
-        .titulo-principal-interludio { font-size: 2.4em; color: var(--cor-texto); font-weight: normal; margin-bottom: 30px; line-height: 1.3; transition: color 0.4s ease; }
-        .texto-interludio { font-size: 1.15em; color: var(--cor-texto); opacity: 0.85; line-height: 1.8; margin-bottom: 45px; transition: color 0.4s ease; }
+        /* --- INTERLÚDIO MINIMALISTA COM NOVO CARD (CAIXINHA) --- */
+        #interludio-inspirador { 
+            padding: 80px 0; 
+            background-color: var(--cor-principal); 
+            transition: background-color 0.4s ease; 
+        }
+        .interludio-conteudo-minimalista { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            text-align: center;
+            background-color: var(--cor-branca); 
+            padding: 60px 50px; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04); 
+            border: 1px solid rgba(86, 93, 100, 0.08); 
+            transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        body.dark-mode .interludio-conteudo-minimalista {
+            background-color: var(--cor-branca); 
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .titulo-principal-interludio { 
+            font-size: 2.2em; 
+            color: var(--cor-texto); 
+            font-weight: 500; 
+            margin-bottom: 25px; 
+            line-height: 1.3; 
+            transition: color 0.4s ease; 
+        }
+        .texto-interludio { 
+            font-size: 1.1em; 
+            color: var(--cor-texto); 
+            opacity: 0.85; 
+            line-height: 1.8; 
+            margin-bottom: 40px; 
+            transition: color 0.4s ease; 
+        }
 
         /* --- SEÇÃO DE FAQ --- */
         #faq { background-color: var(--cor-branca); transition: background-color 0.4s ease; } 
         .faq-container { max-width: 800px; margin: 0 auto; }
-        .faq-item { border-bottom: 1px solid #ddd; }
-        body.dark-mode .faq-item { border-bottom: 1px solid rgba(122, 132, 141, 0.3); }
+        .faq-item { border-bottom: 1px solid rgba(86, 93, 100, 0.2); }
+        body.dark-mode .faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
         .faq-question {
-            background-color: transparent; border: none; width: 100%; text-align: left; padding: 20px;
+            background-color: transparent; border: none; width: 100%; text-align: left; padding: 22px 0;
             font-size: 1.1em; font-family: inherit; color: var(--cor-texto); cursor: pointer;
-            display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease, color 0.4s ease;
+            display: flex; justify-content: space-between; align-items: center; transition: color 0.3s ease;
         }
-        .faq-question:hover { background-color: rgba(86, 93, 100, 0.05); }
+        .faq-question:hover { color: var(--cor-terrosa); }
         .faq-question .fa-plus, .faq-question .fa-minus { color: var(--cor-destaque); transition: transform 0.3s ease-in-out, color 0.4s ease; }
         .faq-question.active .fa-plus { display: none; }
         .faq-question:not(.active) .fa-minus { display: none; }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease-out; background-color: transparent; }
-        .faq-answer p { padding: 0 20px 20px 20px; line-height: 1.7; color: var(--cor-texto); opacity: 0.85; transition: color 0.4s ease; }
-        .faq-answer.open { padding-top: 20px; }
+        .faq-answer p { padding: 0 0 25px 0; line-height: 1.7; color: var(--cor-texto); opacity: 0.85; margin: 0; transition: color 0.4s ease; }
+        .faq-answer.open { padding-top: 0; }
 
         /* --- RODAPÉ --- */
         footer { text-align: center; padding: 40px 20px; background-color: var(--cor-destaque); color: var(--cor-botao-texto); z-index: 2; position: relative; transition: background-color 0.4s ease, color 0.4s ease;}
@@ -281,22 +334,20 @@
             .menu-hamburguer-btn { display: block; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); margin: 0; }
             
             /* Logo WJ Oculto Inicialmente */
-            .mobile-logo-wj { display: none; }
+            .mobile-logo-wj { display: none; height: 40px; }
             
             /* --- ESTADO SCROLLED (BARRA CINZA) NO MOBILE --- */
             .sticky-header.scrolled .psicologo-nome,
-            .sticky-header.scrolled .psicologo-detalhes { display: none; } /* Remove tudo e deixa apenas o WJ */
+            .sticky-header.scrolled .psicologo-detalhes { display: none; } 
             
-            .sticky-header.scrolled .mobile-logo-wj { display: block; }
+            .sticky-header.scrolled .mobile-logo-wj { display: flex; align-items: center; justify-content: center; }
             
-            /* A Mágica do Logo WJ Finíssimo */
-            .mobile-logo-wj span {
-                font-family: 'Playfair Display', serif; /* Fonte de Alta Costura/Editorial */
-                font-size: 2.2em; 
-                font-style: italic; 
-                font-weight: 400; /* Letra super fina */
-                letter-spacing: 2px;
-                color: #FFFFFF;
+            /* A Mágica do Logo em Imagem */
+            .mobile-logo-wj img {
+                height: 100%;
+                width: auto;
+                object-fit: contain;
+                filter: invert(1) brightness(2); 
             }
 
             /* Outros ajustes Mobile */
@@ -307,22 +358,38 @@
             .menu-navegacao ul li a { color: var(--cor-texto) !important; } 
             
             #home { background-attachment: scroll; } 
+            
+            /* ================================================================= */
+            /* CORREÇÕES DOS ESPAÇOS EM BRANCO (PADDINGS E MARGINS REDUZIDOS)    */
+            /* ================================================================= */
+            .faixa-demandas { margin: 20px 0; } 
             .faixa-demandas span { font-size: 1.1em; }
-            section { padding: 60px 0; }
+            
+            section { padding: 45px 0; } 
+            #sinais-e-apoio { padding-top: 10px; } 
+            
             .section-title { font-size: 1.9em; }
             
             .section-separator { padding: 10px 5%; }
             .section-separator span { font-size: 0.7em; letter-spacing: 2px; padding: 0 10px; }
-            .titulo-principal-interludio { font-size: 1.9em; }
+            
+            /* Ajuste do Novo Card no Mobile */
+            .interludio-conteudo-minimalista { padding: 40px 25px; border-radius: 12px; }
+            .titulo-principal-interludio { font-size: 1.8em; }
 
             .diferenciais-grid { grid-template-columns: 1fr; } 
             .diferencial-item { padding: 20px 0; }
             
-            .sinais-coluna-esquerda { margin-bottom: 40px; width: 100%; display: flex; justify-content: center; }
-            .sintoma-btn { padding: 18px; font-size: 1em; gap: 15px; }
-            .sintoma-conteudo.open { padding: 0 18px 20px 48px; }
-            .sinais-titulo-lateral { font-size: 2em; text-align: center; }
-            .sinais-coluna-direita { display: flex; flex-direction: column; align-items: center; text-align: center; padding-right: 0; }
+            /* SINAIS E SINTOMAS: FIM DA DESORGANIZAÇÃO */
+            .sinais-coluna-esquerda { margin-bottom: 25px; width: 100%; display: flex; justify-content: center; }
+            .sintoma-btn { padding: 18px 0; font-size: 1em; }
+            .sintoma-conteudo.open { padding: 0 0 20px 0; }
+            
+            /* Alinhamento à ESQUERDA com respiro suave */
+            .sinais-coluna-direita { display: block; text-align: left; padding: 0 10px; margin-top: 10px; }
+            .sinais-titulo-lateral { font-size: 1.8em; text-align: left; margin-bottom: 15px; line-height: 1.3;}
+            .sinais-coluna-direita h3 { font-size: 1.4em; margin-bottom: 15px; text-align: left; }
+            .sinais-coluna-direita p { text-align: left; font-size: 1.05em; line-height: 1.8; margin-bottom: 30px; }
             
             /* Ajuste Primeira Página */
             .hero-title { font-size: 2.2em; letter-spacing: 4px; }
@@ -334,12 +401,14 @@
     <header class="sticky-header" id="mainHeader">
         <div class="container header-content">
 
+            <!-- Ícone de Tema Fixo à ESQUERDA no Mobile -->
             <div class="header-direita">
                 <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar tema escuro/claro">
                     <i class="fas fa-moon"></i>
                 </button>
             </div>
 
+            <!-- Área Central do Logo / Nome -->
             <div class="logo-area">
                 <h1 class="psicologo-nome">Wellington de Jesus</h1>
                 <div class="psicologo-detalhes">
@@ -347,11 +416,13 @@
                     <p class="psicologo-crp">CRP 06/233869</p>
                 </div>
                 
+                <!-- Logo WJ IMAGEM que surge no scroll -->
                 <div class="mobile-logo-wj">
-                    <span>WJ</span>
+                    <img src="https://i.imgur.com/drbBJp5.png" alt="Logo WJ" />
                 </div>
             </div>
 
+            <!-- Navegação Desktop -->
             <nav class="menu-navegacao" id="menu-principal">
                 <ul>
                     <li><a href="#home" class="active">Início</a></li>
@@ -362,6 +433,7 @@
                 </ul>
             </nav>
 
+            <!-- Botão Menu Hamburguer Fixo à DIREITA no Mobile -->
             <button class="menu-hamburguer-btn" id="menu-hamburguer" aria-label="Abrir menu" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
@@ -369,6 +441,7 @@
     </header>
 
     <main>
+        <!-- 1. SEÇÃO HOME -->
         <section id="home" class="home-nova">
             <div class="container home-content-main">
                 <h2 class="hero-title">Wellington de Jesus</h2>
@@ -376,6 +449,7 @@
             </div>
         </section>
 
+        <!-- 2. FAIXA DE DEMANDAS -->
         <div class="faixa-demandas" id="faixaDemandasViewport">
              <div class="faixa-demandas-container-animado" id="faixaDemandasContainer">
                 <span>Ansiedade</span><span>Depressão</span><span>Relacionamentos</span><span>Autoconhecimento</span><span>Luto</span><span>Estresse</span><span>Autoestima</span><span>Traumas</span><span>Compulsões</span><span>Fobias</span><span>Carreira</span><span>TDAH</span>
@@ -383,6 +457,7 @@
             </div>
         </div>
 
+        <!-- 3. SEÇÃO SINAIS (ACORDEÃO MINIMALISTA E TEXTO ALINHADO À ESQUERDA NO MOBILE) -->
         <section id="sinais-e-apoio">
             <div class="container">
                 <div class="sinais-container">
@@ -390,8 +465,8 @@
                         <div class="sintomas-accordion">
                             <div class="sintoma-item">
                                 <button class="sintoma-btn">
-                                    <i class="fas fa-plus"></i>
                                     <span>Angústia e ansiedade constante</span>
+                                    <i class="fas fa-plus"></i>
                                 </button>
                                 <div class="sintoma-conteudo">
                                     <p>Sensação persistente de aperto no peito, aceleração dos pensamentos e um estado de alerta contínuo que drena a sua energia diária.</p>
@@ -399,8 +474,8 @@
                             </div>
                             <div class="sintoma-item">
                                 <button class="sintoma-btn">
-                                    <i class="fas fa-plus"></i>
                                     <span>Dificuldades nos relacionamentos</span>
+                                    <i class="fas fa-plus"></i>
                                 </button>
                                 <div class="sintoma-conteudo">
                                     <p>Conflitos repetitivos, sensação de incompreensão, dependência emocional ou dificuldades para estabelecer limites saudáveis com quem está à sua volta.</p>
@@ -408,8 +483,8 @@
                             </div>
                             <div class="sintoma-item">
                                 <button class="sintoma-btn">
-                                    <i class="fas fa-plus"></i>
                                     <span>Sensação de vazio e falta de sentido</span>
+                                    <i class="fas fa-plus"></i>
                                 </button>
                                 <div class="sintoma-conteudo">
                                     <p>Um desânimo profundo, onde as conquistas e a rotina perdem o brilho, gerando um questionamento constante sobre o propósito da vida.</p>
@@ -417,8 +492,8 @@
                             </div>
                             <div class="sintoma-item">
                                 <button class="sintoma-btn">
-                                    <i class="fas fa-plus"></i>
                                     <span>Excesso de culpa e autocrítica</span>
+                                    <i class="fas fa-plus"></i>
                                 </button>
                                 <div class="sintoma-conteudo">
                                     <p>Um tribunal interno rigoroso que não perdoa falhas, exigindo uma perfeição inatingível e gerando sofrimento contínuo.</p>
@@ -426,8 +501,8 @@
                             </div>
                             <div class="sintoma-item">
                                 <button class="sintoma-btn">
-                                    <i class="fas fa-plus"></i>
                                     <span>Sensação de bloqueio</span>
+                                    <i class="fas fa-plus"></i>
                                 </button>
                                 <div class="sintoma-conteudo">
                                     <p>A frustração de saber o que precisa ser feito, mas sentir-se paralisado, como se uma barreira invisível impedisse o seu avanço pessoal ou profissional.</p>
@@ -445,6 +520,7 @@
             </div>
         </section>
 
+        <!-- 4. SEÇÃO SOBRE MIM -->
         <section id="sobre">
             <div class="container sobre-mim-container">
                 <div class="sobre-mim-texto">
@@ -460,6 +536,7 @@
             </div>
         </section>
         
+        <!-- 5. SEÇÃO ABORDAGEM -->
         <section id="abordagem">
             <div class="container">
                 <h2 class="section-title">Minha Abordagem Terapêutica</h2>
@@ -467,6 +544,7 @@
             </div>
         </section>
         
+        <!-- 6. SEÇÃO DIFERENCIAIS -->
         <section id="diferenciais">
             <div class="container">
                 <h2 class="section-title" style="margin-bottom: 60px;">Por que iniciar a sua jornada aqui?</h2>
@@ -499,6 +577,7 @@
             <span>Psicologia & Saúde Mental</span> 
         </div> 
         
+        <!-- 8. INTERLÚDIO COM A NOVA CAIXA ELEGANTE -->
         <section id="interludio-inspirador">
             <div class="container">
                 <div class="interludio-conteudo-minimalista">
@@ -513,6 +592,7 @@
              <span>Um espaço de escuta</span>
         </div>
         
+        <!-- 10. SEÇÃO FAQ -->
         <section id="faq">
             <div class="container">
                 <h2 class="section-title">Perguntas Frequentes</h2>
