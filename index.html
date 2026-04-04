@@ -17,7 +17,7 @@
     
     <style>
         /* =================================================================== */
-        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v24 =========== */
+        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v26 =========== */
         /* =================================================================== */
 
         /* --- VARIÁVEIS DE COR (NOVO TEMA CINZA ARDÓSIA) --- */
@@ -166,11 +166,12 @@
         #sobre, #diferenciais, #faq { background-color: var(--cor-branca); z-index: 2; transition: background-color 0.4s ease; }
         #sinais-e-apoio, #abordagem, #contato { background-color: var(--cor-principal); transition: background-color 0.4s ease; }
         
-        .section-title { text-align: center; margin-bottom: 50px; font-size: 2.4em; color: var(--cor-texto); font-weight: normal; transition: color 0.4s ease; }
-        .section-subtitle { text-align: center; margin-top: -30px; margin-bottom: 40px; font-size: 1.1em; color: var(--cor-texto); opacity: 0.8; max-width: 700px; margin: -30px auto 40px auto; transition: color 0.4s ease; }
+        /* Correção base das margens dos títulos */
+        .section-title { text-align: center; margin-bottom: 25px; font-size: 2.4em; color: var(--cor-texto); font-weight: normal; transition: color 0.4s ease; }
+        .section-subtitle { text-align: center; margin: 0 auto 40px auto; font-size: 1.1em; color: var(--cor-texto); opacity: 0.8; max-width: 700px; transition: color 0.4s ease; }
         .section-text-placeholder { text-align: center; font-size: 1.1em; color: var(--cor-texto); opacity: 0.9; max-width: 700px; margin: 0 auto; line-height: 1.8; transition: color 0.4s ease; }
         
-        /* --- NOVOS SEPARADORES ELEGANTES --- */
+        /* --- SEPARADORES ELEGANTES --- */
         .section-separator { 
             display: flex; align-items: center; justify-content: center; text-align: center; color: var(--cor-destaque); 
             padding: 10px 10%; background-color: transparent; margin: 20px 0;
@@ -274,7 +275,7 @@
         }
         
         @media (max-width: 768px) {
-            /* LÓGICA DO NOVO CABEÇALHO MOBILE */
+            /* CABEÇALHO MOBILE */
             .sticky-header { padding: 20px 0; height: 85px; } 
             .sticky-header.scrolled { padding: 20px 0; height: 85px; } 
             .header-content { display: flex; justify-content: center; align-items: center; height: 100%; position: static; }
@@ -290,23 +291,19 @@
             #theme-toggle { display: block; position: absolute; left: 15px; top: 50%; transform: translateY(-50%); margin: 0; }
             .menu-hamburguer-btn { display: block; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); margin: 0; }
             
-            .mobile-logo-wj { display: none; height: 45px; }
+            .mobile-logo-wj { display: none; height: 45px; width: 100%; position: relative; }
             
-            /* --- ESTADO SCROLLED NO MOBILE --- */
             .sticky-header.scrolled .psicologo-nome,
             .sticky-header.scrolled .psicologo-detalhes { display: none; } 
-            
             .sticky-header.scrolled .mobile-logo-wj { display: flex; align-items: center; justify-content: center; }
             
-            /* A Mágica do Novo Logo Oficial (Centralizado e Branco) */
             .mobile-logo-wj img {
-                height: 45px; /* Tamanho ajustado */
+                height: 45px;
                 width: auto;
                 object-fit: contain;
-                /* APAGADO O FILTRO INVERT PARA MANTER O BRANCO ORIGINAL */
                 position: absolute;
                 left: 50%;
-                transform: translateX(-50%); /* Força a centralização absoluta na barra */
+                transform: translateX(-50%); /* Centralização Absoluta */
             }
 
             .menu-navegacao.menu-aberto { display: flex; transform: translateY(0); }
@@ -318,39 +315,52 @@
             #home { background-attachment: scroll; } 
             
             /* ================================================================= */
-            /* CORREÇÕES DOS ESPAÇOS EM BRANCO (GORDURA VISUAL ELIMINADA)        */
+            /* CORREÇÕES DOS ESPAÇOS EM BRANCO (LIPOASPIRAÇÃO VISUAL NO MOBILE)  */
             /* ================================================================= */
-            section { padding: 40px 0; } /* Respiro global reduzido no mobile */
             
-            .faixa-demandas { margin: 20px 0; } 
+            /* Reduzimos o padding gigante de todas as secções no telemóvel */
+            section { padding: 35px 0; } 
+            
+            .faixa-demandas { margin: 15px 0; } 
             .faixa-demandas span { font-size: 1.1em; }
             
-            .section-title { font-size: 1.9em; margin-bottom: 30px; }
+            .section-title { font-size: 1.8em; margin-bottom: 20px; }
+            .section-subtitle { margin-bottom: 30px; }
             
-            .section-separator { padding: 10px 5%; }
-            .section-separator span { font-size: 0.7em; letter-spacing: 2px; padding: 0 10px; }
+            /* Separadores sem margem vertical desnecessária */
+            .section-separator { padding: 5px 5%; margin: 15px 0; }
+            .section-separator span { font-size: 0.65em; letter-spacing: 2px; padding: 0 10px; }
             
-            /* --- SINAIS E SINTOMAS: UNIDOS E FLUIDOS --- */
-            .sinais-container { gap: 15px; } /* O Segredo: Reduzimos o gap de 80px para 15px! */
+            /* --- SINAIS E SINTOMAS (Correção do Print 1) --- */
+            .sinais-container { gap: 15px; }
             
-            .sinais-coluna-esquerda { margin-bottom: 10px; width: 100%; display: flex; justify-content: center; }
+            .sinais-coluna-esquerda { margin-bottom: 0px; width: 100%; display: flex; justify-content: center; }
             .sintoma-btn { padding: 18px 0; font-size: 1em; }
             .sintoma-conteudo.open { padding: 0 0 20px 0; }
             
-            .sinais-coluna-direita { display: block; text-align: left; padding: 0 10px; margin-top: 0; }
-            .sinais-titulo-lateral { font-size: 1.8em; text-align: left; margin-bottom: 15px; line-height: 1.3;}
-            .sinais-coluna-direita h3 { font-size: 1.4em; margin-bottom: 15px; text-align: left; }
-            .sinais-coluna-direita p { text-align: left; font-size: 1.05em; line-height: 1.8; margin-bottom: 30px; }
+            .sinais-coluna-direita { display: block; text-align: left; padding: 0 10px; margin-top: 15px; }
+            .sinais-titulo-lateral { font-size: 1.7em; text-align: left; margin-bottom: 10px; line-height: 1.3;}
+            .sinais-coluna-direita h3 { font-size: 1.3em; margin-bottom: 10px; text-align: left; }
+            .sinais-coluna-direita p { text-align: left; font-size: 1.05em; line-height: 1.7; margin-bottom: 25px; }
 
-            /* --- DIFERENCIAIS: BLOCOS MAIS COMPACTOS --- */
-            .diferenciais-grid { grid-template-columns: 1fr; gap: 5px; } /* Gap reduzido drasticamente */
-            .diferencial-item { padding: 15px 0; } /* Padding cortado pela metade */
-            .diferencial-icon { margin-bottom: 10px; font-size: 2.2em; } /* Ícone ligeiramente mais perto do texto */
+            /* --- DIFERENCIAIS (Correção do Print 2) --- */
+            /* Ajuste específico para matar o espaço de baixo da secção diferenciais */
+            section#diferenciais { padding-bottom: 10px; }
+            .diferenciais-grid { grid-template-columns: 1fr; gap: 0px; } 
+            .diferencial-item { padding: 12px 0; } 
+            .diferencial-icon { margin-bottom: 8px; font-size: 2.2em; }
             .diferencial-item h4 { margin-bottom: 5px; }
+            .diferencial-item p { margin-bottom: 0; }
 
-            /* Ajuste do Novo Card no Mobile */
-            .interludio-conteudo-minimalista { padding: 40px 25px; border-radius: 12px; }
-            .titulo-principal-interludio { font-size: 1.8em; }
+            /* --- INTERLÚDIO (Caixa Mais Elegante e Compacta) --- */
+            section#interludio-inspirador { padding: 15px 0 25px 0; }
+            .interludio-conteudo-minimalista { padding: 35px 20px; border-radius: 12px; }
+            .titulo-principal-interludio { font-size: 1.5em; margin-bottom: 15px; }
+            .texto-interludio { font-size: 0.95em; margin-bottom: 25px; line-height: 1.7; }
+            
+            /* --- FAQ E CONTATO --- */
+            section#faq { padding-top: 15px; }
+            section#contato { padding-bottom: 50px; }
             
             /* Ajuste Primeira Página */
             .hero-title { font-size: 2.2em; letter-spacing: 4px; }
@@ -379,7 +389,7 @@
                 
                 <!-- Logo WJ IMAGEM Oficial, Branco e Super Centralizado -->
                 <div class="mobile-logo-wj">
-                    <img src="https://i.imgur.com/Pq4QFE.png" alt="Logo WJ Psi" />
+                    <img src="https://i.imgur.com/3L1w5IJ.png" alt="Logo WJ Psi" />
                 </div>
             </div>
 
@@ -508,7 +518,7 @@
         <!-- 6. SEÇÃO DIFERENCIAIS -->
         <section id="diferenciais">
             <div class="container">
-                <h2 class="section-title" style="margin-bottom: 30px;">Por que iniciar a sua jornada aqui?</h2>
+                <h2 class="section-title">Por que iniciar a sua jornada aqui?</h2>
                 <div class="diferenciais-grid">
                     <div class="diferencial-item">
                         <div class="diferencial-icon"><i class="fas fa-shield-alt"></i></div>
