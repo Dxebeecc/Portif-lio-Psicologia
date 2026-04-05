@@ -17,7 +17,7 @@
     
     <style>
         /* =================================================================== */
-        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v29 =========== */
+        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v30 =========== */
         /* =================================================================== */
 
         /* --- VARIÁVEIS DE COR (NOVO TEMA CINZA ARDÓSIA) --- */
@@ -157,15 +157,15 @@
         .sintoma-btn:hover { color: var(--cor-terrosa); }
         .sintoma-btn i { color: var(--cor-destaque); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); font-size: 1.1em; }
         .sintoma-btn.active i { transform: rotate(45deg); color: var(--cor-terrosa); } 
-        .sintoma-conteudo { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease; }
+        .sintoma-conteudo { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease; text-align: left; }
         .sintoma-conteudo.open { padding: 0 0 25px 0; }
-        .sintoma-conteudo p { font-size: 0.95em; color: var(--cor-texto); opacity: 0.85; line-height: 1.7; margin: 0; transition: color 0.4s ease; }
+        .sintoma-conteudo p { font-size: 0.95em; color: var(--cor-texto); opacity: 0.85; line-height: 1.7; margin: 0; transition: color 0.4s ease; text-align: left; }
 
         /* --- NOVA SEÇÃO SOBRE (COM CITAÇÃO E ACORDEÃO) --- */
-        .sobre-mim-container { display: flex; align-items: flex-start; gap: 60px; } /* Flex-start para alinhar pelo topo */
+        .sobre-mim-container { display: flex; align-items: flex-start; gap: 60px; } 
         
         .sobre-mim-foto-moldura { 
-            flex: 1; height: 500px; /* Foto mais alta e imponente */
+            flex: 1; height: 500px; 
             background-color: var(--cor-destaque); border-radius: 12px; display: flex; align-items: center; justify-content: center; 
             color: var(--cor-botao-texto); transition: background-color 0.4s ease, color 0.4s ease; 
         }
@@ -194,12 +194,15 @@
         .diferencial-item h4 { font-size: 1.1em; color: var(--cor-texto); margin-bottom: 10px; font-weight: bold; transition: color 0.4s ease; }
         .diferencial-item p { font-size: 0.9em; color: var(--cor-texto); opacity: 0.8; line-height: 1.6; transition: color 0.4s ease; }
 
-        /* --- INTERLÚDIO MINIMALISTA --- */
+        /* --- INTERLÚDIO MINIMALISTA (AGORA COM PARÁGRAFOS ALINHADOS À ESQUERDA) --- */
         #interludio-inspirador { padding: 80px 0; background-color: var(--cor-principal); transition: background-color 0.4s ease; }
-        .interludio-conteudo-minimalista { max-width: 800px; margin: 0 auto; text-align: center; background-color: var(--cor-branca); padding: 60px 50px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid rgba(86, 93, 100, 0.08); transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
+        .interludio-conteudo-minimalista { max-width: 800px; margin: 0 auto; background-color: var(--cor-branca); padding: 60px 50px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid rgba(86, 93, 100, 0.08); transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; text-align: center; }
         body.dark-mode .interludio-conteudo-minimalista { background-color: var(--cor-branca); border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
-        .titulo-principal-interludio { font-size: 2.2em; color: var(--cor-texto); font-weight: 500; margin-bottom: 25px; line-height: 1.3; transition: color 0.4s ease; }
-        .texto-interludio { font-size: 1.1em; color: var(--cor-texto); opacity: 0.85; line-height: 1.8; margin-bottom: 40px; transition: color 0.4s ease; }
+        .titulo-principal-interludio { font-size: 2.2em; color: var(--cor-texto); font-weight: 500; margin-bottom: 30px; line-height: 1.3; transition: color 0.4s ease; text-align: center; }
+        
+        .texto-interludio-wrapper { text-align: left; margin-bottom: 40px; }
+        .texto-interludio-wrapper p { font-size: 1.1em; color: var(--cor-texto); opacity: 0.85; line-height: 1.8; margin-bottom: 15px; transition: color 0.4s ease; text-align: left; }
+        .texto-interludio-wrapper p:last-child { margin-bottom: 0; }
 
         /* --- SEÇÃO DE FAQ --- */
         .faq-container { max-width: 800px; margin: 0 auto; }
@@ -210,11 +213,11 @@
         .faq-question .fa-plus, .faq-question .fa-minus { color: var(--cor-destaque); transition: transform 0.3s ease-in-out, color 0.4s ease; }
         .faq-question.active .fa-plus { display: none; }
         .faq-question:not(.active) .fa-minus { display: none; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease-out; background-color: transparent; }
-        .faq-answer p { padding: 0 0 25px 0; line-height: 1.7; color: var(--cor-texto); opacity: 0.85; margin: 0; transition: color 0.4s ease; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease-out; background-color: transparent; text-align: left; }
+        .faq-answer p { padding: 0 0 25px 0; line-height: 1.7; color: var(--cor-texto); opacity: 0.85; margin: 0; transition: color 0.4s ease; text-align: left; }
         .faq-answer.open { padding-top: 0; }
 
-        /* --- RODAPÉ (Corrigido para fundo mais escuro e contraste elegante) --- */
+        /* --- RODAPÉ --- */
         footer { text-align: center; padding: 40px 20px; background-color: #282C31; color: #FFFFFF; z-index: 2; position: relative; transition: background-color 0.4s ease, color 0.4s ease;}
         body.dark-mode footer { background-color: #15171A; }
         footer p { opacity: 0.9; font-size: 0.95em; letter-spacing: 0.5px; margin: 0; }
@@ -278,12 +281,12 @@
             .sinais-coluna-direita h3 { font-size: 1.3em; margin-bottom: 10px; text-align: left; }
             .sinais-coluna-direita p { text-align: left; font-size: 1.05em; line-height: 1.7; margin-bottom: 25px; }
 
-            /* Alteração: Centralizando texto interno dos acordeões no mobile */
+            /* Textos dos Acordeões (Garantido alinhamento à esquerda e linha reta) */
             .sintoma-btn { padding: 18px 0; font-size: 1em; }
             .sintoma-conteudo.open { padding: 0 0 20px 0; }
-            .sintoma-conteudo p { text-align: center; } 
+            .sintoma-conteudo p { text-align: left; } /* AQUI ESTÁ A CORREÇÃO DA LINHA ROXA */
 
-            /* --- NOVO SOBRE MIM (FOTO NO TOPO + CITAÇÃO) --- */
+            /* --- NOVO SOBRE MIM --- */
             .sobre-mim-container { gap: 20px; } 
             
             .sobre-mim-foto-moldura { 
@@ -293,7 +296,7 @@
                 margin-bottom: 10px; 
             }
             .sobre-citacao { font-size: 1.6em; margin-bottom: 20px; }
-            .sobre-intro { font-size: 1.05em; margin-bottom: 25px; }
+            .sobre-intro { font-size: 1.05em; margin-bottom: 25px; text-align: left; }
 
             /* --- TIMELINE (COMO FUNCIONA) --- */
             .timeline-container { flex-direction: column; margin-top: 30px; padding-left: 0; }
@@ -309,15 +312,17 @@
             .diferencial-item { padding: 12px 0; } 
             .diferencial-icon { margin-bottom: 8px; font-size: 2.2em; }
             
-            /* --- INTERLÚDIO --- */
+            /* --- INTERLÚDIO (NOVO TEXTO EM 3 PARÁGRAFOS ALINHADO À ESQUERDA) --- */
             section#interludio-inspirador { padding: 15px 0 25px 0; }
             .interludio-conteudo-minimalista { padding: 35px 20px; border-radius: 12px; }
-            .titulo-principal-interludio { font-size: 1.5em; margin-bottom: 15px; }
-            .texto-interludio { font-size: 0.95em; margin-bottom: 25px; line-height: 1.7; }
+            .titulo-principal-interludio { font-size: 1.5em; margin-bottom: 20px; }
             
-            /* Alteração: Centralizando FAQ também no mobile para manter consistência */
+            .texto-interludio-wrapper { margin-bottom: 25px; }
+            .texto-interludio-wrapper p { font-size: 1.05em; margin-bottom: 15px; } /* Ajuste sutil do tamanho no mobile */
+            
+            /* FAQ Garantido à Esquerda */
             section#faq { padding-top: 15px; }
-            .faq-answer p { text-align: center; } 
+            .faq-answer p { text-align: left; } /* AQUI ESTÁ A CORREÇÃO DA LINHA ROXA NO FAQ */
             
             section#contato { padding-bottom: 50px; }
             
@@ -349,7 +354,6 @@
                     <li><a href="#home" class="active">Início</a></li>
                     <li><a href="#sinais-e-apoio">Sintomas</a></li>
                     <li><a href="#sobre">Sobre Mim</a></li>
-                    <!-- O menu agora aponta para o Como Funciona, pois a abordagem está dentro do Sobre -->
                     <li><a href="#como-funciona">Como Funciona</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
@@ -440,23 +444,19 @@
             </div>
         </section>
 
-        <!-- 4. NOVA SEÇÃO SOBRE MIM (Citação + Acordeão) -->
+        <!-- 4. SEÇÃO SOBRE MIM -->
         <section id="sobre">
             <div class="container sobre-mim-container">
                 
-                <!-- A FOTO AQUI (Vai para o topo no mobile automaticamente) -->
                 <div class="sobre-mim-foto-moldura">
                     <span>Local para sua foto (Retrato)</span>
                 </div>
                 
                 <div class="sobre-mim-texto">
-                    <!-- A CITAÇÃO DE IMPACTO -->
                     <h3 class="sobre-citacao">"Quando somos verdadeiramente ouvidos, algo em nós pode, enfim, começar a se transformar."</h3>
                     
-                    <!-- O TEXTO DE INTRODUÇÃO -->
                     <p class="sobre-intro">Olá, me chamo Wellington. Sou psicólogo clínico (CRP 06/233869) formado pela Universidade de Araraquara (UNIARA), com a minha prática orientada pela Psicanálise e pela Psicoterapia Psicodinâmica Breve.</p>
                     
-                    <!-- OS ACORDEÕES DE PERFIL (Trajetória e Abordagem) -->
                     <div class="sintomas-accordion">
                         
                         <div class="sintoma-item">
@@ -553,12 +553,18 @@
             <span>Psicologia & Saúde Mental</span> 
         </div> 
         
-        <!-- 8. INTERLÚDIO COM A NOVA CAIXA ELEGANTE -->
+        <!-- 8. INTERLÚDIO COM A NOVA CAIXA E DIVISÃO EM 3 PARÁGRAFOS -->
         <section id="interludio-inspirador">
             <div class="container">
                 <div class="interludio-conteudo-minimalista">
                     <h3 class="titulo-principal-interludio">Cuidar da sua saúde mental é o primeiro passo.</h3>
-                    <p class="texto-interludio">Ignorar ou adiar a busca por ajuda pode fazer com que os conflitos e angústias se tornem ainda mais difíceis de lidar. A ansiedade pode evoluir, a tristeza pode se aprofundar, e as relações podem sofrer desgastes profundos. Buscar apoio psicológico é fundamental para interromper esse ciclo e construir uma vida com mais sentido e equilíbrio.</p>
+                    
+                    <div class="texto-interludio-wrapper">
+                        <p>Ignorar ou adiar a busca por ajuda pode fazer com que os conflitos e angústias se tornem ainda mais difíceis de lidar.</p>
+                        <p>A ansiedade pode evoluir, a tristeza pode se aprofundar, e as relações podem sofrer desgastes profundos.</p>
+                        <p>Buscar apoio psicológico é fundamental para interromper esse ciclo e construir uma vida com mais sentido e equilíbrio.</p>
+                    </div>
+                    
                     <a href="#contato" class="btn-agendar">Agendar Consulta</a>
                 </div>
             </div>
@@ -740,7 +746,6 @@
                         
                         // Para o Acordeão do Sobre Mim e Sintomas, fecha os outros abertos
                         if(btn.classList.contains('sintoma-btn')) {
-                            // Encontra o contêiner pai para não fechar acordeões de outras seções
                             const parentAccordion = btn.closest('.sintomas-accordion');
                             const allBtnsInParent = parentAccordion.querySelectorAll('.sintoma-btn');
                             
