@@ -17,7 +17,7 @@
     
     <style>
         /* =================================================================== */
-        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v28 =========== */
+        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v29 =========== */
         /* =================================================================== */
 
         /* --- VARIÁVEIS DE COR (NOVO TEMA CINZA ARDÓSIA) --- */
@@ -214,8 +214,10 @@
         .faq-answer p { padding: 0 0 25px 0; line-height: 1.7; color: var(--cor-texto); opacity: 0.85; margin: 0; transition: color 0.4s ease; }
         .faq-answer.open { padding-top: 0; }
 
-        /* --- RODAPÉ --- */
-        footer { text-align: center; padding: 40px 20px; background-color: var(--cor-destaque); color: var(--cor-botao-texto); z-index: 2; position: relative; transition: background-color 0.4s ease, color 0.4s ease;}
+        /* --- RODAPÉ (Corrigido para fundo mais escuro e contraste elegante) --- */
+        footer { text-align: center; padding: 40px 20px; background-color: #282C31; color: #FFFFFF; z-index: 2; position: relative; transition: background-color 0.4s ease, color 0.4s ease;}
+        body.dark-mode footer { background-color: #15171A; }
+        footer p { opacity: 0.9; font-size: 0.95em; letter-spacing: 0.5px; margin: 0; }
 
         /* --- RESPONSIVIDADE (MOBILE) --- */
         @media (max-width: 992px) {
@@ -276,13 +278,18 @@
             .sinais-coluna-direita h3 { font-size: 1.3em; margin-bottom: 10px; text-align: left; }
             .sinais-coluna-direita p { text-align: left; font-size: 1.05em; line-height: 1.7; margin-bottom: 25px; }
 
+            /* Alteração: Centralizando texto interno dos acordeões no mobile */
+            .sintoma-btn { padding: 18px 0; font-size: 1em; }
+            .sintoma-conteudo.open { padding: 0 0 20px 0; }
+            .sintoma-conteudo p { text-align: center; } 
+
             /* --- NOVO SOBRE MIM (FOTO NO TOPO + CITAÇÃO) --- */
-            .sobre-mim-container { gap: 20px; } /* Reduzimos o espaço entre foto e texto */
+            .sobre-mim-container { gap: 20px; } 
             
             .sobre-mim-foto-moldura { 
-                order: -1; /* Força a foto a aparecer ANTES do texto no mobile */
+                order: -1; 
                 width: 100%; 
-                height: 400px; /* Um pouco mais baixa no celular */
+                height: 400px; 
                 margin-bottom: 10px; 
             }
             .sobre-citacao { font-size: 1.6em; margin-bottom: 20px; }
@@ -308,7 +315,10 @@
             .titulo-principal-interludio { font-size: 1.5em; margin-bottom: 15px; }
             .texto-interludio { font-size: 0.95em; margin-bottom: 25px; line-height: 1.7; }
             
+            /* Alteração: Centralizando FAQ também no mobile para manter consistência */
             section#faq { padding-top: 15px; }
+            .faq-answer p { text-align: center; } 
+            
             section#contato { padding-bottom: 50px; }
             
             .hero-title { font-size: 2.2em; letter-spacing: 4px; }
