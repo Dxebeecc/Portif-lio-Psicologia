@@ -17,7 +17,7 @@
     
     <style>
         /* =================================================================== */
-        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v26 =========== */
+        /* =========== NOVO ESTILO - PSICOLOGIA ACOLHEDORA v28 =========== */
         /* =================================================================== */
 
         /* --- VARIÁVEIS DE COR (NOVO TEMA CINZA ARDÓSIA) --- */
@@ -90,7 +90,6 @@
         .theme-toggle-btn:hover { transform: scale(1.1); }
         .menu-hamburguer-btn { display: none; background: none; border: none; font-size: 1.6em; cursor: pointer; padding: 5px; z-index: 1002; transition: color 0.4s ease; }
         
-        /* Ocultar o Logo WJ no Desktop por defeito */
         .mobile-logo-wj { display: none; }
 
         .sticky-header .psicologo-nome,
@@ -106,54 +105,23 @@
             .menu-navegacao ul li a.active { border-bottom-color: #FFFFFF !important; opacity: 1; }
         }
 
-        /* --- SEÇÃO HOME (MODELO MINIMALISTA) --- */
+        /* --- SEÇÃO HOME --- */
         #home { 
             background-image: linear-gradient(rgba(58, 65, 70, 0.75), rgba(58, 65, 70, 0.75)), url('https://i.imgur.com/s69jHPz.jpg'); 
-            background-size: cover; 
-            background-position: center; 
-            background-attachment: fixed; 
-            min-height: 100vh; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            position: relative; 
-            margin: 0; 
-            padding: 0;
+            background-size: cover; background-position: center; background-attachment: fixed; 
+            min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; margin: 0; padding: 0;
         }
-        .home-content-main { 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; z-index: 2; width: 100%;
-        }
-        .hero-title { 
-            font-family: 'Montserrat', sans-serif; font-size: 3.5em; font-weight: 400; 
-            color: #FFFFFF; letter-spacing: 8px; margin-bottom: 15px; text-transform: uppercase;
-        }
-        .hero-subtitle { 
-            font-family: 'Montserrat', sans-serif; font-size: 1.1em; 
-            color: rgba(255, 255, 255, 0.75); letter-spacing: 7px; text-transform: uppercase; font-weight: 300;
-        }
+        .home-content-main { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; z-index: 2; width: 100%; }
+        .hero-title { font-family: 'Montserrat', sans-serif; font-size: 3.5em; font-weight: 400; color: #FFFFFF; letter-spacing: 8px; margin-bottom: 15px; text-transform: uppercase; }
+        .hero-subtitle { font-family: 'Montserrat', sans-serif; font-size: 1.1em; color: rgba(255, 255, 255, 0.75); letter-spacing: 7px; text-transform: uppercase; font-weight: 300; }
 
         /* --- BOTÕES --- */
         .btn-agendar { 
-            background-color: var(--cor-terrosa); 
-            color: #FFFFFF; 
-            padding: 16px 40px; 
-            text-decoration: none; 
-            border-radius: 50px; 
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500; 
-            font-size: 1.05em; 
-            letter-spacing: 1px;
-            display: inline-block; 
-            transition: all 0.4s ease; 
-            border: none; 
-            cursor: pointer; 
-            box-shadow: 0 4px 15px rgba(181, 155, 130, 0.4); 
+            background-color: var(--cor-terrosa); color: #FFFFFF; padding: 16px 40px; text-decoration: none; border-radius: 50px; 
+            font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 1.05em; letter-spacing: 1px; display: inline-block; 
+            transition: all 0.4s ease; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(181, 155, 130, 0.4); 
         }
-        .btn-agendar:hover { 
-            background-color: #9C836A; 
-            transform: translateY(-3px); 
-            box-shadow: 0 6px 20px rgba(156, 131, 106, 0.5); 
-        }
+        .btn-agendar:hover { background-color: #9C836A; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(156, 131, 106, 0.5); }
         body.dark-mode .btn-agendar { box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
 
         /* --- FAIXA DE DEMANDAS --- */
@@ -163,33 +131,61 @@
 
         /* --- SEÇÕES GERAIS --- */
         section { padding: 80px 0; position: relative; }
-        #sobre, #diferenciais, #faq { background-color: var(--cor-branca); z-index: 2; transition: background-color 0.4s ease; }
-        #sinais-e-apoio, #abordagem, #contato { background-color: var(--cor-principal); transition: background-color 0.4s ease; }
+        #sobre, #como-funciona, #faq { background-color: var(--cor-branca); z-index: 2; transition: background-color 0.4s ease; }
+        #sinais-e-apoio, #diferenciais, #contato { background-color: var(--cor-principal); transition: background-color 0.4s ease; }
         
-        /* Correção base das margens dos títulos */
         .section-title { text-align: center; margin-bottom: 25px; font-size: 2.4em; color: var(--cor-texto); font-weight: normal; transition: color 0.4s ease; }
-        .section-subtitle { text-align: center; margin: 0 auto 40px auto; font-size: 1.1em; color: var(--cor-texto); opacity: 0.8; max-width: 700px; transition: color 0.4s ease; }
-        .section-text-placeholder { text-align: center; font-size: 1.1em; color: var(--cor-texto); opacity: 0.9; max-width: 700px; margin: 0 auto; line-height: 1.8; transition: color 0.4s ease; }
         
         /* --- SEPARADORES ELEGANTES --- */
-        .section-separator { 
-            display: flex; align-items: center; justify-content: center; text-align: center; color: var(--cor-destaque); 
-            padding: 10px 10%; background-color: transparent; margin: 20px 0;
-        }
-        .section-separator::before, .section-separator::after {
-            content: ''; flex: 1; border-bottom: 1px solid var(--cor-destaque); opacity: 0.2; 
-        }
-        .section-separator span { 
-            padding: 0 25px; font-size: 0.85em; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; font-family: 'Montserrat', sans-serif;
-            color: var(--cor-destaque); opacity: 0.8;
-        }
+        .section-separator { display: flex; align-items: center; justify-content: center; text-align: center; color: var(--cor-destaque); padding: 10px 10%; background-color: transparent; margin: 20px 0; }
+        .section-separator::before, .section-separator::after { content: ''; flex: 1; border-bottom: 1px solid var(--cor-destaque); opacity: 0.2; }
+        .section-separator span { padding: 0 25px; font-size: 0.85em; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; font-family: 'Montserrat', sans-serif; color: var(--cor-destaque); opacity: 0.8; }
 
-        /* --- SEÇÃO SOBRE --- */
-        .sobre-mim-container { display: flex; align-items: center; gap: 50px; }
-        .sobre-mim-texto { flex: 1.5; text-align: left; }
-        .sobre-mim-texto h2.section-title { text-align: left; margin-bottom: 25px;}
-        .sobre-mim-texto p { margin-bottom: 15px; font-size: 1.05em; line-height: 1.7; }
-        .sobre-mim-foto-moldura { flex: 1; height: 400px; background-color: var(--cor-destaque); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: var(--cor-botao-texto); transition: background-color 0.4s ease, color 0.4s ease; }
+        /* --- SEÇÃO SINAIS E APOIO --- */
+        .sinais-container { display: flex; align-items: center; gap: 80px; justify-content: space-between; }
+        .sinais-coluna-esquerda { flex: 1.2; display: flex; flex-direction: column; width: 100%; }
+        .sinais-coluna-direita { flex: 1; text-align: left; padding-right: 20px; }
+        .sinais-titulo-lateral { font-size: 2.4em; color: var(--cor-texto); font-weight: 300; margin-bottom: 20px; line-height: 1.2; transition: color 0.4s ease; }
+        .sinais-coluna-direita h3 { font-family: 'Playfair Display', serif; font-size: 1.5em; font-style: italic; font-weight: normal; color: var(--cor-terrosa); margin-bottom: 20px; transition: color 0.4s ease; }
+        .sinais-coluna-direita p { font-size: 1.1em; color: var(--cor-texto); opacity: 0.85; margin-bottom: 30px; line-height: 1.7; transition: color 0.4s ease; }
+
+        /* Acordeão Base (Reutilizado) */
+        .sintomas-accordion { width: 100%; display: flex; flex-direction: column; }
+        .sintoma-item { background-color: transparent; border-bottom: 1px solid rgba(86, 93, 100, 0.2); transition: border-color 0.3s ease; }
+        body.dark-mode .sintoma-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .sintoma-btn { width: 100%; text-align: left; padding: 22px 0; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Montserrat', sans-serif; font-size: 1.1em; font-weight: 400; color: var(--cor-texto); transition: color 0.3s ease; }
+        .sintoma-btn:hover { color: var(--cor-terrosa); }
+        .sintoma-btn i { color: var(--cor-destaque); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); font-size: 1.1em; }
+        .sintoma-btn.active i { transform: rotate(45deg); color: var(--cor-terrosa); } 
+        .sintoma-conteudo { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease; }
+        .sintoma-conteudo.open { padding: 0 0 25px 0; }
+        .sintoma-conteudo p { font-size: 0.95em; color: var(--cor-texto); opacity: 0.85; line-height: 1.7; margin: 0; transition: color 0.4s ease; }
+
+        /* --- NOVA SEÇÃO SOBRE (COM CITAÇÃO E ACORDEÃO) --- */
+        .sobre-mim-container { display: flex; align-items: flex-start; gap: 60px; } /* Flex-start para alinhar pelo topo */
+        
+        .sobre-mim-foto-moldura { 
+            flex: 1; height: 500px; /* Foto mais alta e imponente */
+            background-color: var(--cor-destaque); border-radius: 12px; display: flex; align-items: center; justify-content: center; 
+            color: var(--cor-botao-texto); transition: background-color 0.4s ease, color 0.4s ease; 
+        }
+        
+        .sobre-mim-texto { flex: 1.2; text-align: left; }
+        
+        .sobre-citacao {
+            font-family: 'Playfair Display', serif; font-size: 1.8em; font-style: italic; font-weight: normal;
+            color: var(--cor-terrosa); line-height: 1.35; margin-bottom: 25px; text-align: left;
+        }
+        
+        .sobre-intro { font-size: 1.1em; color: var(--cor-texto); opacity: 0.9; margin-bottom: 30px; line-height: 1.8; text-align: left;}
+
+        /* --- SEÇÃO COMO FUNCIONA (TIMELINE) --- */
+        .timeline-container { display: flex; justify-content: space-between; position: relative; margin-top: 60px; }
+        .timeline-line { position: absolute; top: 32px; left: 0; width: 100%; height: 1px; background-color: var(--cor-destaque); opacity: 0.2; z-index: 1; transition: background-color 0.4s ease;}
+        .timeline-item { flex: 1; position: relative; z-index: 2; padding: 0 20px; text-align: center; }
+        .timeline-number { font-family: 'Playfair Display', serif; font-size: 2.8em; font-style: italic; color: var(--cor-terrosa); background-color: var(--cor-branca); display: inline-block; padding: 0 25px; margin-bottom: 20px; transition: background-color 0.4s ease, color 0.4s ease;}
+        .timeline-content h4 { font-size: 1.25em; color: var(--cor-destaque); margin-bottom: 15px; font-weight: 500; transition: color 0.4s ease;}
+        .timeline-content p { font-size: 1em; color: var(--cor-texto); opacity: 0.85; line-height: 1.7; transition: color 0.4s ease;}
 
         /* --- SEÇÃO DIFERENCIAIS --- */
         .diferenciais-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
@@ -198,60 +194,18 @@
         .diferencial-item h4 { font-size: 1.1em; color: var(--cor-texto); margin-bottom: 10px; font-weight: bold; transition: color 0.4s ease; }
         .diferencial-item p { font-size: 0.9em; color: var(--cor-texto); opacity: 0.8; line-height: 1.6; transition: color 0.4s ease; }
 
-        /* --- SEÇÃO SINAIS E APOIO --- */
-        .sinais-container { display: flex; align-items: center; gap: 80px; justify-content: space-between; }
-        .sinais-coluna-esquerda { flex: 1.2; display: flex; flex-direction: column; width: 100%; }
-        
-        .sinais-coluna-direita { flex: 1; text-align: left; padding-right: 20px; }
-        .sinais-titulo-lateral { font-size: 2.4em; color: var(--cor-texto); font-weight: 300; margin-bottom: 20px; line-height: 1.2; transition: color 0.4s ease; }
-        
-        .sinais-coluna-direita h3 { 
-            font-family: 'Playfair Display', serif; font-size: 1.5em; font-style: italic; font-weight: normal; 
-            color: var(--cor-terrosa); margin-bottom: 20px; transition: color 0.4s ease; 
-        }
-        
-        .sinais-coluna-direita p { font-size: 1.1em; color: var(--cor-texto); opacity: 0.85; margin-bottom: 30px; line-height: 1.7; transition: color 0.4s ease; }
-
-        .sintomas-accordion { width: 100%; display: flex; flex-direction: column; }
-        .sintoma-item { 
-            background-color: transparent; border-bottom: 1px solid rgba(86, 93, 100, 0.2); transition: border-color 0.3s ease;
-        }
-        body.dark-mode .sintoma-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .sintoma-btn {
-            width: 100%; text-align: left; padding: 22px 0; background: none; border: none; cursor: pointer;
-            display: flex; justify-content: space-between; align-items: center; 
-            font-family: 'Montserrat', sans-serif; font-size: 1.1em; font-weight: 400; color: var(--cor-texto);
-            transition: color 0.3s ease;
-        }
-        .sintoma-btn:hover { color: var(--cor-terrosa); }
-        .sintoma-btn i { color: var(--cor-destaque); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); font-size: 1.1em; }
-        .sintoma-btn.active i { transform: rotate(45deg); color: var(--cor-terrosa); } 
-        
-        .sintoma-conteudo { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease; }
-        .sintoma-conteudo.open { padding: 0 0 25px 0; }
-        .sintoma-conteudo p { font-size: 0.95em; color: var(--cor-texto); opacity: 0.85; line-height: 1.7; margin: 0; transition: color 0.4s ease; }
-
         /* --- INTERLÚDIO MINIMALISTA --- */
         #interludio-inspirador { padding: 80px 0; background-color: var(--cor-principal); transition: background-color 0.4s ease; }
-        .interludio-conteudo-minimalista { 
-            max-width: 800px; margin: 0 auto; text-align: center; background-color: var(--cor-branca); 
-            padding: 60px 50px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); 
-            border: 1px solid rgba(86, 93, 100, 0.08); transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-        }
+        .interludio-conteudo-minimalista { max-width: 800px; margin: 0 auto; text-align: center; background-color: var(--cor-branca); padding: 60px 50px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid rgba(86, 93, 100, 0.08); transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
         body.dark-mode .interludio-conteudo-minimalista { background-color: var(--cor-branca); border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
         .titulo-principal-interludio { font-size: 2.2em; color: var(--cor-texto); font-weight: 500; margin-bottom: 25px; line-height: 1.3; transition: color 0.4s ease; }
         .texto-interludio { font-size: 1.1em; color: var(--cor-texto); opacity: 0.85; line-height: 1.8; margin-bottom: 40px; transition: color 0.4s ease; }
 
         /* --- SEÇÃO DE FAQ --- */
-        #faq { background-color: var(--cor-branca); transition: background-color 0.4s ease; } 
         .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item { border-bottom: 1px solid rgba(86, 93, 100, 0.2); }
         body.dark-mode .faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .faq-question {
-            background-color: transparent; border: none; width: 100%; text-align: left; padding: 22px 0;
-            font-size: 1.1em; font-family: inherit; color: var(--cor-texto); cursor: pointer;
-            display: flex; justify-content: space-between; align-items: center; transition: color 0.3s ease;
-        }
+        .faq-question { background-color: transparent; border: none; width: 100%; text-align: left; padding: 22px 0; font-size: 1.1em; font-family: inherit; color: var(--cor-texto); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: color 0.3s ease; }
         .faq-question:hover { color: var(--cor-terrosa); }
         .faq-question .fa-plus, .faq-question .fa-minus { color: var(--cor-destaque); transition: transform 0.3s ease-in-out, color 0.4s ease; }
         .faq-question.active .fa-plus { display: none; }
@@ -263,7 +217,7 @@
         /* --- RODAPÉ --- */
         footer { text-align: center; padding: 40px 20px; background-color: var(--cor-destaque); color: var(--cor-botao-texto); z-index: 2; position: relative; transition: background-color 0.4s ease, color 0.4s ease;}
 
-        /* --- RESPONSIVIDADE --- */
+        /* --- RESPONSIVIDADE (MOBILE) --- */
         @media (max-width: 992px) {
             .sobre-mim-container, .sinais-container, .diferenciais-grid { flex-direction: column; text-align: center; }
             .diferenciais-grid { grid-template-columns: repeat(2, 1fr); } 
@@ -297,14 +251,7 @@
             .sticky-header.scrolled .psicologo-detalhes { display: none; } 
             .sticky-header.scrolled .mobile-logo-wj { display: flex; align-items: center; justify-content: center; }
             
-            .mobile-logo-wj img {
-                height: 45px;
-                width: auto;
-                object-fit: contain;
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%); /* Centralização Absoluta */
-            }
+            .mobile-logo-wj img { height: 45px; width: auto; object-fit: contain; position: absolute; left: 50%; transform: translateX(-50%); }
 
             .menu-navegacao.menu-aberto { display: flex; transform: translateY(0); }
             .menu-navegacao { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--cor-branca); flex-direction: column; padding: 10px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transform: translateY(-150%); transition: transform 0.3s ease-in-out, background-color 0.4s ease; }
@@ -314,55 +261,56 @@
             
             #home { background-attachment: scroll; } 
             
-            /* ================================================================= */
-            /* CORREÇÕES DOS ESPAÇOS EM BRANCO (LIPOASPIRAÇÃO VISUAL NO MOBILE)  */
-            /* ================================================================= */
-            
-            /* Reduzimos o padding gigante de todas as secções no telemóvel */
+            /* --- ESPAÇAMENTOS GERAIS --- */
             section { padding: 35px 0; } 
-            
             .faixa-demandas { margin: 15px 0; } 
             .faixa-demandas span { font-size: 1.1em; }
-            
             .section-title { font-size: 1.8em; margin-bottom: 20px; }
-            .section-subtitle { margin-bottom: 30px; }
-            
-            /* Separadores sem margem vertical desnecessária */
             .section-separator { padding: 5px 5%; margin: 15px 0; }
-            .section-separator span { font-size: 0.65em; letter-spacing: 2px; padding: 0 10px; }
             
-            /* --- SINAIS E SINTOMAS (Correção do Print 1) --- */
+            /* --- SINAIS E SINTOMAS --- */
             .sinais-container { gap: 15px; }
-            
-            .sinais-coluna-esquerda { margin-bottom: 0px; width: 100%; display: flex; justify-content: center; }
-            .sintoma-btn { padding: 18px 0; font-size: 1em; }
-            .sintoma-conteudo.open { padding: 0 0 20px 0; }
-            
+            .sinais-coluna-esquerda { margin-bottom: 10px; width: 100%; display: flex; justify-content: center; }
             .sinais-coluna-direita { display: block; text-align: left; padding: 0 10px; margin-top: 15px; }
             .sinais-titulo-lateral { font-size: 1.7em; text-align: left; margin-bottom: 10px; line-height: 1.3;}
             .sinais-coluna-direita h3 { font-size: 1.3em; margin-bottom: 10px; text-align: left; }
             .sinais-coluna-direita p { text-align: left; font-size: 1.05em; line-height: 1.7; margin-bottom: 25px; }
 
-            /* --- DIFERENCIAIS (Correção do Print 2) --- */
-            /* Ajuste específico para matar o espaço de baixo da secção diferenciais */
+            /* --- NOVO SOBRE MIM (FOTO NO TOPO + CITAÇÃO) --- */
+            .sobre-mim-container { gap: 20px; } /* Reduzimos o espaço entre foto e texto */
+            
+            .sobre-mim-foto-moldura { 
+                order: -1; /* Força a foto a aparecer ANTES do texto no mobile */
+                width: 100%; 
+                height: 400px; /* Um pouco mais baixa no celular */
+                margin-bottom: 10px; 
+            }
+            .sobre-citacao { font-size: 1.6em; margin-bottom: 20px; }
+            .sobre-intro { font-size: 1.05em; margin-bottom: 25px; }
+
+            /* --- TIMELINE (COMO FUNCIONA) --- */
+            .timeline-container { flex-direction: column; margin-top: 30px; padding-left: 0; }
+            .timeline-line { width: 1px; height: 100%; top: 0; left: 30px; }
+            .timeline-item { display: flex; text-align: left; padding: 0; margin-bottom: 40px; }
+            .timeline-number { font-size: 2.4em; padding: 10px 0; margin-bottom: 0; margin-right: 25px; width: 60px; text-align: center; flex-shrink: 0; align-self: flex-start; }
+            .timeline-content { padding-top: 15px; }
+            .timeline-content h4 { font-size: 1.2em; margin-bottom: 10px; }
+
+            /* --- DIFERENCIAIS --- */
             section#diferenciais { padding-bottom: 10px; }
             .diferenciais-grid { grid-template-columns: 1fr; gap: 0px; } 
             .diferencial-item { padding: 12px 0; } 
             .diferencial-icon { margin-bottom: 8px; font-size: 2.2em; }
-            .diferencial-item h4 { margin-bottom: 5px; }
-            .diferencial-item p { margin-bottom: 0; }
-
-            /* --- INTERLÚDIO (Caixa Mais Elegante e Compacta) --- */
+            
+            /* --- INTERLÚDIO --- */
             section#interludio-inspirador { padding: 15px 0 25px 0; }
             .interludio-conteudo-minimalista { padding: 35px 20px; border-radius: 12px; }
             .titulo-principal-interludio { font-size: 1.5em; margin-bottom: 15px; }
             .texto-interludio { font-size: 0.95em; margin-bottom: 25px; line-height: 1.7; }
             
-            /* --- FAQ E CONTATO --- */
             section#faq { padding-top: 15px; }
             section#contato { padding-bottom: 50px; }
             
-            /* Ajuste Primeira Página */
             .hero-title { font-size: 2.2em; letter-spacing: 4px; }
             .hero-subtitle { font-size: 0.85em; letter-spacing: 3px; }
         }
@@ -371,40 +319,31 @@
 <body>
     <header class="sticky-header" id="mainHeader">
         <div class="container header-content">
-
-            <!-- Ícone de Tema Fixo à ESQUERDA no Mobile -->
             <div class="header-direita">
                 <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar tema escuro/claro">
                     <i class="fas fa-moon"></i>
                 </button>
             </div>
-
-            <!-- Área Central do Logo / Nome -->
             <div class="logo-area">
                 <h1 class="psicologo-nome">Wellington de Jesus</h1>
                 <div class="psicologo-detalhes">
                     <p class="psicologo-titulo">Psicólogo Clínico</p>
                     <p class="psicologo-crp">CRP 06/233869</p>
                 </div>
-                
-                <!-- Logo WJ IMAGEM Oficial, Branco e Super Centralizado -->
                 <div class="mobile-logo-wj">
                     <img src="https://i.imgur.com/3L1w5IJ.png" alt="Logo WJ Psi" />
                 </div>
             </div>
-
-            <!-- Navegação Desktop -->
             <nav class="menu-navegacao" id="menu-principal">
                 <ul>
                     <li><a href="#home" class="active">Início</a></li>
                     <li><a href="#sinais-e-apoio">Sintomas</a></li>
                     <li><a href="#sobre">Sobre Mim</a></li>
-                    <li><a href="#abordagem">Abordagem</a></li>
+                    <!-- O menu agora aponta para o Como Funciona, pois a abordagem está dentro do Sobre -->
+                    <li><a href="#como-funciona">Como Funciona</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
-
-            <!-- Botão Menu Hamburguer Fixo à DIREITA no Mobile -->
             <button class="menu-hamburguer-btn" id="menu-hamburguer" aria-label="Abrir menu" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
@@ -428,7 +367,7 @@
             </div>
         </div>
 
-        <!-- 3. SEÇÃO SINAIS (ACORDEÃO MINIMALISTA E TEXTO ALINHADO À ESQUERDA NO MOBILE) -->
+        <!-- 3. SEÇÃO SINAIS -->
         <section id="sinais-e-apoio">
             <div class="container">
                 <div class="sinais-container">
@@ -491,27 +430,83 @@
             </div>
         </section>
 
-        <!-- 4. SEÇÃO SOBRE MIM -->
+        <!-- 4. NOVA SEÇÃO SOBRE MIM (Citação + Acordeão) -->
         <section id="sobre">
             <div class="container sobre-mim-container">
-                <div class="sobre-mim-texto">
-                    <h2 class="section-title">Quem sou eu</h2>
-                    <p>Me chamo Wellington, sou psicólogo formado pela Universidade de Araraquara (UNIARA), com prática clínica orientada pela Psicanálise e pela Psicoterapia Psicodinâmica Breve.</p>
-                    <p>Durante minha formação, atendi adolescentes e adultos em um ambiente de escuta cuidadosa e supervisionada, experiência que consolidou minha convicção: quando somos verdadeiramente ouvidos, algo em nós pode, enfim, começar a se transformar.</p>
-                    <p>Acredito que cada pessoa traz em si uma história singular — feita de silêncios, marcas, desejos e também de possibilidades. Minha escuta está voltada a acolher essa singularidade com respeito, ética e sensibilidade, criando um espaço seguro onde você possa se encontrar, se entender e, aos poucos, reconstruir o que for preciso.</p>
-                    <p>Se você sente que é o momento de olhar para si com mais carinho, coragem e profundidade, estou aqui para caminhar ao seu lado.</p>
-                </div>
+                
+                <!-- A FOTO AQUI (Vai para o topo no mobile automaticamente) -->
                 <div class="sobre-mim-foto-moldura">
-                    <span>Local para sua foto</span>
+                    <span>Local para sua foto (Retrato)</span>
+                </div>
+                
+                <div class="sobre-mim-texto">
+                    <!-- A CITAÇÃO DE IMPACTO -->
+                    <h3 class="sobre-citacao">"Quando somos verdadeiramente ouvidos, algo em nós pode, enfim, começar a se transformar."</h3>
+                    
+                    <!-- O TEXTO DE INTRODUÇÃO -->
+                    <p class="sobre-intro">Olá, me chamo Wellington. Sou psicólogo clínico (CRP 06/233869) formado pela Universidade de Araraquara (UNIARA), com a minha prática orientada pela Psicanálise e pela Psicoterapia Psicodinâmica Breve.</p>
+                    
+                    <!-- OS ACORDEÕES DE PERFIL (Trajetória e Abordagem) -->
+                    <div class="sintomas-accordion">
+                        
+                        <div class="sintoma-item">
+                            <button class="sintoma-btn">
+                                <span>A minha trajetória</span>
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <div class="sintoma-conteudo">
+                                <p>Durante a minha formação, atendi adolescentes e adultos num ambiente de escuta cuidadosa e supervisionada, experiência que consolidou a minha convicção no poder da palavra.</p>
+                                <p style="margin-top: 15px;">Acredito que cada pessoa traz em si uma história singular — feita de silêncios, marcas, desejos e também de possibilidades. A minha escuta está voltada para acolher essa singularidade com respeito, ética e sensibilidade, criando um espaço seguro onde você possa se encontrar e, aos poucos, reconstruir o que for preciso.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="sintoma-item">
+                            <button class="sintoma-btn">
+                                <span>A minha abordagem terapêutica</span>
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <div class="sintoma-conteudo">
+                                <p>O meu trabalho é centrado na compreensão profunda das experiências e emoções do paciente, utilizando a psicanálise como ferramenta principal para explorar o inconsciente e promover o autoconhecimento.</p>
+                                <p style="margin-top: 15px;">A direção do tratamento é pensada de forma singular e não existe uma regra ou protocolo engessado. Deste modo, os caminhos a serem percorridos são (re)construídos conforme o seu próprio processo de análise acontece no consultório.</p>
+                            </div>
+                        </div>
+                        
+                    </div>
                 </div>
             </div>
         </section>
-        
-        <!-- 5. SEÇÃO ABORDAGEM -->
-        <section id="abordagem">
+
+        <!-- 5. SEÇÃO COMO FUNCIONA A TERAPIA (TIMELINE) -->
+        <section id="como-funciona">
             <div class="container">
-                <h2 class="section-title">Minha Abordagem Terapêutica</h2>
-                <p class="section-text-placeholder">A minha abordagem terapêutica é centrada na compreensão profunda das experiências e emoções do paciente, utilizando a psicanálise como ferramenta principal para explorar o inconsciente e promover o autoconhecimento, sempre levando em consideração a história de cada um. A direção do tratamento é pensada de forma singular e não existe uma regra ou protocolo estabelecido para que a análise aconteça. Deste modo, os caminhos a serem percorridos possam ser re-construídos conforme o processo de análise ocorre.</p>
+                <h2 class="section-title">Como funciona a psicoterapia?</h2>
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-number">01</div>
+                        <div class="timeline-content">
+                            <h4>Acolhimento e Escuta Livre</h4>
+                            <p>Nos primeiros encontros, o foco é conhecer a sua história num espaço livre de julgamentos, onde pode falar das suas angústias e expectativas. É o momento de criarmos o nosso vínculo de confiança.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-number">02</div>
+                        <div class="timeline-content">
+                            <h4>Exploração e Compreensão</h4>
+                            <p>Ao longo das sessões, vamos aprofundar as questões trazidas. Identificar padrões de repetição, compreender como experiências passadas ecoam no presente e olhar para aquilo que não é dito.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-number">03</div>
+                        <div class="timeline-content">
+                            <h4>Elaboração e Novos Caminhos</h4>
+                            <p>Com o ganho de autoconhecimento, iniciamos o processo de elaboração. O objetivo não é apagar a sua história, mas permitir que se posicione de forma diferente perante ela, com mais autonomia.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         
@@ -630,9 +625,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
-            // ==========================================
-            // LÓGICA DO TEMA (DARK / LIGHT MODE)
-            // ==========================================
             const themeToggleBtn = document.getElementById('theme-toggle');
             const themeIcon = themeToggleBtn.querySelector('i');
             
@@ -654,9 +646,6 @@
                 }
             });
 
-            // ==========================================
-            // OUTROS SCRIPTS (MENU, SCROLL, FAQ, ETC)
-            // ==========================================
             const menuBtn = document.getElementById('menu-hamburguer');
             const menuNav = document.getElementById('menu-principal');
             const mainHeader = document.getElementById('mainHeader');
@@ -724,51 +713,46 @@
                 sections.forEach(section => { if(section.id) observer.observe(section); });
             }
 
-            // FAQ Accordion
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            if (faqQuestions.length > 0) {
-                faqQuestions.forEach(question => {
-                    const minusIcon = document.createElement('i');
-                    minusIcon.className = 'fas fa-minus';
-                    question.appendChild(minusIcon);
+            // FAQ Accordion e NOVO Acordeão Sobre Mim
+            const accordions = document.querySelectorAll('.faq-question, .sintoma-btn');
+            if (accordions.length > 0) {
+                accordions.forEach(btn => {
+                    // Adiciona o ícone minus se for o FAQ (pois o Sintomas já tem via HTML)
+                    if(btn.classList.contains('faq-question') && !btn.querySelector('.fa-minus')) {
+                        const minusIcon = document.createElement('i');
+                        minusIcon.className = 'fas fa-minus';
+                        btn.appendChild(minusIcon);
+                    }
 
-                    question.addEventListener('click', () => {
-                        const answer = question.nextElementSibling;
-                        const isActive = question.classList.contains('active');
-
-                        if (!isActive) {
-                            question.classList.add('active');
-                            answer.style.maxHeight = answer.scrollHeight + 40 + "px"; 
-                            answer.classList.add('open');
-                        } else {
-                            question.classList.remove('active');
-                            answer.style.maxHeight = null;
-                            answer.classList.remove('open');
-                        }
-                    });
-                });
-            }
-
-            // Acordeão dos Sinais/Sintomas
-            const sintomaBtns = document.querySelectorAll('.sintoma-btn');
-            if (sintomaBtns.length > 0) {
-                sintomaBtns.forEach(btn => {
                     btn.addEventListener('click', () => {
                         const content = btn.nextElementSibling;
                         const isActive = btn.classList.contains('active');
                         
-                        sintomaBtns.forEach(otherBtn => {
-                            otherBtn.classList.remove('active');
-                            if(otherBtn.nextElementSibling) {
-                                otherBtn.nextElementSibling.style.maxHeight = null;
-                                otherBtn.nextElementSibling.classList.remove('open');
-                            }
-                        });
+                        // Para o Acordeão do Sobre Mim e Sintomas, fecha os outros abertos
+                        if(btn.classList.contains('sintoma-btn')) {
+                            // Encontra o contêiner pai para não fechar acordeões de outras seções
+                            const parentAccordion = btn.closest('.sintomas-accordion');
+                            const allBtnsInParent = parentAccordion.querySelectorAll('.sintoma-btn');
+                            
+                            allBtnsInParent.forEach(otherBtn => {
+                                otherBtn.classList.remove('active');
+                                if(otherBtn.nextElementSibling) {
+                                    otherBtn.nextElementSibling.style.maxHeight = null;
+                                    otherBtn.nextElementSibling.classList.remove('open');
+                                }
+                            });
+                        }
 
+                        // Se não estava ativo, abre
                         if (!isActive) {
                             btn.classList.add('active');
                             content.style.maxHeight = content.scrollHeight + 40 + "px";
                             content.classList.add('open');
+                        } else if (btn.classList.contains('faq-question')) {
+                            // FAQ permite fechar o próprio botão ao clicar nele novamente
+                             btn.classList.remove('active');
+                             content.style.maxHeight = null;
+                             content.classList.remove('open');
                         }
                     });
                 });
