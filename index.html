@@ -99,7 +99,8 @@
         .sticky-header .theme-toggle-btn,
         .sticky-header .menu-hamburguer-btn { color: #FFFFFF !important; }
         
-        @media (min-width: 769px) {
+        /* Mudança para 1101px para garantir que PCs normais vejam a versão desktop */
+        @media (min-width: 1101px) {
             .menu-navegacao ul li a { color: #FFFFFF !important; opacity: 0.9; }
             .menu-navegacao ul li a:hover, .menu-navegacao ul li a.active { border-bottom-color: #FFFFFF !important; opacity: 1; }
             /* Garante que no PC não há opacidades estranhas */
@@ -221,7 +222,7 @@
         footer p { opacity: 0.9; font-size: 0.95em; letter-spacing: 0.5px; margin: 0; }
 
         /* =================================================================== */
-        /* ======================= RESPONSIVIDADE (CELULARES) ================ */
+        /* ======================= RESPONSIVIDADE (CELULARES E TABLETS) ====== */
         /* =================================================================== */
         @media (max-width: 992px) {
             .sobre-mim-container, .sinais-container, .diferenciais-grid { flex-direction: column; text-align: center; }
@@ -233,7 +234,8 @@
             .hero-subtitle { font-size: 0.9em; letter-spacing: 3px; }
         }
         
-        @media (max-width: 768px) {
+        /* Modificado para 1100px para abranger iPads e telas médias perfeitamente */
+        @media (max-width: 1100px) {
             .sticky-header { padding: 20px 0; height: 85px; } 
             .sticky-header.scrolled { padding: 20px 0; height: 85px; } 
             .header-content { display: flex; justify-content: center; align-items: center; height: 100%; position: static; }
@@ -450,7 +452,7 @@
             </div>
         </section>
 
-        <!-- SEÇÃO SOBRE MIM RESTAURADA POR COMPLETO -->
+        <!-- SEÇÃO SOBRE MIM COMPLETA -->
         <section id="sobre">
             <div class="container sobre-mim-container">
                 <div class="sobre-mim-foto-moldura">
@@ -485,7 +487,7 @@
             </div>
         </section>
 
-        <!-- SEÇÃO COMO FUNCIONA RESTAURADA POR COMPLETO -->
+        <!-- SEÇÃO COMO FUNCIONA COMPLETA -->
         <section id="como-funciona">
             <div class="container">
                 <h2 class="section-title">Como funciona a psicoterapia?</h2>
@@ -516,7 +518,7 @@
             </div>
         </section>
         
-        <!-- SEÇÃO DIFERENCIAIS RESTAURADA POR COMPLETO -->
+        <!-- SEÇÃO DIFERENCIAIS COMPLETA -->
         <section id="diferenciais">
             <div class="container">
                 <h2 class="section-title">Por que iniciar a sua jornada aqui?</h2>
@@ -549,7 +551,7 @@
             <span>Psicologia & Saúde Mental</span> 
         </div> 
         
-        <!-- SEÇÃO SAÚDE MENTAL RESTAURADA POR COMPLETO -->
+        <!-- SEÇÃO SAÚDE MENTAL COMPLETA -->
         <section id="interludio-inspirador">
             <div class="container">
                 <div class="interludio-conteudo-minimalista">
@@ -570,6 +572,7 @@
              <span>Um espaço de escuta</span>
         </div>
         
+        <!-- SEÇÃO FAQ COMPLETA -->
         <section id="faq">
             <div class="container">
                 <h2 class="section-title">Perguntas Frequentes</h2>
@@ -614,7 +617,7 @@
             </div>
         </section>
 
-        <!-- SEÇÃO CONTATO COM O SEU NOVO BOTÃO WHATSAPP MANTIDO -->
+        <!-- SEÇÃO CONTATO -->
         <section id="contato">
             <div class="container" style="text-align: center;">
                 <h2 class="section-title">Contato</h2>
@@ -672,7 +675,7 @@
             }
 
             // =========================================================================
-            // A NOVA FUSÃO MÁGICA (WJ -> LOGO) - MANTIDA INTACTA AQUI
+            // A NOVA FUSÃO MÁGICA (WJ -> LOGO) - ATUALIZADA (1100px + Atraso Cinza)
             // =========================================================================
             const letraW = document.querySelector('.letra-w');
             const letraJ = document.querySelector('.letra-j');
@@ -683,9 +686,12 @@
             if (mainHeader) {
                 window.addEventListener('scroll', () => {
                     let scrollY = window.scrollY;
-                    mainHeader.classList.toggle('scrolled', scrollY > 50);
+                    
+                    // ATRASO NO FUNDO CINZA: Agora só entra após 110px de rolagem
+                    mainHeader.classList.toggle('scrolled', scrollY > 110);
 
-                    if (window.innerWidth <= 768 && letraW && letraJ && logoMobile) {
+                    // Alterado para englobar telas de até 1100px (Tablets e Celulares)
+                    if (window.innerWidth <= 1100 && letraW && letraJ && logoMobile) {
                         let maxScroll = 120;
                         let progresso = Math.min(scrollY / maxScroll, 1);
 
@@ -714,7 +720,8 @@
                         let logoScale = 0.7 + (0.3 * fadeProg); 
                         logoMobile.style.transform = `scale(${logoScale})`;
 
-                    } else if (window.innerWidth > 768) {
+                    } else if (window.innerWidth > 1100) {
+                        // Reset para desktop padrão (acima de 1100px)
                         restoNome.forEach(el => el.style.opacity = 1);
                         if(detalhes) detalhes.style.opacity = 1;
                         if(letraW) { letraW.style.opacity = 1; letraW.style.transform = 'none'; letraW.style.filter = 'none'; }
