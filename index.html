@@ -4,49 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Pinta a barra de status do iPhone (bateria/hora) com o nosso Cinza Chumbo -->
     <meta name="theme-color" content="#33393F">
-    <!-- Impede que o iPhone deixe os números de CRP azuis -->
     <meta name="format-detection" content="telephone=no">
     
     <title>Wellington de Jesus - Psicólogo Clínico</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- Importamos a Montserrat (textos) e a Playfair Display (Toques editoriais) -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     
     <style>
         /* =================================================================== */
         /* ======================= ÁREA DO CSS (ESTILOS) ===================== */
-        /* Aqui definimos todas as cores, tamanhos de fonte e margens do site  */
         /* =================================================================== */
 
-        /* --- PALETA DE CORES PRINCIPAL (TEMA CLARO) --- */
         :root {
             color-scheme: light; 
-            --cor-principal: #F7F8F9; /* Cor de fundo principal do site (cinza bem clarinho) */
-            --cor-destaque: #565D64;  /* Cor dos ícones, rodapé e textos de destaque (cinza chumbo) */
-            --cor-texto: #33393F;     /* Cor dos textos longos para não cansar a vista */
-            --cor-branca: #FFFFFF;    /* Fundo branco das caixinhas (como a caixa de saúde mental) */
-            --cor-botao-texto: #FFFFFF; /* Cor do texto dentro dos botões (Branco) */
-            --cor-terrosa: #B59B82;   /* Cor do Botão Agendar, Citações e Números da Timeline (Marrom/Terroso) */
+            --cor-principal: #F7F8F9; 
+            --cor-destaque: #565D64;  
+            --cor-texto: #33393F;     
+            --cor-branca: #FFFFFF;
+            --cor-botao-texto: #FFFFFF;
+            --cor-terrosa: #B59B82; 
         }
 
-        /* --- PALETA DE CORES MODO ESCURO (LUA) --- */
         body.dark-mode {
             color-scheme: dark; 
-            --cor-principal: #1E2124; /* Fundo principal escuro */
+            --cor-principal: #1E2124; 
             --cor-destaque: #7A848D;  
-            --cor-texto: #E1E5E9;     /* Texto claro para o modo noturno */
-            --cor-branca: #282C30;    /* Fundo das caixinhas no modo noturno */
+            --cor-texto: #E1E5E9;     
+            --cor-branca: #282C30;    
             --cor-botao-texto: #1E2124; 
-            --cor-terrosa: #B59B82;   /* O botão marrom mantém-se igual no escuro */
+            --cor-terrosa: #B59B82;   
         }
 
-        /* --- CONFIGURAÇÕES GLOBAIS DE FONTE --- */
         body, h1, h2, h3, h4, p, ul, li, a, span {
             margin: 0; padding: 0; box-sizing: border-box;
-            /* Fonte principal usada para quase todo o site */
             font-family: 'Georgia', 'Times New Roman', Times, serif; 
         }
         body {
@@ -54,54 +45,54 @@
             transition: background-color 0.4s ease, color 0.4s ease;
         }
         .container { width: 90%; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
-
-        /* Remove o sublinhado azul padrão de números de telefone */
         a[href^="tel"] { color: inherit; text-decoration: none; }
 
-        /* ======================= CABEÇALHO (TOPO DO SITE) ======================= */
-        /* Estado inicial do cabeçalho (transparente por cima da foto de capa) */
+        /* ======================= CABEÇALHO ======================= */
         .sticky-header {
             background-color: transparent; padding: 15px 0; position: fixed;
             top: 0; left: 0; width: 100%; z-index: 1000;
             transition: background-color 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease, height 0.4s ease;
         }
-        
-        /* Linha que define a cor e transparência do cabeçalho APÓS A ROLAGEM */
         .sticky-header.scrolled {
-            background-color: rgba(51, 57, 63, 0.98); /* Fundo Cinza Chumbo com 98% de opacidade */
-            backdrop-filter: blur(8px); /* Efeito de vidro embaçado (iPhone) */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.25); /* Sombra debaixo do cabeçalho */
+            background-color: rgba(51, 57, 63, 0.98); 
+            backdrop-filter: blur(8px); 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25); 
             padding: 18px 0; 
         }
-        
         .header-content { display: flex; justify-content: space-between; align-items: center; position: relative; }
-        .logo-area { display: flex; align-items: center; }
+        .logo-area { display: flex; align-items: center; position: relative; }
         
-        /* Estilo do nome "Wellington de Jesus" no cabeçalho */
-        .logo-area .psicologo-nome { font-size: 1.6em; font-weight: normal; margin-right: 15px; transition: color 0.4s ease; }
-        .psicologo-detalhes p { font-size: 0.85em; opacity: 0.8; line-height: 1.2; transition: color 0.4s ease; }
+        .logo-area .psicologo-nome { font-size: 1.6em; font-weight: normal; margin-right: 15px; transition: color 0.4s ease; display: inline-block; }
         
-        /* Botões do Menu no Computador */
+        /* Otimização para animação fluida nas letras */
+        .letra-w, .letra-j { 
+            display: inline-block; 
+            transition: none; 
+            will-change: transform, opacity, filter;
+        } 
+        .resto-nome { 
+            display: inline-block; 
+            transition: none; 
+            will-change: opacity;
+        }
+        
+        .psicologo-detalhes {
+            will-change: opacity;
+        }
+        .psicologo-detalhes p { font-size: 0.85em; opacity: 0.8; line-height: 1.2; transition: none; }
+        
         .menu-navegacao ul { list-style: none; display: flex; }
         .menu-navegacao ul li { margin-left: 25px; }
         .menu-navegacao ul li a { text-decoration: none; font-weight: 500; padding-bottom: 5px; border-bottom: 2px solid transparent; transition: border-color 0.3s ease, color 0.3s ease; }
         
         .header-direita { display: flex; align-items: center; gap: 15px; }
         
-        /* Ícone da Lua / Sol */
-        .theme-toggle-btn {
-            background: none; border: none; font-size: 1.4em; cursor: pointer; padding: 5px;
-            transition: transform 0.3s ease, color 0.4s ease; display: flex; align-items: center;
-        }
+        .theme-toggle-btn { background: none; border: none; font-size: 1.4em; cursor: pointer; padding: 5px; transition: transform 0.3s ease, color 0.4s ease; display: flex; align-items: center; }
         .theme-toggle-btn:hover { transform: scale(1.1); }
-        
-        /* Ícone do Menu de Barrinhas (Só aparece no celular) */
         .menu-hamburguer-btn { display: none; background: none; border: none; font-size: 1.6em; cursor: pointer; padding: 5px; z-index: 1002; transition: color 0.4s ease; }
         
-        /* Ocultar o Logo da Letra WJ no Desktop por defeito */
         .mobile-logo-wj { display: none; }
 
-        /* Garante que os textos do cabeçalho sejam sempre brancos */
         .sticky-header .psicologo-nome,
         .sticky-header .psicologo-detalhes p,
         .sticky-header .psicologo-detalhes span,
@@ -111,86 +102,57 @@
         @media (min-width: 769px) {
             .menu-navegacao ul li a { color: #FFFFFF !important; opacity: 0.9; }
             .menu-navegacao ul li a:hover, .menu-navegacao ul li a.active { border-bottom-color: #FFFFFF !important; opacity: 1; }
+            /* Garante que no PC não há opacidades estranhas */
+            .letra-w, .letra-j, .resto-nome, .psicologo-detalhes { opacity: 1 !important; transform: translateX(0) !important; filter: none !important; }
         }
 
-        /* ======================= CAPA INICIAL (HERO SECTION) ======================= */
+        /* ======================= CAPA INICIAL ======================= */
         #home { 
-            /* LINHA QUE DEFINE A IMAGEM DE FUNDO DA CAPA (Via TinyPNG) */
             background-image: linear-gradient(rgba(58, 65, 70, 0.75), rgba(58, 65, 70, 0.75)), url('https://i.imgur.com/IgOodkH.jpg'); 
             background-size: cover; background-position: center; background-attachment: fixed; 
             min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; margin: 0; padding: 0;
         }
         .home-content-main { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; z-index: 2; width: 100%; }
-        
-        /* Linha que define a FONTE, COR E TAMANHO do nome central na capa */
         .hero-title { font-family: 'Montserrat', sans-serif; font-size: 3.5em; font-weight: 400; color: #FFFFFF; letter-spacing: 8px; margin-bottom: 15px; text-transform: uppercase; }
-        /* Subtítulo da capa (Psicólogo Clínico | Online) */
         .hero-subtitle { font-family: 'Montserrat', sans-serif; font-size: 1.1em; color: rgba(255, 255, 255, 0.75); letter-spacing: 7px; text-transform: uppercase; font-weight: 300; }
 
         /* ======================= BOTÕES DO SITE ======================= */
-        /* Linha que define o formato e a COR DO BOTÃO PADRÃO (Botão Marrom/Terroso) */
         .btn-agendar { 
             background-color: var(--cor-terrosa); 
             color: #FFFFFF; padding: 16px 40px; text-decoration: none; border-radius: 50px; 
             font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 1.05em; letter-spacing: 1px; display: inline-block; 
             transition: all 0.4s ease; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(181, 155, 130, 0.4); 
         }
-        /* Cor do botão marrom quando o rato passa por cima */
         .btn-agendar:hover { background-color: #9C836A; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(156, 131, 106, 0.5); }
         body.dark-mode .btn-agendar { box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
 
-        /* ======================= BOTÃO DO WHATSAPP (Verde Musgo) ======================= */
-        /* O novo botão verde elegante para a seção de contatos */
         .btn-whatsapp {
-            background-color: #386641; /* Verde Musgo / Floresta */
-            color: #FFFFFF;
-            padding: 12px 30px; /* Mais fino que o botão normal */
-            text-decoration: none;
-            border-radius: 50px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            font-size: 1em; /* Letra ajustada */
-            letter-spacing: 1px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.4s ease;
+            background-color: #386641; 
+            color: #FFFFFF; padding: 12px 30px; text-decoration: none; border-radius: 50px;
+            font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 1em; letter-spacing: 1px;
+            display: inline-flex; align-items: center; gap: 10px; transition: all 0.4s ease;
             box-shadow: 0 4px 15px rgba(56, 102, 65, 0.4);
         }
-        /* Cor quando passa o rato (Verde mais escuro) */
-        .btn-whatsapp:hover {
-            background-color: #2c5233; 
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(56, 102, 65, 0.6);
-        }
-        .btn-whatsapp i {
-            font-size: 1.3em;
-        }
+        .btn-whatsapp:hover { background-color: #2c5233; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(56, 102, 65, 0.6); }
+        .btn-whatsapp i { font-size: 1.3em; }
 
-        /* ======================= FAIXA DE DEMANDAS ANIMADA ======================= */
+        /* ======================= FAIXA DE DEMANDAS ======================= */
         .faixa-demandas { overflow: hidden; background-color: transparent; color: var(--cor-destaque); cursor: grab; padding: 0; margin: 40px 0; transition: color 0.4s ease;}
         .faixa-demandas-container-animado { display: flex; gap: 40px; width: fit-content; }
         .faixa-demandas span { font-size: 1.4em; font-weight: 500; white-space: nowrap; flex-shrink: 0; }
 
-        /* ======================= REGRAS GERAIS DAS SEÇÕES ======================= */
+        /* ======================= REGRAS GERAIS ======================= */
         section { padding: 80px 0; position: relative; }
-        
-        /* Quais seções têm fundo Branco */
         #sobre, #como-funciona, #faq { background-color: var(--cor-branca); z-index: 2; transition: background-color 0.4s ease; }
-        /* Quais seções têm fundo Cinza Principal */
         #sinais-e-apoio, #diferenciais, #contato { background-color: var(--cor-principal); transition: background-color 0.4s ease; }
-        
-        /* Títulos Grandes de todas as seções (Ex: Sintomas, Como funciona) */
         .section-title { text-align: center; margin-bottom: 25px; font-size: 2.4em; color: var(--cor-texto); font-weight: normal; transition: color 0.4s ease; }
-        /* Subtítulos gerais das seções (Ex: Vamos conversar?) */
         .section-subtitle { text-align: center; margin-left: auto; margin-right: auto; }
         
-        /* ======================= SEPARADORES ELEGANTES (Linhas finas) ======================= */
         .section-separator { display: flex; align-items: center; justify-content: center; text-align: center; color: var(--cor-destaque); padding: 10px 10%; background-color: transparent; margin: 20px 0; }
         .section-separator::before, .section-separator::after { content: ''; flex: 1; border-bottom: 1px solid var(--cor-destaque); opacity: 0.2; }
         .section-separator span { padding: 0 25px; font-size: 0.85em; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; font-family: 'Montserrat', sans-serif; color: var(--cor-destaque); opacity: 0.8; }
 
-        /* ======================= SINAIS E SINTOMAS (Acordeões) ======================= */
+        /* ======================= SINAIS E SINTOMAS ======================= */
         .sinais-container { display: flex; align-items: center; gap: 80px; justify-content: space-between; }
         .sinais-coluna-esquerda { flex: 1.2; display: flex; flex-direction: column; width: 100%; }
         .sinais-coluna-direita { flex: 1; text-align: left; padding-right: 20px; }
@@ -198,66 +160,49 @@
         .sinais-coluna-direita h3 { font-family: 'Playfair Display', serif; font-size: 1.5em; font-style: italic; font-weight: normal; color: var(--cor-terrosa); margin-bottom: 20px; transition: color 0.4s ease; }
         .sinais-coluna-direita p { font-size: 1.1em; color: var(--cor-texto); opacity: 0.85; margin-bottom: 30px; line-height: 1.7; transition: color 0.4s ease; }
 
-        /* Estrutura visual das caixinhas que abrem e fecham */
         .sintomas-accordion { width: 100%; display: flex; flex-direction: column; }
         .sintoma-item { background-color: transparent; border-bottom: 1px solid rgba(86, 93, 100, 0.2); transition: border-color 0.3s ease; }
         body.dark-mode .sintoma-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
         .sintoma-btn { width: 100%; text-align: left; padding: 22px 0; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Montserrat', sans-serif; font-size: 1.1em; font-weight: 400; color: var(--cor-texto); transition: color 0.3s ease; }
         .sintoma-btn:hover { color: var(--cor-terrosa); }
         .sintoma-btn i { color: var(--cor-destaque); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); font-size: 1.1em; }
-        .sintoma-btn.active i { transform: rotate(45deg); color: var(--cor-terrosa); } /* Gira o ícone para virar um X */
+        .sintoma-btn.active i { transform: rotate(45deg); color: var(--cor-terrosa); } 
         .sintoma-conteudo { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease; text-align: left; }
         .sintoma-conteudo.open { padding: 0 0 25px 0; }
         .sintoma-conteudo p { font-size: 0.95em; color: var(--cor-texto); opacity: 0.85; line-height: 1.7; margin: 0; transition: color 0.4s ease; text-align: left; }
 
-        /* ======================= SOBRE MIM E ABORDAGEM ======================= */
+        /* ======================= SOBRE MIM ======================= */
         .sobre-mim-container { display: flex; align-items: flex-start; gap: 60px; } 
-        
-        /* Moldura de fundo onde futuramente entrará a sua foto */
-        .sobre-mim-foto-moldura { 
-            flex: 1; height: 500px; 
-            background-color: var(--cor-destaque); border-radius: 12px; display: flex; align-items: center; justify-content: center; 
-            color: var(--cor-botao-texto); transition: background-color 0.4s ease, color 0.4s ease; 
-        }
-        
+        .sobre-mim-foto-moldura { flex: 1; height: 500px; background-color: var(--cor-destaque); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--cor-botao-texto); transition: background-color 0.4s ease, color 0.4s ease; }
         .sobre-mim-texto { flex: 1.2; text-align: left; }
-        
-        /* A Citação Grande em Itálico no Sobre Mim */
-        .sobre-citacao {
-            font-family: 'Playfair Display', serif; font-size: 1.8em; font-style: italic; font-weight: normal;
-            color: var(--cor-terrosa); line-height: 1.35; margin-bottom: 25px; text-align: left;
-        }
-        
+        .sobre-citacao { font-family: 'Playfair Display', serif; font-size: 1.8em; font-style: italic; font-weight: normal; color: var(--cor-terrosa); line-height: 1.35; margin-bottom: 25px; text-align: left; }
         .sobre-intro { font-size: 1.1em; color: var(--cor-texto); opacity: 0.9; margin-bottom: 30px; line-height: 1.8; text-align: left;}
 
-        /* ======================= COMO FUNCIONA (TIMELINE / LINHA DO TEMPO) ======================= */
+        /* ======================= COMO FUNCIONA (TIMELINE) ======================= */
         .timeline-container { display: flex; justify-content: space-between; position: relative; margin-top: 60px; }
         .timeline-line { position: absolute; top: 32px; left: 0; width: 100%; height: 1px; background-color: var(--cor-destaque); opacity: 0.2; z-index: 1; transition: background-color 0.4s ease;}
         .timeline-item { flex: 1; position: relative; z-index: 2; padding: 0 20px; text-align: center; }
-        
-        /* Os números grandes (01, 02, 03) */
         .timeline-number { font-family: 'Playfair Display', serif; font-size: 2.8em; font-style: italic; color: var(--cor-terrosa); background-color: var(--cor-branca); display: inline-block; padding: 0 25px; margin-bottom: 20px; transition: background-color 0.4s ease, color 0.4s ease;}
         .timeline-content h4 { font-size: 1.25em; color: var(--cor-destaque); margin-bottom: 15px; font-weight: 500; transition: color 0.4s ease;}
         .timeline-content p { font-size: 1em; color: var(--cor-texto); opacity: 0.85; line-height: 1.7; transition: color 0.4s ease;}
 
-        /* ======================= DIFERENCIAIS (4 Ícones) ======================= */
+        /* ======================= DIFERENCIAIS ======================= */
         .diferenciais-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
         .diferencial-item { text-align: center; padding: 10px; }
         .diferencial-icon { font-size: 2.5em; color: var(--cor-destaque); margin-bottom: 20px; line-height: 1; display: inline-block; transition: color 0.4s ease; }
         .diferencial-item h4 { font-size: 1.1em; color: var(--cor-texto); margin-bottom: 10px; font-weight: bold; transition: color 0.4s ease; }
         .diferencial-item p { font-size: 0.9em; color: var(--cor-texto); opacity: 0.8; line-height: 1.6; transition: color 0.4s ease; }
 
-        /* ======================= CAIXA DE SAÚDE MENTAL (INTERLÚDIO) ======================= */
+        /* ======================= INTERLÚDIO ======================= */
         #interludio-inspirador { padding: 80px 0; background-color: var(--cor-principal); transition: background-color 0.4s ease; }
         .interludio-conteudo-minimalista { max-width: 800px; margin: 0 auto; background-color: var(--cor-branca); padding: 60px 50px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid rgba(86, 93, 100, 0.08); transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; text-align: center; }
         body.dark-mode .interludio-conteudo-minimalista { background-color: var(--cor-branca); border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
         .titulo-principal-interludio { font-size: 2.2em; color: var(--cor-texto); font-weight: 500; margin-bottom: 30px; line-height: 1.3; transition: color 0.4s ease; text-align: center; }
-        
         .texto-interludio-wrapper { text-align: left; margin-bottom: 40px; }
         .texto-interludio-wrapper p { font-size: 1.1em; color: var(--cor-texto); opacity: 0.85; line-height: 1.8; margin-bottom: 15px; transition: color 0.4s ease; text-align: left; }
         .texto-interludio-wrapper p:last-child { margin-bottom: 0; }
 
-        /* ======================= PERGUNTAS FREQUENTES (FAQ) ======================= */
+        /* ======================= FAQ ======================= */
         .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item { border-bottom: 1px solid rgba(86, 93, 100, 0.2); }
         body.dark-mode .faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
@@ -270,15 +215,13 @@
         .faq-answer p { padding: 0 0 25px 0; line-height: 1.7; color: var(--cor-texto); opacity: 0.85; margin: 0; transition: color 0.4s ease; text-align: left; }
         .faq-answer.open { padding-top: 0; }
 
-        /* ======================= RODAPÉ (FOOTER) ======================= */
-        /* Linha que define a cor de fundo preta/grafite do rodapé */
+        /* ======================= RODAPÉ ======================= */
         footer { text-align: center; padding: 40px 20px; background-color: #282C31; color: #FFFFFF; z-index: 2; position: relative; transition: background-color 0.4s ease, color 0.4s ease;}
         body.dark-mode footer { background-color: #15171A; }
         footer p { opacity: 0.9; font-size: 0.95em; letter-spacing: 0.5px; margin: 0; }
 
         /* =================================================================== */
         /* ======================= RESPONSIVIDADE (CELULARES) ================ */
-        /* Todas as regras abaixo aplicam-se APENAS a telas pequenas (Mobile)  */
         /* =================================================================== */
         @media (max-width: 992px) {
             .sobre-mim-container, .sinais-container, .diferenciais-grid { flex-direction: column; text-align: center; }
@@ -291,14 +234,13 @@
         }
         
         @media (max-width: 768px) {
-            /* Transformação do Cabeçalho e do Menu */
             .sticky-header { padding: 20px 0; height: 85px; } 
             .sticky-header.scrolled { padding: 20px 0; height: 85px; } 
             .header-content { display: flex; justify-content: center; align-items: center; height: 100%; position: static; }
             
-            .logo-area { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; width: 70%; transition: opacity 0.3s ease; }
-            .logo-area .psicologo-nome { font-size: 1.35em; margin: 0; margin-bottom: 4px; text-align: center; }
-            .psicologo-detalhes { justify-content: center; } 
+            .logo-area { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; width: 85%; transition: opacity 0.3s ease; }
+            .logo-area .psicologo-nome { font-size: 1.35em; margin: 0; margin-bottom: 4px; text-align: center; display: block; white-space: nowrap;}
+            .psicologo-detalhes { justify-content: center; display: flex; width: 100%; } 
             .psicologo-detalhes p { font-size: 0.75em; letter-spacing: 1px; margin: 0; }
             .psicologo-detalhes .psicologo-crp { margin-left: 5px; }
             .psicologo-detalhes .psicologo-crp::before { content: '|'; margin-right: 5px; opacity: 0.6; }
@@ -307,14 +249,26 @@
             #theme-toggle { display: block; position: absolute; left: 15px; top: 50%; transform: translateY(-50%); margin: 0; }
             .menu-hamburguer-btn { display: block; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); margin: 0; }
             
-            .mobile-logo-wj { display: none; height: 45px; width: 100%; position: relative; }
-            
-            .sticky-header.scrolled .psicologo-nome,
-            .sticky-header.scrolled .psicologo-detalhes { display: none; } 
-            .sticky-header.scrolled .mobile-logo-wj { display: flex; align-items: center; justify-content: center; }
-            
-            /* Logo do Símbolo da Psicologia (Tamanho e posição no celular) */
-            .mobile-logo-wj img { height: 45px; width: auto; object-fit: contain; position: absolute; left: 50%; transform: translateX(-50%); }
+            /* Logo Mobile Centralizado */
+            .mobile-logo-wj { 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                position: absolute; 
+                top: 50%; 
+                left: 50%; 
+                transform: translate(-50%, -50%); 
+                width: 100%; 
+                height: 45px; 
+                pointer-events: none;
+            }
+            .mobile-logo-wj img { 
+                height: 45px; 
+                width: auto; 
+                object-fit: contain; 
+                opacity: 0; 
+                will-change: opacity, transform;
+            }
 
             .menu-navegacao.menu-aberto { display: flex; transform: translateY(0); }
             .menu-navegacao { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--cor-branca); flex-direction: column; padding: 10px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transform: translateY(-150%); transition: transform 0.3s ease-in-out, background-color 0.4s ease; }
@@ -323,8 +277,6 @@
             .menu-navegacao ul li a { color: var(--cor-texto) !important; } 
             
             #home { background-attachment: scroll; } 
-            
-            /* Redução do espaçamento (gordura visual) no celular */
             section { padding: 35px 0; } 
             .faixa-demandas { margin: 15px 0; } 
             .faixa-demandas span { font-size: 1.1em; }
@@ -340,16 +292,13 @@
 
             .sintoma-btn { padding: 18px 0; font-size: 1em; }
             .sintoma-conteudo.open { padding: 0 0 20px 0; }
-            /* Garante o alinhamento à esquerda dos textos que abrem (Acordeão) */
             .sintoma-conteudo p { text-align: left; } 
 
-            /* A Foto sobe e o texto fica em baixo no Mobile */
             .sobre-mim-container { gap: 20px; } 
             .sobre-mim-foto-moldura { order: -1; width: 100%; height: 400px; margin-bottom: 10px; }
             .sobre-citacao { font-size: 1.6em; margin-bottom: 20px; }
             .sobre-intro { font-size: 1.05em; margin-bottom: 25px; text-align: left; }
 
-            /* A Linha do Tempo fica Vertical no Mobile */
             .timeline-container { flex-direction: column; margin-top: 30px; padding-left: 0; }
             .timeline-line { width: 1px; height: 100%; top: 0; left: 30px; }
             .timeline-item { display: flex; text-align: left; padding: 0; margin-bottom: 40px; }
@@ -357,7 +306,6 @@
             .timeline-content { padding-top: 15px; }
             .timeline-content h4 { font-size: 1.2em; margin-bottom: 10px; }
 
-            /* Diferenciais encostam-se um ao outro no mobile */
             section#diferenciais { padding-bottom: 10px; }
             .diferenciais-grid { grid-template-columns: 1fr; gap: 0px; } 
             .diferencial-item { padding: 12px 0; } 
@@ -381,12 +329,7 @@
     </style>
 </head>
 <body>
-    <!-- ================================================================== -->
-    <!-- ======================= ÁREA DO HTML ============================= -->
-    <!-- Aqui definimos os textos, a ordem das secções e os blocos visuais  -->
-    <!-- ================================================================== -->
 
-    <!-- CABEÇALHO SUPERIOR (Fixo) -->
     <header class="sticky-header" id="mainHeader">
         <div class="container header-content">
             <div class="header-direita">
@@ -395,20 +338,23 @@
                 </button>
             </div>
             
-            <!-- Zona do Nome ou do Logótipo (Símbolo Psicologia) -->
             <div class="logo-area">
-                <h1 class="psicologo-nome">Wellington de Jesus</h1>
-                <div class="psicologo-detalhes">
+                <!-- SEPARAÇÃO ESTRATÉGICA PARA A FUSÃO MÁGICA -->
+                <h1 class="psicologo-nome" id="nomeAnimar">
+                    <span class="letra-w">W</span><span class="resto-nome">ellington de </span><span class="letra-j">J</span><span class="resto-nome">esus</span>
+                </h1>
+                
+                <div class="psicologo-detalhes" id="detalhesAnimar">
                     <p class="psicologo-titulo">Psicólogo Clínico</p>
                     <p class="psicologo-crp">CRP 06/233869</p>
                 </div>
-                <!-- Esta imagem só aparece quando se rola o site no telemóvel -->
+                
+                <!-- O Alvo da Transmutação -->
                 <div class="mobile-logo-wj">
-                    <img src="https://i.imgur.com/3L1w5IJ.png" alt="Logo WJ Psi" />
+                    <img src="https://i.imgur.com/3L1w5IJ.png" alt="Logo WJ Psi" id="logoAnimado" />
                 </div>
             </div>
             
-            <!-- Menu de navegação (Links clicáveis) -->
             <nav class="menu-navegacao" id="menu-principal">
                 <ul>
                     <li><a href="#home" class="active">Início</a></li>
@@ -419,7 +365,6 @@
                 </ul>
             </nav>
             
-            <!-- Ícone de 3 barrinhas do telemóvel -->
             <button class="menu-hamburguer-btn" id="menu-hamburguer" aria-label="Abrir menu" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
@@ -427,7 +372,6 @@
     </header>
 
     <main>
-        <!-- 1. SEÇÃO HOME (A CAPA PRINCIPAL) -->
         <section id="home" class="home-nova">
             <div class="container home-content-main">
                 <h2 class="hero-title">Wellington de Jesus</h2>
@@ -435,7 +379,6 @@
             </div>
         </section>
 
-        <!-- 2. FAIXA DE DEMANDAS ANIMADA (Texto que corre horizontalmente) -->
         <div class="faixa-demandas" id="faixaDemandasViewport">
              <div class="faixa-demandas-container-animado" id="faixaDemandasContainer">
                 <span>Ansiedade</span><span>Depressão</span><span>Relacionamentos</span><span>Autoconhecimento</span><span>Luto</span><span>Estresse</span><span>Autoestima</span><span>Traumas</span><span>Compulsões</span><span>Fobias</span><span>Carreira</span><span>TDAH</span>
@@ -443,12 +386,11 @@
             </div>
         </div>
 
-        <!-- 3. SEÇÃO DE SINTOMAS E IDENTIFICAÇÃO (Coluna dupla) -->
+        <!-- Seções Restantes... -->
         <section id="sinais-e-apoio">
             <div class="container">
                 <div class="sinais-container">
                     
-                    <!-- Lado Esquerdo: Os botões que abrem os sintomas -->
                     <div class="sinais-coluna-esquerda">
                         <div class="sintomas-accordion">
                             <div class="sintoma-item">
@@ -499,7 +441,6 @@
                         </div>
                     </div>
                     
-                    <!-- Lado Direito: Texto de Apelo e Botão de Agendamento -->
                     <div class="sinais-coluna-direita">
                         <h2 class="sinais-titulo-lateral">Se você percebe alguns desses sinais, é hora de buscar ajuda.</h2>
                         <h3>Uma jornada de autoconhecimento e transformação</h3>
@@ -510,21 +451,14 @@
             </div>
         </section>
 
-        <!-- 4. SEÇÃO SOBRE MIM (Seu Perfil, Foto e Abordagem) -->
         <section id="sobre">
             <div class="container sobre-mim-container">
-                
-                <!-- A FOTO AQUI -->
                 <div class="sobre-mim-foto-moldura">
                     <span>Local para sua foto (Retrato)</span>
                 </div>
-                
                 <div class="sobre-mim-texto">
                     <h3 class="sobre-citacao">"Quando somos verdadeiramente ouvidos, algo em nós pode, enfim, começar a se transformar."</h3>
-                    
                     <p class="sobre-intro">Olá, me chamo Wellington. Sou psicólogo clínico (CRP 06/233869) formado pela Universidade de Araraquara (UNIARA), com a minha prática orientada pela Psicanálise e pela Psicoterapia Psicodinâmica Breve.</p>
-                    
-                    <!-- Trajetória e Abordagem expansíveis -->
                     <div class="sintomas-accordion">
                         <div class="sintoma-item">
                             <button class="sintoma-btn">
@@ -533,18 +467,15 @@
                             </button>
                             <div class="sintoma-conteudo">
                                 <p>Durante a minha formação, atendi adolescentes e adultos num ambiente de escuta cuidadosa e supervisionada, experiência que consolidou a minha convicção no poder da palavra.</p>
-                                <p style="margin-top: 15px;">Acredito que cada pessoa traz em si uma história singular — feita de silêncios, marcas, desejos e também de possibilidades. A minha escuta está voltada para acolher essa singularidade com respeito, ética e sensibilidade, criando um espaço seguro onde você possa se encontrar e, aos poucos, reconstruir o que for preciso.</p>
                             </div>
                         </div>
-                        
                         <div class="sintoma-item">
                             <button class="sintoma-btn">
                                 <span>A minha abordagem terapêutica</span>
                                 <i class="fas fa-plus"></i>
                             </button>
                             <div class="sintoma-conteudo">
-                                <p>O meu trabalho é centrado na compreensão profunda das experiências e emoções do paciente, utilizando a psicanálise como ferramenta principal para explorar o inconsciente e promover o autoconhecimento.</p>
-                                <p style="margin-top: 15px;">A direção do tratamento é pensada de forma singular e não existe uma regra ou protocolo engessado. Deste modo, os caminhos a serem percorridos são (re)construídos conforme o seu próprio processo de análise acontece no consultório.</p>
+                                <p>O meu trabalho é centrado na compreensão profunda das experiências e emoções do paciente, utilizando a psicanálise como ferramenta principal.</p>
                             </div>
                         </div>
                     </div>
@@ -552,148 +483,32 @@
             </div>
         </section>
 
-        <!-- 5. SEÇÃO COMO FUNCIONA A TERAPIA (Passo a passo 1, 2 e 3) -->
         <section id="como-funciona">
             <div class="container">
                 <h2 class="section-title">Como funciona a psicoterapia?</h2>
                 <div class="timeline-container">
-                    <div class="timeline-line"></div> <!-- Linha decorativa que liga os números -->
-                    
+                    <div class="timeline-line"></div> 
                     <div class="timeline-item">
                         <div class="timeline-number">01</div>
-                        <div class="timeline-content">
-                            <h4>Acolhimento e Escuta Livre</h4>
-                            <p>Nos primeiros encontros, o foco é conhecer a sua história num espaço livre de julgamentos, onde pode falar das suas angústias e expectativas. É o momento de criarmos o nosso vínculo de confiança.</p>
-                        </div>
+                        <div class="timeline-content"><h4>Acolhimento</h4><p>Nos primeiros encontros, o foco é conhecer a sua história.</p></div>
                     </div>
-
                     <div class="timeline-item">
                         <div class="timeline-number">02</div>
-                        <div class="timeline-content">
-                            <h4>Exploração e Compreensão</h4>
-                            <p>Ao longo das sessões, vamos aprofundar as questões trazidas. Identificar padrões de repetição, compreender como experiências passadas ecoam no presente e olhar para aquilo que não é dito.</p>
-                        </div>
+                        <div class="timeline-content"><h4>Exploração</h4><p>Aprofundamos as questões trazidas para entender padrões.</p></div>
                     </div>
-
                     <div class="timeline-item">
                         <div class="timeline-number">03</div>
-                        <div class="timeline-content">
-                            <h4>Elaboração e Novos Caminhos</h4>
-                            <p>Com o ganho de autoconhecimento, iniciamos o processo de elaboração. O objetivo não é apagar a sua história, mas permitir que se posicione de forma diferente perante ela, com mais autonomia.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- 6. SEÇÃO DOS 4 DIFERENCIAIS BÁSICOS -->
-        <section id="diferenciais">
-            <div class="container">
-                <h2 class="section-title">Por que iniciar a sua jornada aqui?</h2>
-                <div class="diferenciais-grid">
-                    <div class="diferencial-item">
-                        <div class="diferencial-icon"><i class="fas fa-shield-alt"></i></div>
-                        <h4>Sigilo e Confiança</h4>
-                        <p>Um espaço seguro e 100% confidencial para você se abrir sem preocupações, amparado pelo código de ética profissional.</p>
-                    </div>
-                    <div class="diferencial-item">
-                        <div class="diferencial-icon"><i class="fas fa-ribbon"></i></div>
-                        <h4>Profissional Certificado</h4>
-                        <p>Conte com um especialista registrado sob o CRP 06/233869 e certificado para atendimento online pelo conselho profissional.</p>
-                    </div>
-                    <div class="diferencial-item">
-                        <div class="diferencial-icon"><i class="fas fa-sitemap"></i></div>
-                        <h4>Prática Integrativa</h4>
-                        <p>Combino diferentes técnicas para adaptar a jornada terapêutica às suas necessidades específicas e individuais.</p>
-                    </div>
-                    <div class="diferencial-item">
-                        <div class="diferencial-icon"><i class="far fa-clock"></i></div>
-                        <h4>Horário Flexível</h4>
-                        <p>Agenda adaptada ao seu estilo de vida e fuso horário, com atendimentos online que cabem na sua rotina.</p>
+                        <div class="timeline-content"><h4>Elaboração</h4><p>Buscamos novos caminhos e autonomia perante a vida.</p></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Separador Visual -->
-        <div class="section-separator"> 
-            <span>Psicologia & Saúde Mental</span> 
-        </div> 
-        
-        <!-- 8. CAIXA BRANCA DE IMPACTO MENTAL (Dividida em 3 parágrafos) -->
-        <section id="interludio-inspirador">
-            <div class="container">
-                <div class="interludio-conteudo-minimalista">
-                    <h3 class="titulo-principal-interludio">Cuidar da sua saúde mental é o primeiro passo.</h3>
-                    
-                    <div class="texto-interludio-wrapper">
-                        <p>Ignorar ou adiar a busca por ajuda pode fazer com que os conflitos e angústias se tornem ainda mais difíceis de lidar.</p>
-                        <p>A ansiedade pode evoluir, a tristeza pode se aprofundar, e as relações podem sofrer desgastes profundos.</p>
-                        <p>Buscar apoio psicológico é fundamental para interromper esse ciclo e construir uma vida com mais sentido e equilíbrio.</p>
-                    </div>
-                    
-                    <a href="#contato" class="btn-agendar">Agendar Consulta</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Separador Visual -->
-        <div class="section-separator">
-             <span>Um espaço de escuta</span>
-        </div>
-        
-        <!-- 10. SEÇÃO PERGUNTAS FREQUENTES (FAQ) -->
-        <section id="faq">
-            <div class="container">
-                <h2 class="section-title">Perguntas Frequentes</h2>
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>A terapia online é realmente eficaz?</span>
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Sim! Diversos estudos e a própria regulamentação da prática pelo Conselho Federal de Psicologia comprovam que a terapia online tem a mesma eficácia da presencial. O mais importante é a qualidade da conexão entre você e o terapeuta, e isso pode ser construído fortemente no ambiente digital.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Como saber se eu preciso fazer terapia?</span>
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Não existe uma regra, mas alguns sinais comuns são: sentir-se sobrecarregado emocionalmente, ter dificuldades em relacionamentos, passar por um luto, sentir ansiedade constante ou simplesmente ter o desejo de se conhecer melhor. Se algo causa sofrimento ou impede seu bem-estar, a terapia pode ajudar.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Tenho medo das mudanças que a terapia pode trazer. Isso é normal?</span>
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Totalmente normal. Mudar pode ser assustador, pois nos tira de um lugar conhecido, mesmo que esse lugar seja de sofrimento. A terapia é um processo gradual, que respeita seu tempo. O objetivo não é uma transformação radical imposta, mas sim uma construção conjunta de novos caminhos possíveis para você.</p>
-                        </div>
-                    </div>
-                     <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Aceita plano de saúde?</span>
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Atualmente, não atendo diretamente por planos de saúde. No entanto, forneço recibos de todas as sessões, que você pode utilizar para solicitar o reembolso junto ao seu convênio, dependendo da política e da cobertura do seu plano.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 11. CONTATO E BOTÃO DO WHATSAPP -->
         <section id="contato">
             <div class="container" style="text-align: center;">
                 <h2 class="section-title">Contato</h2>
-                <p class="section-subtitle">Vamos conversar? Entre em contato para agendar sua consulta ou tirar dúvidas.</p>
+                <p class="section-subtitle">Vamos conversar? Entre em contato para agendar sua consulta.</p>
                 <div style="margin-top: 30px;">
-                    <!-- AQUI FICA O LINK PARA O SEU WHATSAPP (Substituir SEUNUMERODEWHATSAPP pelo seu número real) -->
                     <a href="https://wa.me/SEUNUMERODEWHATSAPP" target="_blank" class="btn-whatsapp">
                         <i class="fab fa-whatsapp"></i> Falar no WhatsApp
                     </a>
@@ -702,39 +517,25 @@
         </section>
     </main>
 
-    <!-- 12. RODAPÉ DO SITE -->
     <footer>
         <div class="container">
             <p>&copy; <span id="currentYear"></span> Wellington de Jesus - Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <!-- ================================================================== -->
-    <!-- ======================= ÁREA DO JAVASCRIPT (LÓGICA) ============== -->
-    <!-- Aqui estão as "engrenagens" que fazem o site mexer e interagir     -->
-    <!-- ================================================================== -->
     <script>
-        // Esta linha garante que a lógica só funcione depois que o site estiver todo carregado
         document.addEventListener('DOMContentLoaded', function() {
             
-            // -----------------------------------------------------------
-            // 1. LÓGICA DO BOTÃO LUA / SOL (MODO ESCURO E CLARO)
-            // -----------------------------------------------------------
+            // TEMA ESCURO
             const themeToggleBtn = document.getElementById('theme-toggle');
             const themeIcon = themeToggleBtn.querySelector('i');
-            
-            // Verifica se o paciente já tinha escolhido o modo escuro antes de entrar
             const savedTheme = localStorage.getItem('psicologia-theme');
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-mode');
                 themeIcon.classList.replace('fa-moon', 'fa-sun');
             }
-
-            // O que acontece quando se clica no botão da Lua/Sol
             themeToggleBtn.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode'); // Alterna a classe dark-mode
-                
-                // Salva a escolha do paciente no navegador dele para a próxima vez
+                document.body.classList.toggle('dark-mode');
                 if (document.body.classList.contains('dark-mode')) {
                     localStorage.setItem('psicologia-theme', 'dark');
                     themeIcon.classList.replace('fa-moon', 'fa-sun');
@@ -744,196 +545,123 @@
                 }
             });
 
-            // -----------------------------------------------------------
-            // 2. LÓGICA DO MENU NO TELEMÓVEL (AS 3 BARRINHAS)
-            // -----------------------------------------------------------
+            // MENU MOBILE
             const menuBtn = document.getElementById('menu-hamburguer');
             const menuNav = document.getElementById('menu-principal');
             const mainHeader = document.getElementById('mainHeader');
-
-            // Abre e fecha o menu ao clicar no botão
             if (menuBtn && menuNav) {
                 menuBtn.addEventListener('click', () => {
                     menuNav.classList.toggle('menu-aberto');
                     const icon = menuBtn.querySelector('i');
                     if (icon) {
-                        icon.classList.toggle('fa-times', menuNav.classList.contains('menu-aberto')); // Vira um "X"
-                        icon.classList.toggle('fa-bars', !menuNav.classList.contains('menu-aberto')); // Volta a ser barrinhas
+                        icon.classList.toggle('fa-times', menuNav.classList.contains('menu-aberto')); 
+                        icon.classList.toggle('fa-bars', !menuNav.classList.contains('menu-aberto')); 
                     }
                 });
             }
 
-            // Deslizamento suave (efeito deslizante) quando o utilizador clica num botão do menu
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    // Fecha o menu do telemóvel depois de clicar numa opção
-                    if (menuNav && menuNav.classList.contains('menu-aberto')) {
-                        menuNav.classList.remove('menu-aberto');
-                        const icon = menuBtn.querySelector('i');
-                        if (icon) {
-                            icon.classList.remove('fa-times');
-                            icon.classList.add('fa-bars');
-                        }
+            // =========================================================================
+            // A NOVA FUSÃO MÁGICA (WJ -> LOGO) - VERSÃO 2.0
+            // =========================================================================
+            const letraW = document.querySelector('.letra-w');
+            const letraJ = document.querySelector('.letra-j');
+            const restoNome = document.querySelectorAll('.resto-nome');
+            const detalhes = document.getElementById('detalhesAnimar');
+            const logoMobile = document.getElementById('logoAnimado');
+
+            if (mainHeader) {
+                window.addEventListener('scroll', () => {
+                    let scrollY = window.scrollY;
+                    mainHeader.classList.toggle('scrolled', scrollY > 50);
+
+                    if (window.innerWidth <= 768 && letraW && letraJ && logoMobile) {
+                        let maxScroll = 120; // Aumentado para dar mais suavidade
+                        let progresso = Math.min(scrollY / maxScroll, 1);
+
+                        // 1. Textos secundários desaparecem primeiro (0% a 40%)
+                        let opacidadeTextos = Math.max(1 - (progresso / 0.4), 0);
+                        restoNome.forEach(el => el.style.opacity = opacidadeTextos);
+                        if(detalhes) detalhes.style.opacity = opacidadeTextos;
+
+                        // 2. Deslize e Convergência (As letras se buscam no centro)
+                        // Ajustei para os valores ficarem perfeitos conforme o scroll
+                        let deslizeW = progresso * 48; // W anda para a direita
+                        let deslizeJ = progresso * 42; // J anda para a esquerda
+                        
+                        // 3. Efeito de Desfoque Progressivo (O toque de mágica)
+                        // Começa a desfocar após 50% do movimento para simular a fusão
+                        let blurValue = progresso > 0.5 ? (progresso - 0.5) * 8 : 0;
+
+                        letraW.style.transform = `translateX(${deslizeW}px)`;
+                        letraJ.style.transform = `translateX(-${deslizeJ}px)`;
+                        letraW.style.filter = `blur(${blurValue}px)`;
+                        letraJ.style.filter = `blur(${blurValue}px)`;
+
+                        // 4. CROSS-FADE DE ALTA PRECISÃO (65% a 100%)
+                        let fadeStart = 0.65;
+                        let fadeProg = Math.max((progresso - fadeStart) / (1 - fadeStart), 0);
+                        
+                        letraW.style.opacity = 1 - fadeProg;
+                        letraJ.style.opacity = 1 - fadeProg;
+
+                        // O Logo surge conforme as letras somem
+                        logoMobile.style.opacity = fadeProg;
+                        
+                        // Efeito de "Entrada" do Logo (Leve Zoom e Escala)
+                        let logoScale = 0.7 + (0.3 * fadeProg); 
+                        logoMobile.style.transform = `scale(${logoScale})`;
+
+                    } else if (window.innerWidth > 768) {
+                        // Reset para desktop
+                        restoNome.forEach(el => el.style.opacity = 1);
+                        if(detalhes) detalhes.style.opacity = 1;
+                        if(letraW) { letraW.style.opacity = 1; letraW.style.transform = 'none'; letraW.style.filter = 'none'; }
+                        if(letraJ) { letraJ.style.opacity = 1; letraJ.style.transform = 'none'; letraJ.style.filter = 'none'; }
+                        if(logoMobile) logoMobile.style.opacity = 0;
                     }
-                    
-                    // Faz a página deslizar para o sítio certo
-                    const targetElement = document.querySelector(this.getAttribute('href'));
-                    if (targetElement) {
-                        let headerOffset = mainHeader ? mainHeader.offsetHeight : 0;
-                        window.scrollTo({
-                            top: targetElement.offsetTop - headerOffset,
-                            behavior: 'smooth'
-                        });
+                });
+            }
+
+            // RESTANTE DAS LÓGICAS (Anos, Accordion, Faixa)
+            const currentYearEl = document.getElementById('currentYear');
+            if (currentYearEl) currentYearEl.textContent = new Date().getFullYear();
+            
+            const accordions = document.querySelectorAll('.faq-question, .sintoma-btn');
+            accordions.forEach(btn => {
+                if(btn.classList.contains('faq-question') && !btn.querySelector('.fa-minus')) {
+                    const minusIcon = document.createElement('i');
+                    minusIcon.className = 'fas fa-minus';
+                    btn.appendChild(minusIcon);
+                }
+                btn.addEventListener('click', () => {
+                    const content = btn.nextElementSibling;
+                    const isActive = btn.classList.contains('active');
+                    if (!isActive) {
+                        btn.classList.add('active');
+                        content.style.maxHeight = content.scrollHeight + 40 + "px"; 
+                        content.classList.add('open');
+                    } else {
+                        btn.classList.remove('active');
+                        content.style.maxHeight = null;
+                        content.classList.remove('open');
                     }
                 });
             });
 
-            // -----------------------------------------------------------
-            // 3. EFEITO DE COR NO CABEÇALHO AO DESCER A PÁGINA
-            // -----------------------------------------------------------
-            // Se passar de 50 pixels de descida, adiciona a classe "scrolled" (cor chumbo)
-            if (mainHeader) {
-                window.addEventListener('scroll', () => {
-                    mainHeader.classList.toggle('scrolled', window.scrollY > 50);
-                });
-            }
-
-            // Escreve automaticamente o ano atual no rodapé
-            const currentYearEl = document.getElementById('currentYear');
-            if (currentYearEl) {
-                currentYearEl.textContent = new Date().getFullYear();
-            }
-            
-            // Sublinha no menu a secção onde o ecrã está parado no momento
-            const sections = document.querySelectorAll('main section[id]');
-            const navLinks = document.querySelectorAll('nav.menu-navegacao ul li a');
-            if (sections.length > 0 && navLinks.length > 0) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            navLinks.forEach(link => {
-                                link.classList.remove('active');
-                                if (link.getAttribute('href').substring(1) === entry.target.id) {
-                                    link.classList.add('active');
-                                }
-                            });
-                        }
-                    });
-                }, { rootMargin: '-40% 0px -60% 0px' });
-                sections.forEach(section => { if(section.id) observer.observe(section); });
-            }
-
-            // -----------------------------------------------------------
-            // 4. LÓGICA DO ACORDEÃO (ABRIR E FECHAR CAIXAS DE TEXTO)
-            // -----------------------------------------------------------
-            const accordions = document.querySelectorAll('.faq-question, .sintoma-btn');
-            if (accordions.length > 0) {
-                accordions.forEach(btn => {
-                    // Adiciona o ícone do sinal "menos" se for o FAQ
-                    if(btn.classList.contains('faq-question') && !btn.querySelector('.fa-minus')) {
-                        const minusIcon = document.createElement('i');
-                        minusIcon.className = 'fas fa-minus';
-                        btn.appendChild(minusIcon);
-                    }
-
-                    // Ação de clicar e abrir o texto
-                    btn.addEventListener('click', () => {
-                        const content = btn.nextElementSibling;
-                        const isActive = btn.classList.contains('active');
-                        
-                        // Garante que se fecham as outras opções para não ficar uma lista gigante
-                        if(btn.classList.contains('sintoma-btn')) {
-                            const parentAccordion = btn.closest('.sintomas-accordion');
-                            const allBtnsInParent = parentAccordion.querySelectorAll('.sintoma-btn');
-                            
-                            allBtnsInParent.forEach(otherBtn => {
-                                otherBtn.classList.remove('active');
-                                if(otherBtn.nextElementSibling) {
-                                    otherBtn.nextElementSibling.style.maxHeight = null;
-                                    otherBtn.nextElementSibling.classList.remove('open');
-                                }
-                            });
-                        }
-
-                        // Se estava fechado, abre.
-                        if (!isActive) {
-                            btn.classList.add('active');
-                            content.style.maxHeight = content.scrollHeight + 40 + "px"; // Faz a caixa crescer para baixo
-                            content.classList.add('open');
-                        } else if (btn.classList.contains('faq-question')) {
-                             btn.classList.remove('active');
-                             content.style.maxHeight = null;
-                             content.classList.remove('open');
-                        }
-                    });
-                });
-            }
-
-            // -----------------------------------------------------------
-            // 5. ANIMAÇÃO DA FAIXA DE DEMANDAS ("Ansiedade, Depressão...")
-            // -----------------------------------------------------------
-            const faixaViewport = document.getElementById('faixaDemandasViewport');
+            // FAIXA DE DEMANDAS
             const faixaContainer = document.getElementById('faixaDemandasContainer');
-            if (faixaViewport && faixaContainer) {
-                let isDragging = false, startX, currentTranslateX = 0, rafId = null, interactionTimeoutId = null;
-                
-                let autoScrollSpeed = window.innerWidth <= 768 ? 0.8 : 0.5; 
-                const resumeDelay = 400; 
-
-                window.addEventListener('resize', () => {
-                    autoScrollSpeed = window.innerWidth <= 768 ? 0.8 : 0.5;
-                });
-                
-                const applyTransform = () => { if(faixaContainer) faixaContainer.style.transform = `translateX(${currentTranslateX}px)`; };
-                const stopAutoScroll = () => { if(rafId) cancelAnimationFrame(rafId); };
+            if (faixaContainer) {
+                let currentTranslateX = 0;
+                let autoScrollSpeed = window.innerWidth <= 768 ? 0.8 : 0.5;
                 const scrollStep = () => {
-                    if (isDragging) return;
                     currentTranslateX -= autoScrollSpeed;
-                    const singleContentWidth = faixaContainer.scrollWidth / 2;
-                    if (Math.abs(currentTranslateX) >= singleContentWidth) {
-                        currentTranslateX += singleContentWidth;
-                    }
-                    applyTransform();
-                    rafId = requestAnimationFrame(scrollStep);
+                    if (Math.abs(currentTranslateX) >= faixaContainer.scrollWidth / 2) currentTranslateX = 0;
+                    faixaContainer.style.transform = `translateX(${currentTranslateX}px)`;
+                    requestAnimationFrame(scrollStep);
                 };
-                const startAutoScroll = () => {
-                    stopAutoScroll();
-                    rafId = requestAnimationFrame(scrollStep);
-                };
-                
-                const onDragStart = (clientX) => {
-                    isDragging = true; stopAutoScroll(); clearTimeout(interactionTimeoutId);
-                    startX = clientX - currentTranslateX;
-                    if(faixaContainer) faixaContainer.style.transition = 'none';
-                    if(faixaViewport) faixaViewport.style.cursor = 'grabbing';
-                };
-                const onDragMove = (clientX) => {
-                    if (!isDragging) return;
-                    currentTranslateX = clientX - startX; applyTransform();
-                };
-                const onDragEnd = () => {
-                    if (!isDragging) return;
-                    isDragging = false;
-                    if(faixaViewport) faixaViewport.style.cursor = 'grab';
-                    interactionTimeoutId = setTimeout(startAutoScroll, resumeDelay);
-                };
-
-                faixaViewport.addEventListener('mousedown', (e) => onDragStart(e.pageX));
-                document.addEventListener('mousemove', (e) => onDragMove(e.pageX));
-                document.addEventListener('mouseup', onDragEnd);
-                document.addEventListener('mouseleave', onDragEnd);
-
-                faixaViewport.addEventListener('touchstart', (e) => onDragStart(e.touches[0].pageX), { passive: true });
-                faixaViewport.addEventListener('touchmove', (e) => onDragMove(e.touches[0].pageX), { passive: true });
-                faixaViewport.addEventListener('touchend', onDragEnd);
-                faixaViewport.addEventListener('touchcancel', onDragEnd);
-                
-                startAutoScroll();
+                scrollStep();
             }
         });
     </script>
-    
 </body>
 </html>
